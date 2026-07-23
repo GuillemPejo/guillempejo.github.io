@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Política de Privacidad de las Aplicaciones · Guillem Pejó</title>
+<meta name="description" content="Política de privacidad aplicable a las aplicaciones Android publicadas por Guillem Pejó (Tacoly) en Google Play.">
+<meta name="author" content="Guillem Pejó">
+<meta name="robots" content="index, follow">
+<link rel="shortcut icon" href="../img/favicon.ico">
+<style>
+:root{
+  --bg:#ffffff; --fg:#1a1c1e; --muted:#5c6166; --line:#e3e6e8;
+  --accent:#1a73e8; --card:#f7f9fa; --thead:#eef2f5; --warn-bg:#fff8e6; --warn-line:#f0c36d;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#121417; --fg:#e6e9ec; --muted:#9aa2aa; --line:#2a2f35;
+    --accent:#7cb0f5; --card:#181b1f; --thead:#1e2228; --warn-bg:#2a2416; --warn-line:#6b5722;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121417; --fg:#e6e9ec; --muted:#9aa2aa; --line:#2a2f35;
+  --accent:#7cb0f5; --card:#181b1f; --thead:#1e2228; --warn-bg:#2a2416; --warn-line:#6b5722;
+}
+:root[data-theme="light"]{
+  --bg:#ffffff; --fg:#1a1c1e; --muted:#5c6166; --line:#e3e6e8;
+  --accent:#1a73e8; --card:#f7f9fa; --thead:#eef2f5; --warn-bg:#fff8e6; --warn-line:#f0c36d;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--bg); color:var(--fg);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:16px; line-height:1.65; -webkit-text-size-adjust:100%;
+}
+.wrap{max-width:820px; margin:0 auto; padding:0 20px 80px}
+header.top{
+  border-bottom:1px solid var(--line); background:var(--bg);
+  position:sticky; top:0; z-index:10; padding:14px 0;
+}
+.top-inner{max-width:820px; margin:0 auto; padding:0 20px; display:flex; align-items:center; justify-content:space-between; gap:16px}
+.brand{font-weight:600; font-size:15px; text-decoration:none; color:var(--fg)}
+.brand span{color:var(--muted); font-weight:400}
+.langs{display:flex; gap:6px}
+.langs button{
+  font:inherit; font-size:13px; font-weight:500; cursor:pointer;
+  padding:6px 12px; border-radius:999px; border:1px solid var(--line);
+  background:transparent; color:var(--muted);
+}
+.langs button[aria-pressed="true"]{background:var(--accent); border-color:var(--accent); color:#fff}
+h1{font-size:30px; line-height:1.25; margin:36px 0 6px; letter-spacing:-.01em}
+h2{font-size:20px; margin:38px 0 10px; padding-top:10px; border-top:1px solid var(--line); letter-spacing:-.01em}
+h3{font-size:16px; margin:24px 0 6px}
+p,li{color:var(--fg)}
+.lead{color:var(--muted); margin:0 0 4px}
+.updated{color:var(--muted); font-size:14px; margin:0 0 8px}
+a{color:var(--accent)}
+ul,ol{padding-left:22px}
+li{margin:5px 0}
+code{
+  background:var(--card); border:1px solid var(--line); border-radius:4px;
+  padding:1px 5px; font-size:13px;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+.tablewrap{overflow-x:auto; -webkit-overflow-scrolling:touch; margin:16px 0; border:1px solid var(--line); border-radius:8px}
+table{border-collapse:collapse; width:100%; font-size:14px; min-width:620px}
+th,td{padding:9px 12px; text-align:left; border-bottom:1px solid var(--line); vertical-align:top}
+thead th{background:var(--thead); font-weight:600; white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+td.c,th.c{text-align:center}
+.yes{color:#1e8e3e; font-weight:700}
+:root[data-theme="dark"] .yes,
+@media (prefers-color-scheme:dark){.yes{color:#6dd58c}}
+.no{color:var(--muted)}
+.card{background:var(--card); border:1px solid var(--line); border-radius:8px; padding:14px 18px; margin:18px 0}
+.card p:first-child{margin-top:0}
+.card p:last-child{margin-bottom:0}
+.toc{background:var(--card); border:1px solid var(--line); border-radius:8px; padding:16px 20px; margin:26px 0}
+.toc p{margin:0 0 8px; font-weight:600; font-size:14px}
+.toc ol{margin:0; padding-left:20px; font-size:14px; columns:2; column-gap:28px}
+@media (max-width:560px){ .toc ol{columns:1} h1{font-size:25px} }
+footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; color:var(--muted); font-size:14px}
+[hidden]{display:none !important}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="../">Guillem Pejó <span>· Tacoly</span></a>
+    <div class="langs">
+      <button type="button" id="btn-es" onclick="setLang('es')" aria-pressed="true">Español</button>
+      <button type="button" id="btn-en" onclick="setLang('en')" aria-pressed="false">English</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- ============================ ESPAÑOL ============================ -->
+<main id="es">
+
+<h1>Política de Privacidad de las Aplicaciones</h1>
+<p class="lead">Aplicable a todas las aplicaciones Android publicadas por Guillem Pejó (Tacoly) en Google Play.</p>
+<p class="updated">Última actualización: 23 de julio de 2026 · Versión 1.0</p>
+
+<div class="toc">
+  <p>Contenido</p>
+  <ol>
+    <li><a href="#es-1">Responsable del tratamiento</a></li>
+    <li><a href="#es-2">Aplicaciones cubiertas</a></li>
+    <li><a href="#es-3">Datos que tratamos</a></li>
+    <li><a href="#es-4">Publicidad y consentimiento</a></li>
+    <li><a href="#es-5">Proveedores y destinatarios</a></li>
+    <li><a href="#es-6">Datos que NO recogemos</a></li>
+    <li><a href="#es-7">Plazos de conservación</a></li>
+    <li><a href="#es-8">Transferencias internacionales</a></li>
+    <li><a href="#es-9">Tus derechos</a></li>
+    <li><a href="#es-10">Menores de edad</a></li>
+    <li><a href="#es-11">Seguridad</a></li>
+    <li><a href="#es-12">Cambios en esta política</a></li>
+    <li><a href="#es-13">Contacto</a></li>
+  </ol>
+</div>
+
+<h2 id="es-1">1. Responsable del tratamiento</h2>
+<p>El responsable del tratamiento de los datos descritos en esta política es:</p>
+<ul>
+  <li><strong>Responsable:</strong> Guillem Pejó, desarrollador independiente (en adelante, «Tacoly», «nosotros»).</li>
+  <li><strong>Correo de contacto:</strong> <a href="mailto:tacolyapps@gmail.com">tacolyapps@gmail.com</a></li>
+  <li><strong>Sitio web:</strong> <a href="https://guillempejo.github.io">guillempejo.github.io</a></li>
+</ul>
+<p>Esta política se redacta conforme al Reglamento (UE) 2016/679 (RGPD) y a la Ley Orgánica 3/2018 (LOPDGDD).</p>
+
+<h2 id="es-2">2. Aplicaciones cubiertas</h2>
+<p>Esta política se aplica, de forma conjunta, a las siguientes aplicaciones. <strong>No todas tratan los mismos datos</strong>: la tabla indica exactamente qué recoge cada una.</p>
+
+<div class="tablewrap">
+<table>
+  <thead>
+    <tr>
+      <th>Aplicación</th><th>Identificador</th>
+      <th class="c">Ubicación</th><th class="c">Notificaciones</th>
+      <th class="c">Publicidad</th><th class="c">Analítica y errores</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Parques Argentina: Guía y Mapa</td><td><code>com.tacoly.parquesargentina</code></td><td class="c yes">Sí</td><td class="c yes">Sí</td><td class="c yes">Sí</td><td class="c yes">Sí</td></tr>
+    <tr><td>Parques Bolivia: Guía y Mapa</td><td><code>com.tacoly.parquesbolivia</code></td><td class="c yes">Sí</td><td class="c yes">Sí</td><td class="c yes">Sí</td><td class="c yes">Sí</td></tr>
+    <tr><td>Parques Chile: Guía y Mapa</td><td><code>com.tacoly.parqueschile</code></td><td class="c yes">Sí</td><td class="c yes">Sí</td><td class="c yes">Sí</td><td class="c yes">Sí</td></tr>
+    <tr><td>Parques Colombia: Guía y Mapa</td><td><code>com.tacoly.parquescolombia</code></td><td class="c yes">Sí</td><td class="c yes">Sí</td><td class="c yes">Sí</td><td class="c yes">Sí</td></tr>
+    <tr><td>Parques Ecuador: Guía y Mapa</td><td><code>com.tacoly.parquesecuador</code></td><td class="c yes">Sí</td><td class="c yes">Sí</td><td class="c yes">Sí</td><td class="c yes">Sí</td></tr>
+    <tr><td>Parques Perú: Guía y Mapa</td><td><code>com.tacoly.parquesperu</code></td><td class="c yes">Sí</td><td class="c yes">Sí</td><td class="c yes">Sí</td><td class="c yes">Sí</td></tr>
+    <tr><td>Refresca't · Piscines BCN</td><td><code>com.tacoly.refrescat</code></td><td class="c yes">Sí</td><td class="c no">No</td><td class="c yes">Sí</td><td class="c yes">Sí</td></tr>
+    <tr><td>VisaTrip: Visa &amp; Passport</td><td><code>com.tacoly.visatrip</code></td><td class="c no">No</td><td class="c yes">Sí</td><td class="c yes">Sí</td><td class="c yes">Sí</td></tr>
+    <tr><td>Paellator: Paella Recipes</td><td><code>com.tacoly.paellator</code></td><td class="c no">No</td><td class="c yes">Sí</td><td class="c yes">Sí</td><td class="c yes">Sí</td></tr>
+    <tr><td>Ferrata</td><td><code>com.tacoly.ferrata</code></td><td class="c no">No</td><td class="c no">No</td><td class="c yes">Sí</td><td class="c yes">Sí</td></tr>
+    <tr><td>Decamping</td><td><code>com.tacoly.decamping</code></td><td class="c no">No</td><td class="c no">No</td><td class="c yes">Sí</td><td class="c yes">Sí</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="es-3">3. Datos que tratamos</h2>
+<p><strong>Ninguna de nuestras aplicaciones requiere registro ni cuenta de usuario.</strong> No te pedimos nombre, dirección de correo electrónico ni número de teléfono, y no disponemos de ningún sistema de acceso o identificación.</p>
+
+<h3>3.1 Datos de publicidad <span class="no">(todas las aplicaciones)</span></h3>
+<p>Mostramos anuncios a través de <strong>Google AdMob</strong> para poder ofrecer las aplicaciones de forma gratuita. Para ello, Google puede tratar:</p>
+<ul>
+  <li>El <strong>identificador de publicidad de Android</strong> (Advertising ID), que puedes restablecer o eliminar en cualquier momento.</li>
+  <li>Información técnica del dispositivo: modelo, versión del sistema operativo, idioma y país.</li>
+  <li>Dirección IP y ubicación aproximada derivada de ella (a nivel de ciudad o región, nunca precisa).</li>
+  <li>Interacciones con los anuncios: impresiones y clics.</li>
+</ul>
+<p><strong>Base jurídica:</strong> tu <em>consentimiento</em> (art. 6.1.a RGPD) para la publicidad personalizada. Si no lo otorgas, o lo retiras, seguimos mostrando anuncios <em>no personalizados</em>, cuyo tratamiento se ampara en nuestro <em>interés legítimo</em> (art. 6.1.f RGPD) en sostener económicamente unas aplicaciones gratuitas.</p>
+
+<h3>3.2 Analítica de uso, errores y rendimiento <span class="no">(todas las aplicaciones)</span></h3>
+<p>Utilizamos <strong>Firebase Analytics</strong>, <strong>Firebase Crashlytics</strong> y <strong>Firebase Performance Monitoring</strong> para entender cómo se usan las aplicaciones, detectar fallos y mejorar el rendimiento. Se tratan datos agregados y seudonimizados:</p>
+<ul>
+  <li>Identificador de instalación generado aleatoriamente, no vinculado a tu identidad.</li>
+  <li>Eventos de uso: pantallas visitadas, sesiones, duración.</li>
+  <li>Modelo de dispositivo, versión del sistema operativo, versión de la aplicación, país e idioma.</li>
+  <li>Informes de fallos: registro de la incidencia, estado del dispositivo en ese momento y traza del error.</li>
+</ul>
+<p><strong>Base jurídica:</strong> <em>interés legítimo</em> (art. 6.1.f RGPD) en garantizar el correcto funcionamiento, la estabilidad y la mejora continua de las aplicaciones. Puedes oponerte a este tratamiento escribiéndonos.</p>
+
+<h3>3.3 Ubicación <span class="no">(solo Parques ×6 y Refresca't)</span></h3>
+<p>Estas aplicaciones pueden solicitar acceso a tu <strong>ubicación precisa y aproximada</strong> con la única finalidad de calcular qué parques o piscinas tienes más cerca y a qué distancia.</p>
+<div class="card">
+  <p><strong>Tu ubicación no sale de tu dispositivo.</strong> No la almacenamos en ningún servidor, no la asociamos a ningún identificador y no la compartimos con terceros.</p>
+</div>
+<p>El permiso es <strong>totalmente opcional</strong>: se solicita en el momento en que intentas usar una función que lo necesita, y las aplicaciones son plenamente funcionales si lo deniegas. Puedes revocarlo cuando quieras en <em>Ajustes → Aplicaciones → [aplicación] → Permisos</em>.</p>
+<p><strong>Base jurídica:</strong> tu <em>consentimiento</em> (art. 6.1.a RGPD), otorgado mediante el diálogo de permisos del sistema Android.</p>
+
+<h3>3.4 Notificaciones <span class="no">(solo Parques ×6, VisaTrip y Paellator)</span></h3>
+<p>Estas aplicaciones pueden enviarte notificaciones locales con contenido de interés (por ejemplo, el «parque del día»). Se generan íntegramente en tu dispositivo y no implican el envío de datos personales a nuestros servidores.</p>
+<p><strong>Base jurídica:</strong> tu <em>consentimiento</em>, otorgado mediante el diálogo de permisos de Android. Puedes desactivarlas en cualquier momento desde los ajustes del sistema.</p>
+
+<h3>3.5 Contenido de las aplicaciones</h3>
+<p>El contenido (fichas de parques, recetas, información de visados, etc.) se sirve desde <strong>Google Cloud Firestore</strong>. Se trata de operaciones de <strong>solo lectura</strong>: la aplicación descarga contenido, pero no envía datos personales tuyos a la base de datos.</p>
+<p>Las aplicaciones que muestran mapas utilizan <strong>Google Maps SDK</strong>, sujeto a las condiciones y a la política de privacidad de Google.</p>
+
+<h3>3.6 Otros permisos</h3>
+<ul>
+  <li><strong>Acceso a Internet y estado de la red</strong> (todas): imprescindible para descargar contenido y anuncios.</li>
+  <li><strong>Vibración</strong> (Paellator): retorno háptico del temporizador de cocina. No trata datos personales.</li>
+  <li><strong>Escritura en almacenamiento</strong> (VisaTrip, solo en versiones antiguas de Android): permite guardar documentos generados por la propia aplicación en tu dispositivo. El archivo no se envía a ningún servidor.</li>
+</ul>
+
+<h2 id="es-4">4. Publicidad y consentimiento</h2>
+<p>Si te encuentras en el <strong>Espacio Económico Europeo, Reino Unido o Suiza</strong>, la primera vez que abras una de nuestras aplicaciones verás un mensaje de consentimiento gestionado mediante la <strong>User Messaging Platform (UMP)</strong> de Google, una plataforma certificada dentro del <em>Transparency &amp; Consent Framework</em> (TCF) de IAB Europe.</p>
+<p>En ese mensaje puedes:</p>
+<ul>
+  <li><strong>Aceptar</strong> el tratamiento de tus datos para publicidad personalizada.</li>
+  <li><strong>Gestionar las opciones</strong> y elegir con detalle qué finalidades y qué proveedores autorizas, o rechazarlos.</li>
+</ul>
+<h3>Cómo retirar o cambiar tu consentimiento</h3>
+<p>Puedes modificar tu elección en cualquier momento desde <strong>los ajustes de la propia aplicación</strong>, en la opción de privacidad de los anuncios. Además, con independencia de tu decisión, puedes limitar la publicidad basada en intereses desde tu dispositivo:</p>
+<ul>
+  <li><em>Ajustes de Android → Privacidad → Anuncios</em>, donde puedes <strong>restablecer o eliminar tu identificador de publicidad</strong>.</li>
+  <li>Consultar y ajustar tu configuración en <a href="https://adssettings.google.com" target="_blank" rel="noopener">adssettings.google.com</a>.</li>
+</ul>
+<p>Retirar el consentimiento no afecta a la licitud del tratamiento realizado con anterioridad, y no impide seguir usando la aplicación con normalidad.</p>
+
+<h2 id="es-5">5. Proveedores y destinatarios</h2>
+<p>No vendemos, alquilamos ni cedemos tus datos. Los únicos terceros que intervienen son proveedores tecnológicos que actúan como encargados o corresponsables del tratamiento:</p>
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Proveedor</th><th>Servicio</th><th>Información</th></tr></thead>
+  <tbody>
+    <tr><td>Google Ireland Ltd. / Google LLC</td><td>AdMob (publicidad)</td><td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Política de privacidad</a> · <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">Uso de datos</a></td></tr>
+    <tr><td>Google Ireland Ltd. / Google LLC</td><td>Firebase (analítica, errores, rendimiento, base de datos)</td><td><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Privacidad en Firebase</a></td></tr>
+    <tr><td>Google Ireland Ltd. / Google LLC</td><td>Google Maps</td><td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Política de privacidad</a></td></tr>
+    <tr><td>Google Ireland Ltd. / Google LLC</td><td>Google Play (distribución)</td><td><a href="https://play.google.com/about/play-terms/" target="_blank" rel="noopener">Condiciones de Google Play</a></td></tr>
+  </tbody>
+</table>
+</div>
+<p>La lista completa y actualizada de proveedores publicitarios adheridos al TCF que pueden participar en la subasta está disponible dentro del propio mensaje de consentimiento, en «Gestionar opciones → Lista de proveedores».</p>
+
+<h2 id="es-6">6. Datos que NO recogemos</h2>
+<p>Para que quede constancia expresa, nuestras aplicaciones <strong>no recogen, no almacenan y no transmiten</strong>:</p>
+<ul>
+  <li>Nombre, apellidos ni ningún dato identificativo directo.</li>
+  <li>Dirección de correo electrónico ni número de teléfono.</li>
+  <li>Contraseñas o credenciales (no existe registro ni inicio de sesión).</li>
+  <li>Agenda de contactos, mensajes, llamadas o calendario.</li>
+  <li>Fotografías, cámara, micrófono ni archivos personales.</li>
+  <li>Datos de pago o financieros (no hay compras dentro de la aplicación).</li>
+  <li>Datos de categorías especiales (salud, ideología, religión, orientación sexual, biometría).</li>
+  <li>Tu ubicación precisa en ningún servidor nuestro.</li>
+</ul>
+
+<h2 id="es-7">7. Plazos de conservación</h2>
+<p>No mantenemos bases de datos con información personal de usuarios. Los datos tratados por los servicios de Google se conservan conforme a las políticas de dicho proveedor, orientativamente:</p>
+<ul>
+  <li><strong>Informes de fallos (Crashlytics):</strong> aproximadamente 90 días.</li>
+  <li><strong>Analítica de uso:</strong> hasta 14 meses para datos a nivel de evento, según la configuración de retención de Firebase.</li>
+  <li><strong>Datos publicitarios:</strong> según las políticas de conservación de Google AdMob.</li>
+  <li><strong>Ubicación:</strong> no se conserva; se usa en memoria y se descarta.</li>
+</ul>
+<p>Estos plazos los define Google y pueden variar; te recomendamos consultar sus políticas, enlazadas en la sección 5.</p>
+
+<h2 id="es-8">8. Transferencias internacionales</h2>
+<p>Los proveedores mencionados pueden tratar datos en servidores situados fuera del Espacio Económico Europeo, principalmente en Estados Unidos. Dichas transferencias se amparan en los mecanismos previstos en el capítulo V del RGPD, en particular el <strong>Marco de Privacidad de Datos UE-EE. UU.</strong> y las <strong>Cláusulas Contractuales Tipo</strong> aprobadas por la Comisión Europea.</p>
+
+<h2 id="es-9">9. Tus derechos</h2>
+<p>Como interesado, el RGPD te reconoce los siguientes derechos:</p>
+<ul>
+  <li><strong>Acceso:</strong> conocer qué datos tuyos se tratan.</li>
+  <li><strong>Rectificación:</strong> corregir datos inexactos.</li>
+  <li><strong>Supresión:</strong> solicitar su eliminación.</li>
+  <li><strong>Limitación:</strong> restringir su tratamiento.</li>
+  <li><strong>Oposición:</strong> oponerte a tratamientos basados en interés legítimo.</li>
+  <li><strong>Portabilidad:</strong> recibir tus datos en formato estructurado.</li>
+  <li><strong>Retirada del consentimiento</strong> en cualquier momento, sin efectos retroactivos.</li>
+</ul>
+<p>Para ejercerlos, escribe a <a href="mailto:tacolyapps@gmail.com">tacolyapps@gmail.com</a> indicando la aplicación y el derecho que deseas ejercer. Responderemos en el plazo máximo de <strong>un mes</strong>.</p>
+<div class="card">
+  <p><strong>Nota importante.</strong> Dado que no recogemos datos identificativos ni existen cuentas de usuario, en la mayoría de los casos <strong>nos resultará materialmente imposible vincular un dato concreto contigo</strong> (art. 11 RGPD). Para ejercer derechos sobre los datos tratados por Google, deberás dirigirte directamente a dicho proveedor a través de los enlaces de la sección 5.</p>
+</div>
+<p>Si consideras que el tratamiento no se ajusta a la normativa, puedes presentar una reclamación ante la <strong>Agencia Española de Protección de Datos</strong>: <a href="https://www.aepd.es" target="_blank" rel="noopener">www.aepd.es</a>.</p>
+
+<h2 id="es-10">10. Menores de edad</h2>
+<p>Nuestras aplicaciones <strong>no están dirigidas a menores de 14 años</strong> ni participan en el programa «Diseñado para familias» de Google Play. No recogemos conscientemente datos de menores de esa edad. Si tienes constancia de que un menor nos ha facilitado datos, escríbenos y procederemos a su eliminación.</p>
+
+<h2 id="es-11">11. Seguridad</h2>
+<p>Todas las comunicaciones entre las aplicaciones y los servicios que utilizan se realizan mediante <strong>conexiones cifradas (HTTPS/TLS)</strong>. Al no mantener servidores propios con datos personales, la superficie de exposición se reduce a la infraestructura de Google, sujeta a sus propias medidas de seguridad.</p>
+
+<h2 id="es-12">12. Cambios en esta política</h2>
+<p>Podemos actualizar esta política para reflejar cambios en las aplicaciones o en la normativa aplicable. La fecha de la última revisión figura al inicio del documento. Si se produjeran cambios sustanciales en las finalidades del tratamiento, te lo comunicaremos a través de la propia aplicación o del mensaje de consentimiento.</p>
+
+<h2 id="es-13">13. Contacto</h2>
+<p>Para cualquier cuestión relativa a esta política o al tratamiento de tus datos:</p>
+<ul>
+  <li><strong>Correo electrónico:</strong> <a href="mailto:tacolyapps@gmail.com">tacolyapps@gmail.com</a></li>
+  <li><strong>Desarrollador:</strong> Guillem Pejó (Tacoly)</li>
+</ul>
+
+</main>
+
+<!-- ============================ ENGLISH ============================ -->
+<main id="en" hidden>
+
+<h1>Apps Privacy Policy</h1>
+<p class="lead">Applicable to all Android applications published by Guillem Pejó (Tacoly) on Google Play.</p>
+<p class="updated">Last updated: 23 July 2026 · Version 1.0</p>
+
+<div class="toc">
+  <p>Contents</p>
+  <ol>
+    <li><a href="#en-1">Data controller</a></li>
+    <li><a href="#en-2">Apps covered</a></li>
+    <li><a href="#en-3">Data we process</a></li>
+    <li><a href="#en-4">Advertising and consent</a></li>
+    <li><a href="#en-5">Providers and recipients</a></li>
+    <li><a href="#en-6">Data we do NOT collect</a></li>
+    <li><a href="#en-7">Retention periods</a></li>
+    <li><a href="#en-8">International transfers</a></li>
+    <li><a href="#en-9">Your rights</a></li>
+    <li><a href="#en-10">Children</a></li>
+    <li><a href="#en-11">Security</a></li>
+    <li><a href="#en-12">Changes to this policy</a></li>
+    <li><a href="#en-13">Contact</a></li>
+  </ol>
+</div>
+
+<h2 id="en-1">1. Data controller</h2>
+<p>The controller responsible for the processing described in this policy is:</p>
+<ul>
+  <li><strong>Controller:</strong> Guillem Pejó, independent developer (hereinafter "Tacoly", "we").</li>
+  <li><strong>Contact email:</strong> <a href="mailto:tacolyapps@gmail.com">tacolyapps@gmail.com</a></li>
+  <li><strong>Website:</strong> <a href="https://guillempejo.github.io">guillempejo.github.io</a></li>
+</ul>
+<p>This policy is drafted in accordance with Regulation (EU) 2016/679 (GDPR) and Spanish Organic Law 3/2018 (LOPDGDD).</p>
+
+<h2 id="en-2">2. Apps covered</h2>
+<p>This policy applies jointly to the following applications. <strong>They do not all process the same data</strong>: the table below states exactly what each one collects.</p>
+
+<div class="tablewrap">
+<table>
+  <thead>
+    <tr>
+      <th>Application</th><th>Package</th>
+      <th class="c">Location</th><th class="c">Notifications</th>
+      <th class="c">Advertising</th><th class="c">Analytics &amp; crashes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Parques Argentina: Guía y Mapa</td><td><code>com.tacoly.parquesargentina</code></td><td class="c yes">Yes</td><td class="c yes">Yes</td><td class="c yes">Yes</td><td class="c yes">Yes</td></tr>
+    <tr><td>Parques Bolivia: Guía y Mapa</td><td><code>com.tacoly.parquesbolivia</code></td><td class="c yes">Yes</td><td class="c yes">Yes</td><td class="c yes">Yes</td><td class="c yes">Yes</td></tr>
+    <tr><td>Parques Chile: Guía y Mapa</td><td><code>com.tacoly.parqueschile</code></td><td class="c yes">Yes</td><td class="c yes">Yes</td><td class="c yes">Yes</td><td class="c yes">Yes</td></tr>
+    <tr><td>Parques Colombia: Guía y Mapa</td><td><code>com.tacoly.parquescolombia</code></td><td class="c yes">Yes</td><td class="c yes">Yes</td><td class="c yes">Yes</td><td class="c yes">Yes</td></tr>
+    <tr><td>Parques Ecuador: Guía y Mapa</td><td><code>com.tacoly.parquesecuador</code></td><td class="c yes">Yes</td><td class="c yes">Yes</td><td class="c yes">Yes</td><td class="c yes">Yes</td></tr>
+    <tr><td>Parques Perú: Guía y Mapa</td><td><code>com.tacoly.parquesperu</code></td><td class="c yes">Yes</td><td class="c yes">Yes</td><td class="c yes">Yes</td><td class="c yes">Yes</td></tr>
+    <tr><td>Refresca't · Piscines BCN</td><td><code>com.tacoly.refrescat</code></td><td class="c yes">Yes</td><td class="c no">No</td><td class="c yes">Yes</td><td class="c yes">Yes</td></tr>
+    <tr><td>VisaTrip: Visa &amp; Passport</td><td><code>com.tacoly.visatrip</code></td><td class="c no">No</td><td class="c yes">Yes</td><td class="c yes">Yes</td><td class="c yes">Yes</td></tr>
+    <tr><td>Paellator: Paella Recipes</td><td><code>com.tacoly.paellator</code></td><td class="c no">No</td><td class="c yes">Yes</td><td class="c yes">Yes</td><td class="c yes">Yes</td></tr>
+    <tr><td>Ferrata</td><td><code>com.tacoly.ferrata</code></td><td class="c no">No</td><td class="c no">No</td><td class="c yes">Yes</td><td class="c yes">Yes</td></tr>
+    <tr><td>Decamping</td><td><code>com.tacoly.decamping</code></td><td class="c no">No</td><td class="c no">No</td><td class="c yes">Yes</td><td class="c yes">Yes</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="en-3">3. Data we process</h2>
+<p><strong>None of our applications require registration or a user account.</strong> We do not ask for your name, email address or phone number, and there is no sign-in or identification system of any kind.</p>
+
+<h3>3.1 Advertising data <span class="no">(all applications)</span></h3>
+<p>We serve ads through <strong>Google AdMob</strong> so that the applications can be offered free of charge. For this purpose Google may process:</p>
+<ul>
+  <li>The <strong>Android Advertising ID</strong>, which you can reset or delete at any time.</li>
+  <li>Technical device information: model, operating system version, language and country.</li>
+  <li>IP address and the approximate location derived from it (city or region level, never precise).</li>
+  <li>Ad interactions: impressions and clicks.</li>
+</ul>
+<p><strong>Legal basis:</strong> your <em>consent</em> (Art. 6(1)(a) GDPR) for personalised advertising. If you do not grant it, or withdraw it, we continue to serve <em>non-personalised</em> ads, processed on the basis of our <em>legitimate interest</em> (Art. 6(1)(f) GDPR) in financially sustaining free applications.</p>
+
+<h3>3.2 Usage analytics, crashes and performance <span class="no">(all applications)</span></h3>
+<p>We use <strong>Firebase Analytics</strong>, <strong>Firebase Crashlytics</strong> and <strong>Firebase Performance Monitoring</strong> to understand how the apps are used, detect failures and improve performance. The data processed is aggregated and pseudonymised:</p>
+<ul>
+  <li>A randomly generated installation identifier, not linked to your identity.</li>
+  <li>Usage events: screens visited, sessions, duration.</li>
+  <li>Device model, OS version, app version, country and language.</li>
+  <li>Crash reports: the incident log, device state at that moment and the stack trace.</li>
+</ul>
+<p><strong>Legal basis:</strong> <em>legitimate interest</em> (Art. 6(1)(f) GDPR) in ensuring the correct operation, stability and continuous improvement of the applications. You may object to this processing by contacting us.</p>
+
+<h3>3.3 Location <span class="no">(Parques ×6 and Refresca't only)</span></h3>
+<p>These applications may request access to your <strong>precise and approximate location</strong> for the sole purpose of calculating which parks or swimming pools are nearest to you and at what distance.</p>
+<div class="card">
+  <p><strong>Your location never leaves your device.</strong> We do not store it on any server, we do not associate it with any identifier, and we do not share it with third parties.</p>
+</div>
+<p>The permission is <strong>entirely optional</strong>: it is requested at the moment you try to use a feature that needs it, and the applications remain fully functional if you deny it. You may revoke it at any time under <em>Settings → Apps → [application] → Permissions</em>.</p>
+<p><strong>Legal basis:</strong> your <em>consent</em> (Art. 6(1)(a) GDPR), given through the Android system permission dialog.</p>
+
+<h3>3.4 Notifications <span class="no">(Parques ×6, VisaTrip and Paellator only)</span></h3>
+<p>These applications may send you local notifications with content of interest (for example, the "park of the day"). They are generated entirely on your device and do not involve sending any personal data to our servers.</p>
+<p><strong>Legal basis:</strong> your <em>consent</em>, given through the Android permission dialog. You can disable them at any time in your system settings.</p>
+
+<h3>3.5 Application content</h3>
+<p>Content (park entries, recipes, visa information, etc.) is served from <strong>Google Cloud Firestore</strong>. These are <strong>read-only</strong> operations: the app downloads content but does not send any personal data of yours to the database.</p>
+<p>Applications that display maps use the <strong>Google Maps SDK</strong>, subject to Google's terms and privacy policy.</p>
+
+<h3>3.6 Other permissions</h3>
+<ul>
+  <li><strong>Internet and network state access</strong> (all): required to download content and ads.</li>
+  <li><strong>Vibration</strong> (Paellator): haptic feedback for the cooking timer. No personal data involved.</li>
+  <li><strong>Storage write</strong> (VisaTrip, older Android versions only): allows saving documents generated by the application itself on your device. The file is never uploaded to any server.</li>
+</ul>
+
+<h2 id="en-4">4. Advertising and consent</h2>
+<p>If you are located in the <strong>European Economic Area, the United Kingdom or Switzerland</strong>, the first time you open one of our applications you will see a consent message managed through Google's <strong>User Messaging Platform (UMP)</strong>, a certified platform within IAB Europe's <em>Transparency &amp; Consent Framework</em> (TCF).</p>
+<p>In that message you can:</p>
+<ul>
+  <li><strong>Consent</strong> to the processing of your data for personalised advertising.</li>
+  <li><strong>Manage options</strong> and choose in detail which purposes and which vendors you authorise, or reject them.</li>
+</ul>
+<h3>How to withdraw or change your consent</h3>
+<p>You can change your choice at any time from <strong>the application's own settings</strong>, under the ad privacy option. In addition, regardless of your choice, you can limit interest-based advertising from your device:</p>
+<ul>
+  <li><em>Android Settings → Privacy → Ads</em>, where you can <strong>reset or delete your advertising ID</strong>.</li>
+  <li>Review and adjust your settings at <a href="https://adssettings.google.com" target="_blank" rel="noopener">adssettings.google.com</a>.</li>
+</ul>
+<p>Withdrawing consent does not affect the lawfulness of processing carried out beforehand, and does not prevent you from continuing to use the application normally.</p>
+
+<h2 id="en-5">5. Providers and recipients</h2>
+<p>We do not sell, rent or trade your data. The only third parties involved are technology providers acting as processors or joint controllers:</p>
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Provider</th><th>Service</th><th>Information</th></tr></thead>
+  <tbody>
+    <tr><td>Google Ireland Ltd. / Google LLC</td><td>AdMob (advertising)</td><td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy policy</a> · <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">Data usage</a></td></tr>
+    <tr><td>Google Ireland Ltd. / Google LLC</td><td>Firebase (analytics, crashes, performance, database)</td><td><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Privacy in Firebase</a></td></tr>
+    <tr><td>Google Ireland Ltd. / Google LLC</td><td>Google Maps</td><td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy policy</a></td></tr>
+    <tr><td>Google Ireland Ltd. / Google LLC</td><td>Google Play (distribution)</td><td><a href="https://play.google.com/about/play-terms/" target="_blank" rel="noopener">Google Play Terms</a></td></tr>
+  </tbody>
+</table>
+</div>
+<p>The complete, up-to-date list of TCF advertising vendors that may take part in the auction is available inside the consent message itself, under "Manage options → Vendor list".</p>
+
+<h2 id="en-6">6. Data we do NOT collect</h2>
+<p>For the avoidance of doubt, our applications <strong>do not collect, store or transmit</strong>:</p>
+<ul>
+  <li>Name, surname or any directly identifying data.</li>
+  <li>Email address or phone number.</li>
+  <li>Passwords or credentials (there is no registration or sign-in).</li>
+  <li>Contacts, messages, calls or calendar.</li>
+  <li>Photographs, camera, microphone or personal files.</li>
+  <li>Payment or financial data (there are no in-app purchases).</li>
+  <li>Special category data (health, political opinions, religion, sexual orientation, biometrics).</li>
+  <li>Your precise location on any server of ours.</li>
+</ul>
+
+<h2 id="en-7">7. Retention periods</h2>
+<p>We do not maintain any database containing users' personal information. Data processed by Google services is retained in accordance with that provider's policies, indicatively:</p>
+<ul>
+  <li><strong>Crash reports (Crashlytics):</strong> approximately 90 days.</li>
+  <li><strong>Usage analytics:</strong> up to 14 months for event-level data, depending on the Firebase retention configuration.</li>
+  <li><strong>Advertising data:</strong> in accordance with Google AdMob's retention policies.</li>
+  <li><strong>Location:</strong> not retained; used in memory and discarded.</li>
+</ul>
+<p>These periods are defined by Google and may change; we recommend consulting their policies, linked in section 5.</p>
+
+<h2 id="en-8">8. International transfers</h2>
+<p>The providers listed above may process data on servers located outside the European Economic Area, primarily in the United States. Such transfers rely on the mechanisms set out in Chapter V of the GDPR, in particular the <strong>EU–US Data Privacy Framework</strong> and the <strong>Standard Contractual Clauses</strong> approved by the European Commission.</p>
+
+<h2 id="en-9">9. Your rights</h2>
+<p>As a data subject, the GDPR grants you the following rights:</p>
+<ul>
+  <li><strong>Access:</strong> to know what data about you is processed.</li>
+  <li><strong>Rectification:</strong> to correct inaccurate data.</li>
+  <li><strong>Erasure:</strong> to request its deletion.</li>
+  <li><strong>Restriction:</strong> to restrict its processing.</li>
+  <li><strong>Objection:</strong> to object to processing based on legitimate interest.</li>
+  <li><strong>Portability:</strong> to receive your data in a structured format.</li>
+  <li><strong>Withdrawal of consent</strong> at any time, without retroactive effect.</li>
+</ul>
+<p>To exercise them, write to <a href="mailto:tacolyapps@gmail.com">tacolyapps@gmail.com</a> stating the application and the right you wish to exercise. We will respond within a maximum of <strong>one month</strong>.</p>
+<div class="card">
+  <p><strong>Important note.</strong> Since we do not collect identifying data and there are no user accounts, in most cases <strong>it will be materially impossible for us to link a specific data point to you</strong> (Art. 11 GDPR). To exercise rights over data processed by Google, you must contact that provider directly through the links in section 5.</p>
+</div>
+<p>If you believe the processing does not comply with applicable law, you may lodge a complaint with the <strong>Spanish Data Protection Agency</strong>: <a href="https://www.aepd.es" target="_blank" rel="noopener">www.aepd.es</a>.</p>
+
+<h2 id="en-10">10. Children</h2>
+<p>Our applications are <strong>not directed to children under 14</strong> and do not participate in Google Play's "Designed for Families" programme. We do not knowingly collect data from children of that age. If you become aware that a child has provided us with data, please contact us and we will delete it.</p>
+
+<h2 id="en-11">11. Security</h2>
+<p>All communications between the applications and the services they use take place over <strong>encrypted connections (HTTPS/TLS)</strong>. As we do not operate our own servers holding personal data, the exposure surface is limited to Google's infrastructure, which is subject to its own security measures.</p>
+
+<h2 id="en-12">12. Changes to this policy</h2>
+<p>We may update this policy to reflect changes in the applications or in applicable law. The date of the latest revision appears at the top of the document. Should there be substantial changes to the purposes of processing, we will inform you through the application itself or the consent message.</p>
+
+<h2 id="en-13">13. Contact</h2>
+<p>For any question regarding this policy or the processing of your data:</p>
+<ul>
+  <li><strong>Email:</strong> <a href="mailto:tacolyapps@gmail.com">tacolyapps@gmail.com</a></li>
+  <li><strong>Developer:</strong> Guillem Pejó (Tacoly)</li>
+</ul>
+
+</main>
+
+<footer>
+  <p id="foot-es">© 2026 Guillem Pejó · Tacoly — <a href="../">Volver al inicio</a></p>
+  <p id="foot-en" hidden>© 2026 Guillem Pejó · Tacoly — <a href="../">Back to home</a></p>
+</footer>
+
+</div>
+
+<script>
+function setLang(lang){
+  var other = lang === 'es' ? 'en' : 'es';
+  document.getElementById(lang).hidden = false;
+  document.getElementById(other).hidden = true;
+  document.getElementById('foot-' + lang).hidden = false;
+  document.getElementById('foot-' + other).hidden = true;
+  document.getElementById('btn-' + lang).setAttribute('aria-pressed', 'true');
+  document.getElementById('btn-' + other).setAttribute('aria-pressed', 'false');
+  document.documentElement.lang = lang;
+  try { localStorage.setItem('privacy-lang', lang); } catch (e) {}
+}
+(function(){
+  var saved = null;
+  try { saved = localStorage.getItem('privacy-lang'); } catch (e) {}
+  var hash = location.hash.replace('#', '');
+  if (hash.indexOf('en-') === 0) saved = 'en';
+  else if (hash.indexOf('es-') === 0) saved = 'es';
+  if (!saved) saved = (navigator.language || 'es').toLowerCase().indexOf('es') === 0 ? 'es' : 'en';
+  setLang(saved === 'en' ? 'en' : 'es');
+})();
+</script>
+
+</body>
+</html>
