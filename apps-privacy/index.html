@@ -294,16 +294,18 @@ footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; colo
 <p><strong>Precisiones sobre Ferrata.</strong> Ferrata guarda en tu dispositivo dos datos personales opcionales que introduces tú: un nombre visible (que se añade al mensaje de aviso que envías a tu contacto de emergencia) y el nombre y teléfono de ese contacto (ver 3.6). No se envían a nuestros servidores ni a terceros por parte de la aplicación. Tampoco pedimos tu nombre ni tu correo al enviar aportaciones (ver 3.5), aunque lo que escribas en un texto libre lo recibiremos tal cual. Los datos que Ferrata guarda en tu dispositivo (favoritos, ajustes, contacto de emergencia, etc.) pueden formar parte de las copias de seguridad del sistema operativo (Google o iCloud) si las tienes activadas; esas copias las gestionan Google y Apple, no nosotros.</p>
 
 <h2 id="es-7">7. Plazos de conservación</h2>
-<p>Salvo la base de datos de aportaciones de Ferrata (ver 3.5), no mantenemos bases de datos con información personal de usuarios. Los datos tratados por los servicios de terceros se conservan conforme a las políticas de cada proveedor, orientativamente:</p>
+<p>Salvo la base de datos de aportaciones y los registros del servidor de Ferrata (ver 3.5), no mantenemos bases de datos con información personal de usuarios. Los datos tratados por los servicios de terceros se conservan conforme a las políticas de cada proveedor, orientativamente:</p>
 <ul>
   <li><strong>Informes de fallos (Crashlytics):</strong> aproximadamente 90 días.</li>
   <li><strong>Analítica de uso:</strong> hasta 14 meses para datos a nivel de evento, según la configuración de retención de Firebase.</li>
   <li><strong>Datos publicitarios:</strong> según las políticas de conservación de Google AdMob.</li>
   <li><strong>Compras (RevenueCat, solo Ferrata):</strong> según las políticas de conservación de RevenueCat. El identificador anónimo se guarda en tu dispositivo hasta que desinstalas la aplicación.</li>
-  <li><strong>Aportaciones (solo Ferrata):</strong> se conservan en nuestro servidor mientras sean necesarias para revisarlas y, si se aprueban, para mantenerlas publicadas. La aplicación no envía tu identidad con ellas; si quieres que retiremos una, escríbenos (ver sección 9).</li>
+  <li><strong>Aportaciones (solo Ferrata):</strong> se conservan en nuestro servidor de forma indefinida mientras la aplicación exista: las aprobadas forman parte del catálogo publicado y ninguna lleva tu identidad asociada. Si quieres que retiremos una, escríbenos indicando su contenido y su fecha (ver sección 9).</li>
+  <li><strong>Registros del servidor (solo Ferrata):</strong> nuestro servidor guarda la dirección IP y la fecha de cada petición durante 14 días; después se eliminan automáticamente.</li>
+  <li><strong>Copias de seguridad (solo Ferrata):</strong> se hacen a diario y se conservan las 14 últimas; contienen, entre otros datos, las aportaciones.</li>
   <li><strong>Ubicación:</strong> no se conserva; se usa en memoria y se descarta (salvo las coordenadas de una vía que propongas en Ferrata, ver 3.5).</li>
 </ul>
-<p>Estos plazos los definen Google y RevenueCat y pueden variar; te recomendamos consultar sus políticas, enlazadas en la sección 5.</p>
+<p>Los plazos de los servicios de terceros los definen Google y RevenueCat y pueden variar; te recomendamos consultar sus políticas, enlazadas en la sección 5.</p>
 
 <h2 id="es-8">8. Transferencias internacionales</h2>
 <p>Los proveedores mencionados pueden tratar datos en servidores situados fuera del Espacio Económico Europeo, principalmente en Estados Unidos. Dichas transferencias se amparan en los mecanismos previstos en el capítulo V del RGPD: el <strong>Marco de Privacidad de Datos UE-EE. UU.</strong> para los proveedores adheridos a él y, en los demás casos, las <strong>Cláusulas Contractuales Tipo</strong> aprobadas por la Comisión Europea. En el caso de RevenueCat, Inc., la transferencia se ampara en las Cláusulas Contractuales Tipo incorporadas a su acuerdo de tratamiento de datos (DPA).</p>
@@ -540,16 +542,18 @@ footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; colo
 <p><strong>Notes on Ferrata.</strong> Ferrata stores two optional pieces of personal data on your device, both entered by you: a display name (added to the alert message you send to your emergency contact) and the name and phone number of that contact (see 3.6). The app does not send them to our servers or to third parties. Nor do we ask for your name or email when you send contributions (see 3.5), although anything you write in a free-text field we will receive as written. The data Ferrata stores on your device (favourites, settings, emergency contact, etc.) may be included in your operating system's backups (Google or iCloud) if you have them enabled; those backups are managed by Google and Apple, not by us.</p>
 
 <h2 id="en-7">7. Retention periods</h2>
-<p>Except for Ferrata's contributions database (see 3.5), we do not maintain any database containing users' personal information. Data processed by third-party services is retained in accordance with each provider's policies, indicatively:</p>
+<p>Except for Ferrata's contributions database and server logs (see 3.5), we do not maintain any database containing users' personal information. Data processed by third-party services is retained in accordance with each provider's policies, indicatively:</p>
 <ul>
   <li><strong>Crash reports (Crashlytics):</strong> approximately 90 days.</li>
   <li><strong>Usage analytics:</strong> up to 14 months for event-level data, depending on the Firebase retention configuration.</li>
   <li><strong>Advertising data:</strong> in accordance with Google AdMob's retention policies.</li>
   <li><strong>Purchases (RevenueCat, Ferrata only):</strong> in accordance with RevenueCat's retention policies. The anonymous identifier is kept on your device until you uninstall the app.</li>
-  <li><strong>Contributions (Ferrata only):</strong> kept on our server for as long as they are needed to review them and, if approved, to keep them published. The app does not send your identity with them; if you want us to remove one, write to us (see section 9).</li>
+  <li><strong>Contributions (Ferrata only):</strong> kept on our server indefinitely for as long as the app exists: approved ones are part of the published catalog and none carries your identity. If you want us to remove one, write to us stating its content and date (see section 9).</li>
+  <li><strong>Server logs (Ferrata only):</strong> our server keeps the IP address and date of each request for 14 days; they are then deleted automatically.</li>
+  <li><strong>Backups (Ferrata only):</strong> made daily, keeping the latest 14; they contain, among other data, the contributions.</li>
   <li><strong>Location:</strong> not retained; used in memory and discarded (except for the coordinates of a route you suggest in Ferrata, see 3.5).</li>
 </ul>
-<p>These periods are defined by Google and RevenueCat and may change; we recommend consulting their policies, linked in section 5.</p>
+<p>Third-party service periods are defined by Google and RevenueCat and may change; we recommend consulting their policies, linked in section 5.</p>
 
 <h2 id="en-8">8. International transfers</h2>
 <p>The providers listed above may process data on servers located outside the European Economic Area, primarily in the United States. Such transfers rely on the mechanisms set out in Chapter V of the GDPR: the <strong>EU–US Data Privacy Framework</strong> for providers that participate in it and, in all other cases, the <strong>Standard Contractual Clauses</strong> approved by the European Commission. In the case of RevenueCat, Inc., the transfer relies on the Standard Contractual Clauses incorporated into its data processing agreement (DPA).</p>
