@@ -102,7 +102,7 @@ footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; colo
 
 <h1>Política de Privacidad de las Aplicaciones</h1>
 <p class="lead">Aplicable a todas las aplicaciones móviles publicadas por Guillem Pejó (Tacoly): Android en Google Play e iOS en la App Store.</p>
-<p class="updated">Última actualización: 22 de septiembre de 2026 · Versión 1.3</p>
+<p class="updated">Última actualización: 23 de septiembre de 2026 · Versión 1.4</p>
 
 <div class="toc">
   <p>Contenido</p>
@@ -154,16 +154,18 @@ footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; colo
     <tr><td>Refresca't · Piscines BCN</td><td><code>com.tacoly.refrescat</code></td><td class="c yes">Sí</td><td class="c no">No</td><td class="c yes">Sí</td><td class="c yes">Sí</td></tr>
     <tr><td>VisaTrip: Visados y Pasaporte <span class="no">(Android e iOS)</span></td><td><code>com.tacoly.visatrip</code><br><code>com.tacoly.visatrip.ios</code></td><td class="c no">No</td><td class="c no">No</td><td class="c yes">Sí</td><td class="c yes">Sí</td></tr>
     <tr><td>Paellator: Paella Recipes <span class="no">(Android e iOS)</span></td><td><code>com.tacoly.paellator</code><br><code>com.tacoly.paellator.ios</code></td><td class="c no">No</td><td class="c yes">Sí</td><td class="c yes">Sí</td><td class="c yes">Sí</td></tr>
-    <tr><td>Ferrata</td><td><code>com.tacoly.ferrata</code></td><td class="c no">No</td><td class="c no">No</td><td class="c yes">Sí</td><td class="c yes">Sí</td></tr>
+    <tr><td>Ferrata <span class="no">(Android)</span></td><td><code>com.tacoly.ferrata</code></td><td class="c yes">Sí</td><td class="c yes">Sí</td><td class="c yes">Sí</td><td class="c yes">Sí</td></tr>
+    <tr><td>Ferrata <span class="no">(iOS)</span></td><td><code>com.tacoly.ferrata.ios</code></td><td class="c yes">Sí</td><td class="c yes">Sí</td><td class="c no">No</td><td class="c no">No</td></tr>
     <tr><td>Decamping</td><td><code>com.tacoly.decamping</code></td><td class="c yes">Sí</td><td class="c yes">Sí</td><td class="c yes">Sí</td><td class="c yes">Sí</td></tr>
   </tbody>
 </table>
 </div>
+<p><strong>Ferrata</strong> se describe aquí en su versión 2.0 y posteriores, y sus datos dependen de la plataforma: la versión de <strong>iOS no incluye publicidad ni analítica</strong>. Ferrata es además la única aplicación de la tabla que ofrece <strong>compras dentro de la aplicación</strong> (Ferrata Pro, ver 3.7) y la única que utiliza un <strong>servidor propio</strong> (ver 3.5).</p>
 
 <h2 id="es-3">3. Datos que tratamos</h2>
-<p><strong>Ninguna de nuestras aplicaciones requiere registro ni cuenta de usuario.</strong> No te pedimos nombre, dirección de correo electrónico ni número de teléfono, y no disponemos de ningún sistema de acceso o identificación.</p>
+<p><strong>Ninguna de nuestras aplicaciones requiere registro ni cuenta de usuario.</strong> No te pedimos nombre, dirección de correo electrónico ni número de teléfono, y no disponemos de ningún sistema de acceso o identificación. Algunas funciones opcionales de Ferrata te permiten guardar en tu dispositivo un nombre visible o un contacto de emergencia; esos datos no se envían a nuestros servidores (ver 3.6 y sección 6).</p>
 
-<h3>3.1 Datos de publicidad <span class="no">(todas las aplicaciones)</span></h3>
+<h3>3.1 Datos de publicidad <span class="no">(todas las aplicaciones salvo Ferrata en iOS)</span></h3>
 <p>Mostramos anuncios a través de <strong>Google AdMob</strong> para poder ofrecer las aplicaciones de forma gratuita. Para ello, Google puede tratar:</p>
 <ul>
   <li>El <strong>identificador de publicidad de Android</strong> (Advertising ID), que puedes restablecer o eliminar en cualquier momento.</li>
@@ -173,7 +175,7 @@ footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; colo
 </ul>
 <p><strong>Base jurídica:</strong> tu <em>consentimiento</em> (art. 6.1.a RGPD) para la publicidad personalizada. Si no lo otorgas, o lo retiras, seguimos mostrando anuncios <em>no personalizados</em>, cuyo tratamiento se ampara en nuestro <em>interés legítimo</em> (art. 6.1.f RGPD) en sostener económicamente unas aplicaciones gratuitas.</p>
 
-<h3>3.2 Analítica de uso y errores <span class="no">(todas las aplicaciones)</span></h3>
+<h3>3.2 Analítica de uso y errores <span class="no">(todas las aplicaciones salvo Ferrata en iOS)</span></h3>
 <p>Utilizamos <strong>Firebase Analytics</strong> y <strong>Firebase Crashlytics</strong> para entender cómo se usan las aplicaciones y detectar fallos. Se tratan datos agregados y seudonimizados:</p>
 <ul>
   <li>Identificador de instalación generado aleatoriamente, no vinculado a tu identidad.</li>
@@ -183,17 +185,24 @@ footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; colo
 </ul>
 <p><strong>Base jurídica:</strong> <em>interés legítimo</em> (art. 6.1.f RGPD) en garantizar el correcto funcionamiento y la estabilidad de las aplicaciones. Puedes oponerte a este tratamiento escribiéndonos.</p>
 
-<h3>3.3 Ubicación <span class="no">(solo Parques ×6, Refresca't y Decamping)</span></h3>
-<p>Estas aplicaciones pueden solicitar acceso a tu <strong>ubicación aproximada y, en algunas, precisa</strong> con la única finalidad de calcular qué parques, piscinas o campings tienes más cerca y a qué distancia. En Decamping el acceso es únicamente a la <strong>ubicación aproximada</strong>.</p>
+<h3>3.3 Ubicación <span class="no">(solo Parques ×6, Refresca't, Decamping y Ferrata)</span></h3>
+<p>Parques ×6, Refresca't y Decamping pueden solicitar acceso a tu <strong>ubicación aproximada y, en algunas, precisa</strong> con la única finalidad de calcular qué parques, piscinas o campings tienes más cerca y a qué distancia. En Decamping el acceso es únicamente a la <strong>ubicación aproximada</strong>.</p>
+<p><strong>Ferrata</strong> puede solicitar tu ubicación (en Android, aproximada o precisa; en iOS, solo <strong>mientras la aplicación está en uso</strong>) para mostrarte las vías más cercanas y su distancia, centrar el mapa en tu posición y mostrarla en el mapa de cada vía. En el <em>modo Seguridad</em> también la muestra en pantalla para que puedas comunicarla a los servicios de emergencia. Ferrata no accede a tu ubicación en segundo plano.</p>
 <div class="card">
-  <p><strong>Tu ubicación no sale de tu dispositivo.</strong> No la almacenamos en ningún servidor, no la asociamos a ningún identificador y no la compartimos con terceros.</p>
+  <p><strong>Tu ubicación no sale de tu dispositivo.</strong> No la almacenamos en ningún servidor, no la asociamos a ningún identificador y no la compartimos con terceros. La única excepción son los dos casos de Ferrata descritos a continuación, que inicias tú.</p>
 </div>
-<p>El permiso es <strong>totalmente opcional</strong>: se solicita en el momento en que intentas usar una función que lo necesita, y las aplicaciones son plenamente funcionales si lo deniegas. Puedes revocarlo cuando quieras en <em>Ajustes → Aplicaciones → [aplicación] → Permisos</em>.</p>
-<p><strong>Base jurídica:</strong> tu <em>consentimiento</em> (art. 6.1.a RGPD), otorgado mediante el diálogo de permisos del sistema Android.</p>
+<p>En <strong>Ferrata</strong>, una ubicación solo puede salir de tu dispositivo en estos dos casos, y siempre mediante un gesto expreso tuyo:</p>
+<ul>
+  <li><strong>Modo Seguridad:</strong> si eliges enviar tu posición a tu contacto de emergencia o compartirla, la aplicación abre tu aplicación de SMS o la hoja de compartir del sistema con un mensaje que incluye un enlace a tu posición (y tu nombre visible, si lo has guardado). El mensaje lo envías tú, a quien elijas y por el medio que elijas; no pasa por nuestros servidores.</li>
+  <li><strong>Proponer una vía nueva:</strong> el formulario permite situar la vía en el mapa, con una opción para usar tu ubicación actual. Las coordenadas que queden en el formulario se envían con la propuesta cuando la envías (ver 3.5).</li>
+</ul>
+<p>El permiso es <strong>totalmente opcional</strong>: se solicita en el momento en que intentas usar una función que lo necesita (en Ferrata, también puede solicitarse al final de la presentación inicial, con una explicación previa), y las aplicaciones son plenamente funcionales si lo deniegas. Puedes revocarlo cuando quieras en <em>Ajustes → Aplicaciones → [aplicación] → Permisos</em> (Android) o en <em>Ajustes → [aplicación] → Ubicación</em> (iOS).</p>
+<p><strong>Base jurídica:</strong> tu <em>consentimiento</em> (art. 6.1.a RGPD), otorgado mediante el diálogo de permisos del sistema (Android o iOS).</p>
 
-<h3>3.4 Notificaciones <span class="no">(solo Parques ×6, Paellator y Decamping)</span></h3>
-<p>Estas aplicaciones pueden enviarte notificaciones locales con contenido de interés (por ejemplo, el «parque del día», o un recordatorio para volver a planificar tu escapada). Se generan íntegramente en tu dispositivo y no implican el envío de datos personales a nuestros servidores.</p>
-<p><strong>Base jurídica:</strong> tu <em>consentimiento</em>, otorgado mediante el diálogo de permisos de Android. Puedes desactivarlas en cualquier momento desde los ajustes del sistema.</p>
+<h3>3.4 Notificaciones <span class="no">(solo Parques ×6, Paellator, Decamping y Ferrata)</span></h3>
+<p>Parques ×6, Paellator y Decamping pueden enviarte notificaciones locales con contenido de interés (por ejemplo, el «parque del día», o un recordatorio para volver a planificar tu escapada). Se generan íntegramente en tu dispositivo y no implican el envío de datos personales a nuestros servidores.</p>
+<p>En <strong>Ferrata</strong>, las notificaciones son <strong>alertas de tormenta</strong> para las vías que has guardado en favoritos, una función de <strong>Ferrata Pro</strong>. Para generarlas, la aplicación consulta a Open-Meteo la previsión de esas vías (hasta 10), enviándole las coordenadas de las vías y no las tuyas (ver 3.5). Lo hace al abrir la aplicación y, cuando el sistema lo permite, en segundo plano hasta cada 6 horas. Si hay tormenta prevista, el aviso se muestra en tu dispositivo. Son notificaciones locales: Ferrata no utiliza notificaciones push.</p>
+<p><strong>Base jurídica:</strong> tu <em>consentimiento</em>, otorgado mediante el diálogo de permisos del sistema (Android o iOS). Puedes desactivarlas en cualquier momento desde los ajustes del sistema.</p>
 
 <h3>3.5 Contenido de las aplicaciones</h3>
 <p>En <strong>Refresca’t</strong>, la información de las piscinas y el envío de sugerencias usan <strong>Google Cloud Firestore</strong>. La descarga de contenido es de <strong>solo lectura</strong>; lo único que se escribe es el texto que tú envías voluntariamente como sugerencia.</p>
@@ -205,7 +214,14 @@ footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; colo
   <li><strong>Nager.Date</strong> — días festivos del país.</li>
   <li><strong>Servicio de iconos de Google</strong> — logotipos de operadores de telefonía y aplicaciones de transporte.</li>
 </ul>
-<p>Las aplicaciones que muestran mapas utilizan <strong>Google Maps SDK</strong>, sujeto a las condiciones y a la política de privacidad de Google.</p>
+<p><strong>Ferrata</strong> descarga su catálogo de vías de <strong>un servidor propio</strong> —alojado en IONOS, en Alemania— y lo guarda en tu dispositivo para poder consultarlo sin conexión. La aplicación no envía a ese servidor ningún identificador tuyo, pero, como cualquier servidor de Internet, recibe tu <strong>dirección IP</strong> al atender tus peticiones. Además:</p>
+<ul>
+  <li><strong>Aportaciones (opcionales).</strong> Puedes enviar reseñas (valoración y texto), reportes del estado de una vía, sugerencias de cambios y propuestas de vías nuevas (con sus coordenadas y los demás datos que rellenes). No hay cuenta y la aplicación no envía tu nombre ni tu correo: cada aportación viaja con el idioma de la aplicación, la fecha y una referencia aleatoria distinta para cada una, que solo sirve para que tu aplicación reconozca después que es tuya y te muestre su estado. Se revisan antes de publicarse, y las que se aprueban pasan a ser visibles para todos los usuarios. Te pedimos que no escribas datos personales en los textos, porque los recibiremos tal cual. Si no hay cobertura, la aportación queda guardada en tu dispositivo y se envía sola cuando vuelve la conexión.</li>
+  <li><strong>Previsión meteorológica.</strong> Para mostrar el tiempo de una vía (y para las alertas de tormenta, ver 3.4), la aplicación consulta a <strong>Open-Meteo</strong> las coordenadas <em>de la vía</em>, no las tuyas. Como en cualquier petición a Internet, Open-Meteo recibe tu dirección IP.</li>
+  <li><strong>Fotos.</strong> Las fotos de las vías se cargan directamente desde los servidores de <strong>deandar.com</strong> y, de forma puntual, de <strong>Wikimedia Commons</strong>, que reciben tu dirección IP. Las fotos que descargas para verlas sin conexión se guardan en tu dispositivo.</li>
+  <li><strong>Enlaces externos.</strong> Los topos en PDF, las rutas de Wikiloc y los enlaces a Google Maps se abren fuera de la aplicación, en tu navegador o en la aplicación correspondiente, y se rigen por las políticas de esos sitios.</li>
+</ul>
+<p>Las aplicaciones que muestran mapas utilizan <strong>Google Maps SDK</strong>, sujeto a las condiciones y a la política de privacidad de Google. Ferrata en iOS utiliza en su lugar el mapa de Apple (MapKit), sujeto a la política de privacidad de Apple.</p>
 
 <h3>3.6 Otros permisos</h3>
 <ul>
@@ -213,11 +229,18 @@ footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; colo
   <li><strong>Vibración</strong> (Paellator): retorno háptico del temporizador de cocina. No trata datos personales.</li>
   <li><strong>Escritura en almacenamiento</strong> (VisaTrip, solo en versiones antiguas de Android): permite guardar documentos generados por la propia aplicación en tu dispositivo. El archivo no se envía a ningún servidor.</li>
   <li><strong>Añadir a Fotos</strong> (VisaTrip en iOS): permite guardar en tu carrete la imagen de tu mapa de viajes cuando pulsas «Guardar». Es un permiso de <em>solo escritura</em>: la aplicación no puede ver tus fotos.</li>
-  <li><strong>Seguimiento (ATT)</strong> (iOS): Apple exige pedirte permiso antes de usar el identificador de publicidad del dispositivo (IDFA). Si lo rechazas, la aplicación sigue funcionando igual y los anuncios pasan a ser no personalizados.</li>
+  <li><strong>Contactos</strong> (Ferrata): sirve para elegir tu contacto de emergencia en el modo Seguridad. La aplicación <strong>no lee tu agenda</strong>: abre el selector de contactos del propio sistema y solo recibe el nombre y el teléfono del contacto que tú elijas (también puedes teclearlos a mano), por lo que no hace falta conceder ningún permiso de acceso a la agenda. Ese contacto se guarda en tu dispositivo, no se envía a nuestros servidores y solo se usa para preparar el SMS de aviso que envías tú; al SMS va únicamente el teléfono, como destinatario.</li>
+  <li><strong>Actualización en segundo plano</strong> (Ferrata): permite comprobar la previsión de tormenta de tus vías guardadas cuando la aplicación no está abierta (ver 3.4). No utiliza tu ubicación.</li>
+  <li><strong>Seguimiento (ATT)</strong> (VisaTrip y Paellator en iOS): Apple exige pedirte permiso antes de usar el identificador de publicidad del dispositivo (IDFA). Si lo rechazas, la aplicación sigue funcionando igual y los anuncios pasan a ser no personalizados. Ferrata en iOS no muestra anuncios y no solicita este permiso.</li>
 </ul>
 
+<h3>3.7 Compras dentro de la aplicación <span class="no">(solo Ferrata)</span></h3>
+<p>Ferrata ofrece <strong>Ferrata Pro</strong>, una suscripción de pago (mensual o anual) que desbloquea funciones adicionales, como las alertas de tormenta y, en Android, la ausencia de anuncios. La compra se realiza a través de <strong>Google Play</strong> (Android) o de la <strong>App Store</strong> (iOS). <strong>Nosotros nunca recibimos ni almacenamos los datos de tu tarjeta ni de tu método de pago</strong>: los gestiona la tienda.</p>
+<p>Para saber si tienes Ferrata Pro activo, y para restaurar tus compras, usamos <strong>RevenueCat</strong> (RevenueCat, Inc.), un servicio de terceros que actúa como encargado del tratamiento. La aplicación se conecta con RevenueCat al abrirse, también si nunca compras nada. Ferrata no crea cuentas: RevenueCat genera un <strong>identificador anónimo y aleatorio</strong> que se guarda en tu dispositivo (si desinstalas la aplicación, se genera uno nuevo). La aplicación no le envía tu nombre, tu correo ni ningún otro atributo tuyo, ni activa la recogida de identificadores de publicidad. RevenueCat recibe ese identificador anónimo, el justificante de compra que emite la tienda (recibo de Apple o token de compra de Google), datos técnicos (tipo de dispositivo y sistema operativo, idioma y moneda), la fecha de la última vez que usaste la aplicación y, como cualquier servicio de Internet, tu <strong>dirección IP</strong>. Según su política, RevenueCat almacena estos datos en servidores situados en Estados Unidos.</p>
+<p><strong>Base jurídica:</strong> la ejecución del servicio que solicitas al comprar (art. 6.1.b RGPD): sin comprobar tu compra no podríamos activar las funciones Pro.</p>
+
 <h2 id="es-4">4. Publicidad y consentimiento</h2>
-<p>Si te encuentras en el <strong>Espacio Económico Europeo, Reino Unido o Suiza</strong>, la primera vez que abras una de nuestras aplicaciones verás un mensaje de consentimiento gestionado mediante la <strong>User Messaging Platform (UMP)</strong> de Google, una plataforma certificada dentro del <em>Transparency &amp; Consent Framework</em> (TCF) de IAB Europe.</p>
+<p>Si te encuentras en el <strong>Espacio Económico Europeo, Reino Unido o Suiza</strong>, la primera vez que abras una de nuestras aplicaciones con publicidad verás un mensaje de consentimiento gestionado mediante la <strong>User Messaging Platform (UMP)</strong> de Google, una plataforma certificada dentro del <em>Transparency &amp; Consent Framework</em> (TCF) de IAB Europe.</p>
 <p>En ese mensaje puedes:</p>
 <ul>
   <li><strong>Aceptar</strong> el tratamiento de tus datos para publicidad personalizada.</li>
@@ -232,7 +255,7 @@ footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; colo
 <p>Retirar el consentimiento no afecta a la licitud del tratamiento realizado con anterioridad, y no impide seguir usando la aplicación con normalidad.</p>
 
 <h2 id="es-5">5. Proveedores y destinatarios</h2>
-<p>No vendemos, alquilamos ni cedemos tus datos. Los únicos terceros que intervienen son proveedores tecnológicos que actúan como encargados o corresponsables del tratamiento:</p>
+<p>No vendemos, alquilamos ni cedemos tus datos. Los únicos terceros que intervienen son proveedores tecnológicos que actúan como encargados o corresponsables del tratamiento y, en algunos casos, sitios que alojan contenido que la aplicación descarga directamente:</p>
 <div class="tablewrap">
 <table>
   <thead><tr><th>Proveedor</th><th>Servicio</th><th>Información</th></tr></thead>
@@ -240,11 +263,15 @@ footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; colo
     <tr><td>Google Ireland Ltd. / Google LLC</td><td>AdMob (publicidad)</td><td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Política de privacidad</a> · <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">Uso de datos</a></td></tr>
     <tr><td>Google Ireland Ltd. / Google LLC</td><td>Firebase (analítica, errores y, solo en Refresca’t, base de datos)</td><td><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Privacidad en Firebase</a></td></tr>
     <tr><td>Google Ireland Ltd. / Google LLC</td><td>Google Maps</td><td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Política de privacidad</a></td></tr>
-    <tr><td>Google Ireland Ltd. / Google LLC</td><td>Google Play (distribución)</td><td><a href="https://play.google.com/about/play-terms/" target="_blank" rel="noopener">Condiciones de Google Play</a></td></tr>
-    <tr><td>Apple Inc.</td><td>App Store (distribución de las aplicaciones iOS)</td><td><a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Política de privacidad</a></td></tr>
-    <tr><td>Open-Meteo</td><td>Previsión meteorológica <span class="no">(VisaTrip)</span></td><td><a href="https://open-meteo.com/en/terms" target="_blank" rel="noopener">Condiciones</a></td></tr>
+    <tr><td>Google Ireland Ltd. / Google LLC</td><td>Google Play (distribución y, en Ferrata, cobro de las compras)</td><td><a href="https://play.google.com/about/play-terms/" target="_blank" rel="noopener">Condiciones de Google Play</a></td></tr>
+    <tr><td>Apple Inc.</td><td>App Store (distribución de las aplicaciones iOS y, en Ferrata, cobro de las compras) y mapas de Apple <span class="no">(Ferrata en iOS)</span></td><td><a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Política de privacidad</a></td></tr>
+    <tr><td>Open-Meteo</td><td>Previsión meteorológica <span class="no">(VisaTrip y Ferrata)</span></td><td><a href="https://open-meteo.com/en/terms" target="_blank" rel="noopener">Condiciones</a></td></tr>
     <tr><td>jsDelivr</td><td>Tipos de cambio <span class="no">(VisaTrip)</span></td><td><a href="https://www.jsdelivr.com/terms/privacy-policy-jsdelivr-net" target="_blank" rel="noopener">Política de privacidad</a></td></tr>
     <tr><td>Nager.Date</td><td>Días festivos <span class="no">(VisaTrip)</span></td><td><a href="https://date.nager.at/" target="_blank" rel="noopener">Sitio web</a></td></tr>
+    <tr><td>RevenueCat, Inc.</td><td>Gestión de suscripciones y compras <span class="no">(Ferrata)</span></td><td><a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">Política de privacidad</a></td></tr>
+    <tr><td>IONOS SE</td><td>Alojamiento del servidor propio <span class="no">(Ferrata)</span></td><td><a href="https://www.ionos.com/terms-gtc/privacy-policy/" target="_blank" rel="noopener">Política de privacidad</a></td></tr>
+    <tr><td>deandar.com</td><td>Alojamiento de las fotos de las vías <span class="no">(Ferrata)</span></td><td>—</td></tr>
+    <tr><td>Wikimedia Foundation</td><td>Alojamiento de fotos puntuales de las vías <span class="no">(Ferrata)</span></td><td><a href="https://foundation.wikimedia.org/wiki/Policy:Privacy_policy" target="_blank" rel="noopener">Política de privacidad</a></td></tr>
   </tbody>
 </table>
 </div>
@@ -258,20 +285,23 @@ footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; colo
   <li>Contraseñas o credenciales (no existe registro ni inicio de sesión).</li>
   <li>Agenda de contactos, mensajes, llamadas o calendario.</li>
   <li>Fotografías, cámara, micrófono ni archivos personales.</li>
-  <li>Datos de pago o financieros (no hay compras dentro de la aplicación).</li>
+  <li>Datos de pago o financieros: nunca recibimos ni almacenamos los datos de tu tarjeta o de tu método de pago. Ninguna aplicación ofrece compras dentro de la aplicación salvo Ferrata, cuyas compras cobran Google Play y la App Store (ver 3.7).</li>
   <li>Datos de categorías especiales (salud, ideología, religión, orientación sexual, biometría).</li>
-  <li>Tu ubicación precisa en ningún servidor nuestro.</li>
+  <li>Tu ubicación precisa en ningún servidor nuestro, salvo las coordenadas que tú mismo dejes al proponer una vía nueva en Ferrata (ver 3.3 y 3.5).</li>
 </ul>
+<p><strong>Precisiones sobre Ferrata.</strong> Ferrata guarda en tu dispositivo dos datos personales opcionales que introduces tú: un nombre visible (que se añade al mensaje de aviso que envías a tu contacto de emergencia) y el nombre y teléfono de ese contacto (ver 3.6). No se envían a nuestros servidores ni a terceros por parte de la aplicación. Tampoco pedimos tu nombre ni tu correo al enviar aportaciones (ver 3.5), aunque lo que escribas en un texto libre lo recibiremos tal cual. Los datos que Ferrata guarda en tu dispositivo (favoritos, ajustes, contacto de emergencia, etc.) pueden formar parte de las copias de seguridad del sistema operativo (Google o iCloud) si las tienes activadas; esas copias las gestionan Google y Apple, no nosotros.</p>
 
 <h2 id="es-7">7. Plazos de conservación</h2>
-<p>No mantenemos bases de datos con información personal de usuarios. Los datos tratados por los servicios de Google se conservan conforme a las políticas de dicho proveedor, orientativamente:</p>
+<p>Salvo la base de datos de aportaciones de Ferrata (ver 3.5), no mantenemos bases de datos con información personal de usuarios. Los datos tratados por los servicios de terceros se conservan conforme a las políticas de cada proveedor, orientativamente:</p>
 <ul>
   <li><strong>Informes de fallos (Crashlytics):</strong> aproximadamente 90 días.</li>
   <li><strong>Analítica de uso:</strong> hasta 14 meses para datos a nivel de evento, según la configuración de retención de Firebase.</li>
   <li><strong>Datos publicitarios:</strong> según las políticas de conservación de Google AdMob.</li>
-  <li><strong>Ubicación:</strong> no se conserva; se usa en memoria y se descarta.</li>
+  <li><strong>Compras (RevenueCat, solo Ferrata):</strong> según las políticas de conservación de RevenueCat. El identificador anónimo se guarda en tu dispositivo hasta que desinstalas la aplicación.</li>
+  <li><strong>Aportaciones (solo Ferrata):</strong> se conservan en nuestro servidor mientras sean necesarias para revisarlas y, si se aprueban, para mantenerlas publicadas. La aplicación no envía tu identidad con ellas; si quieres que retiremos una, escríbenos (ver sección 9).</li>
+  <li><strong>Ubicación:</strong> no se conserva; se usa en memoria y se descarta (salvo las coordenadas de una vía que propongas en Ferrata, ver 3.5).</li>
 </ul>
-<p>Estos plazos los define Google y pueden variar; te recomendamos consultar sus políticas, enlazadas en la sección 5.</p>
+<p>Estos plazos los definen Google y RevenueCat y pueden variar; te recomendamos consultar sus políticas, enlazadas en la sección 5.</p>
 
 <h2 id="es-8">8. Transferencias internacionales</h2>
 <p>Los proveedores mencionados pueden tratar datos en servidores situados fuera del Espacio Económico Europeo, principalmente en Estados Unidos. Dichas transferencias se amparan en los mecanismos previstos en el capítulo V del RGPD, en particular el <strong>Marco de Privacidad de Datos UE-EE. UU.</strong> y las <strong>Cláusulas Contractuales Tipo</strong> aprobadas por la Comisión Europea.</p>
@@ -297,7 +327,7 @@ footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; colo
 <p>Nuestras aplicaciones <strong>no están dirigidas a menores de 14 años</strong> ni participan en el programa «Diseñado para familias» de Google Play. No recogemos conscientemente datos de menores de esa edad. Si tienes constancia de que un menor nos ha facilitado datos, escríbenos y procederemos a su eliminación.</p>
 
 <h2 id="es-11">11. Seguridad</h2>
-<p>Todas las comunicaciones entre las aplicaciones y los servicios que utilizan se realizan mediante <strong>conexiones cifradas (HTTPS/TLS)</strong>. Al no mantener servidores propios con datos personales, la superficie de exposición se reduce a la infraestructura de Google, sujeta a sus propias medidas de seguridad.</p>
+<p>Todas las comunicaciones entre las aplicaciones y los servicios que utilizan se realizan mediante <strong>conexiones cifradas (HTTPS/TLS)</strong>. Al no mantener servidores propios con datos personales de usuarios —salvo el servidor de Ferrata (ver 3.5), que solo almacena el catálogo y las aportaciones que decides enviar, sin cuentas—, la superficie de exposición se reduce a la infraestructura de los proveedores (principalmente Google), sujeta a sus propias medidas de seguridad.</p>
 
 <h2 id="es-12">12. Cambios en esta política</h2>
 <p>Podemos actualizar esta política para reflejar cambios en las aplicaciones o en la normativa aplicable. La fecha de la última revisión figura al inicio del documento. Si se produjeran cambios sustanciales en las finalidades del tratamiento, te lo comunicaremos a través de la propia aplicación o del mensaje de consentimiento.</p>
@@ -316,7 +346,7 @@ footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; colo
 
 <h1>Apps Privacy Policy</h1>
 <p class="lead">Applicable to all mobile applications published by Guillem Pejó (Tacoly): Android on Google Play and iOS on the App Store.</p>
-<p class="updated">Last updated: 22 September 2026 · Version 1.3</p>
+<p class="updated">Last updated: 23 September 2026 · Version 1.4</p>
 
 <div class="toc">
   <p>Contents</p>
@@ -368,16 +398,18 @@ footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; colo
     <tr><td>Refresca't · Piscines BCN</td><td><code>com.tacoly.refrescat</code></td><td class="c yes">Yes</td><td class="c no">No</td><td class="c yes">Yes</td><td class="c yes">Yes</td></tr>
     <tr><td>VisaTrip: Visa &amp; Passport <span class="no">(Android and iOS)</span></td><td><code>com.tacoly.visatrip</code><br><code>com.tacoly.visatrip.ios</code></td><td class="c no">No</td><td class="c no">No</td><td class="c yes">Yes</td><td class="c yes">Yes</td></tr>
     <tr><td>Paellator: Paella Recipes <span class="no">(Android and iOS)</span></td><td><code>com.tacoly.paellator</code><br><code>com.tacoly.paellator.ios</code></td><td class="c no">No</td><td class="c yes">Yes</td><td class="c yes">Yes</td><td class="c yes">Yes</td></tr>
-    <tr><td>Ferrata</td><td><code>com.tacoly.ferrata</code></td><td class="c no">No</td><td class="c no">No</td><td class="c yes">Yes</td><td class="c yes">Yes</td></tr>
+    <tr><td>Ferrata <span class="no">(Android)</span></td><td><code>com.tacoly.ferrata</code></td><td class="c yes">Yes</td><td class="c yes">Yes</td><td class="c yes">Yes</td><td class="c yes">Yes</td></tr>
+    <tr><td>Ferrata <span class="no">(iOS)</span></td><td><code>com.tacoly.ferrata.ios</code></td><td class="c yes">Yes</td><td class="c yes">Yes</td><td class="c no">No</td><td class="c no">No</td></tr>
     <tr><td>Decamping</td><td><code>com.tacoly.decamping</code></td><td class="c yes">Yes</td><td class="c yes">Yes</td><td class="c yes">Yes</td><td class="c yes">Yes</td></tr>
   </tbody>
 </table>
 </div>
+<p><strong>Ferrata</strong> is described here as of version 2.0 and later, and its data depends on the platform: the <strong>iOS version has no advertising and no analytics</strong>. Ferrata is also the only application in the table that offers <strong>in-app purchases</strong> (Ferrata Pro, see 3.7) and the only one that uses a <strong>server of its own</strong> (see 3.5).</p>
 
 <h2 id="en-3">3. Data we process</h2>
-<p><strong>None of our applications require registration or a user account.</strong> We do not ask for your name, email address or phone number, and there is no sign-in or identification system of any kind.</p>
+<p><strong>None of our applications require registration or a user account.</strong> We do not ask for your name, email address or phone number, and there is no sign-in or identification system of any kind. Some optional Ferrata features let you save a display name or an emergency contact on your device; that data is not sent to our servers (see 3.6 and section 6).</p>
 
-<h3>3.1 Advertising data <span class="no">(all applications)</span></h3>
+<h3>3.1 Advertising data <span class="no">(all applications except Ferrata on iOS)</span></h3>
 <p>We serve ads through <strong>Google AdMob</strong> so that the applications can be offered free of charge. For this purpose Google may process:</p>
 <ul>
   <li>The <strong>Android Advertising ID</strong>, which you can reset or delete at any time.</li>
@@ -387,7 +419,7 @@ footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; colo
 </ul>
 <p><strong>Legal basis:</strong> your <em>consent</em> (Art. 6(1)(a) GDPR) for personalised advertising. If you do not grant it, or withdraw it, we continue to serve <em>non-personalised</em> ads, processed on the basis of our <em>legitimate interest</em> (Art. 6(1)(f) GDPR) in financially sustaining free applications.</p>
 
-<h3>3.2 Usage analytics and crashes <span class="no">(all applications)</span></h3>
+<h3>3.2 Usage analytics and crashes <span class="no">(all applications except Ferrata on iOS)</span></h3>
 <p>We use <strong>Firebase Analytics</strong> and <strong>Firebase Crashlytics</strong> to understand how the apps are used and detect failures. The data processed is aggregated and pseudonymised:</p>
 <ul>
   <li>A randomly generated installation identifier, not linked to your identity.</li>
@@ -397,17 +429,24 @@ footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; colo
 </ul>
 <p><strong>Legal basis:</strong> <em>legitimate interest</em> (Art. 6(1)(f) GDPR) in ensuring the correct operation, stability and continuous improvement of the applications. You may object to this processing by contacting us.</p>
 
-<h3>3.3 Location <span class="no">(Parques ×6, Refresca't and Decamping only)</span></h3>
-<p>These applications may request access to your <strong>approximate and, in some, precise location</strong> for the sole purpose of calculating which parks, swimming pools or campsites are nearest to you and at what distance. In Decamping the access is to <strong>approximate location only</strong>.</p>
+<h3>3.3 Location <span class="no">(Parques ×6, Refresca't, Decamping and Ferrata only)</span></h3>
+<p>Parques ×6, Refresca't and Decamping may request access to your <strong>approximate and, in some, precise location</strong> for the sole purpose of calculating which parks, swimming pools or campsites are nearest to you and at what distance. In Decamping the access is to <strong>approximate location only</strong>.</p>
+<p><strong>Ferrata</strong> may request your location (on Android, approximate or precise; on iOS, only <strong>while the app is in use</strong>) to show you the nearest routes and their distance, to centre the map on your position and to show it on each route's map. In <em>Safety mode</em> it also displays your position on screen so that you can pass it on to the emergency services. Ferrata does not access your location in the background.</p>
 <div class="card">
-  <p><strong>Your location never leaves your device.</strong> We do not store it on any server, we do not associate it with any identifier, and we do not share it with third parties.</p>
+  <p><strong>Your location never leaves your device.</strong> We do not store it on any server, we do not associate it with any identifier, and we do not share it with third parties. The only exceptions are the two Ferrata cases described below, which you start yourself.</p>
 </div>
-<p>The permission is <strong>entirely optional</strong>: it is requested at the moment you try to use a feature that needs it, and the applications remain fully functional if you deny it. You may revoke it at any time under <em>Settings → Apps → [application] → Permissions</em>.</p>
-<p><strong>Legal basis:</strong> your <em>consent</em> (Art. 6(1)(a) GDPR), given through the Android system permission dialog.</p>
+<p>In <strong>Ferrata</strong>, a location can only leave your device in these two cases, and always through an express action of yours:</p>
+<ul>
+  <li><strong>Safety mode:</strong> if you choose to send your position to your emergency contact or to share it, the app opens your SMS app or the system share sheet with a message that includes a link to your position (and your display name, if you have saved one). You send the message yourself, to whoever you choose and by whatever means you choose; it does not pass through our servers.</li>
+  <li><strong>Suggesting a new route:</strong> the form lets you place the route on the map, with an option to use your current location. The coordinates left in the form are sent with the suggestion when you submit it (see 3.5).</li>
+</ul>
+<p>The permission is <strong>entirely optional</strong>: it is requested at the moment you try to use a feature that needs it (in Ferrata it may also be requested at the end of the initial walkthrough, with a prior explanation), and the applications remain fully functional if you deny it. You may revoke it at any time under <em>Settings → Apps → [application] → Permissions</em> (Android) or <em>Settings → [application] → Location</em> (iOS).</p>
+<p><strong>Legal basis:</strong> your <em>consent</em> (Art. 6(1)(a) GDPR), given through the system permission dialog (Android or iOS).</p>
 
-<h3>3.4 Notifications <span class="no">(Parques ×6, Paellator and Decamping only)</span></h3>
-<p>These applications may send you local notifications with content of interest (for example, the "park of the day", or a reminder to plan your next getaway). They are generated entirely on your device and do not involve sending any personal data to our servers.</p>
-<p><strong>Legal basis:</strong> your <em>consent</em>, given through the Android permission dialog. You can disable them at any time in your system settings.</p>
+<h3>3.4 Notifications <span class="no">(Parques ×6, Paellator, Decamping and Ferrata only)</span></h3>
+<p>Parques ×6, Paellator and Decamping may send you local notifications with content of interest (for example, the "park of the day", or a reminder to plan your next getaway). They are generated entirely on your device and do not involve sending any personal data to our servers.</p>
+<p>In <strong>Ferrata</strong>, notifications are <strong>storm alerts</strong> for the routes you have saved as favourites, a <strong>Ferrata Pro</strong> feature. To generate them, the app asks Open-Meteo for the forecast of those routes (up to 10), sending it the coordinates of the routes and not yours (see 3.5). It does so when you open the app and, when the system allows it, in the background up to every 6 hours. If a storm is forecast, the alert is shown on your device. They are local notifications: Ferrata does not use push notifications.</p>
+<p><strong>Legal basis:</strong> your <em>consent</em>, given through the system permission dialog (Android or iOS). You can disable them at any time in your system settings.</p>
 
 <h3>3.5 Application content</h3>
 <p>In <strong>Refresca’t</strong>, swimming-pool information and the suggestions you send use <strong>Google Cloud Firestore</strong>. Content downloads are <strong>read-only</strong>; the only thing written is the text you choose to send as a suggestion.</p>
@@ -419,7 +458,14 @@ footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; colo
   <li><strong>Nager.Date</strong> — public holidays for the country.</li>
   <li><strong>Google icon service</strong> — logos of mobile operators and ride-hailing apps.</li>
 </ul>
-<p>Applications that display maps use the <strong>Google Maps SDK</strong>, subject to Google's terms and privacy policy.</p>
+<p><strong>Ferrata</strong> downloads its catalogue of routes from <strong>a server of our own</strong> —hosted at IONOS, in Germany— and stores it on your device so it can be used offline. The app does not send that server any identifier of yours but, like any internet server, it receives your <strong>IP address</strong> when it answers your requests. In addition:</p>
+<ul>
+  <li><strong>Contributions (optional).</strong> You can send reviews (rating and text), reports on the condition of a route, suggested changes and suggestions for new routes (with their coordinates and the other details you fill in). There is no account and the app does not send your name or email: each contribution travels with the app's language, the date and a random reference, different for each one, whose only purpose is for your app to recognise later that it is yours and show you its status. They are reviewed before being published, and those that are approved become visible to all users. Please do not write personal data in the texts, as we will receive them as written. If there is no signal, the contribution is kept on your device and is sent automatically when the connection returns.</li>
+  <li><strong>Weather forecast.</strong> To show the weather for a route (and for storm alerts, see 3.4), the app asks <strong>Open-Meteo</strong> for the coordinates <em>of the route</em>, not yours. As with any internet request, Open-Meteo receives your IP address.</li>
+  <li><strong>Photos.</strong> Route photos are loaded directly from the servers of <strong>deandar.com</strong> and, occasionally, <strong>Wikimedia Commons</strong>, which receive your IP address. Photos you download to view offline are stored on your device.</li>
+  <li><strong>External links.</strong> Topo PDFs, Wikiloc routes and Google Maps links open outside the app, in your browser or in the corresponding app, and are governed by the policies of those sites.</li>
+</ul>
+<p>Applications that display maps use the <strong>Google Maps SDK</strong>, subject to Google's terms and privacy policy. Ferrata on iOS uses Apple's map (MapKit) instead, subject to Apple's privacy policy.</p>
 
 <h3>3.6 Other permissions</h3>
 <ul>
@@ -427,11 +473,18 @@ footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; colo
   <li><strong>Vibration</strong> (Paellator): haptic feedback for the cooking timer. No personal data involved.</li>
   <li><strong>Storage write</strong> (VisaTrip, older Android versions only): allows saving documents generated by the application itself on your device. The file is never uploaded to any server.</li>
   <li><strong>Add to Photos</strong> (VisaTrip on iOS): lets you save the image of your travel map to your camera roll when you tap Save. It is a <em>write-only</em> permission: the app cannot see your photos.</li>
-  <li><strong>Tracking (ATT)</strong> (iOS): Apple requires us to ask for your permission before using the device advertising identifier (IDFA). If you decline, the app works exactly the same and ads become non-personalised.</li>
+  <li><strong>Contacts</strong> (Ferrata): used to choose your emergency contact in Safety mode. The app <strong>does not read your address book</strong>: it opens the system's own contact picker and only receives the name and phone number of the contact you choose (you can also type them in by hand), so no address-book permission needs to be granted. That contact is stored on your device, is not sent to our servers and is only used to prepare the alert SMS that you send yourself; only the phone number goes into the SMS, as the recipient.</li>
+  <li><strong>Background refresh</strong> (Ferrata): lets the app check the storm forecast for your saved routes while the app is not open (see 3.4). It does not use your location.</li>
+  <li><strong>Tracking (ATT)</strong> (VisaTrip and Paellator on iOS): Apple requires us to ask for your permission before using the device advertising identifier (IDFA). If you decline, the app works exactly the same and ads become non-personalised. Ferrata on iOS shows no ads and does not request this permission.</li>
 </ul>
 
+<h3>3.7 In-app purchases <span class="no">(Ferrata only)</span></h3>
+<p>Ferrata offers <strong>Ferrata Pro</strong>, a paid subscription (monthly or annual) that unlocks additional features, such as storm alerts and, on Android, the removal of ads. The purchase is made through <strong>Google Play</strong> (Android) or the <strong>App Store</strong> (iOS). <strong>We never receive or store your card or payment method details</strong>: the store handles them.</p>
+<p>To find out whether you have Ferrata Pro active, and to restore your purchases, we use <strong>RevenueCat</strong> (RevenueCat, Inc.), a third-party service acting as a data processor. The app connects to RevenueCat when it opens, even if you never buy anything. Ferrata does not create accounts: RevenueCat generates a <strong>random anonymous identifier</strong> that is stored on your device (if you uninstall the app, a new one is generated). The app does not send it your name, your email or any other attribute of yours, and does not enable the collection of advertising identifiers. RevenueCat receives that anonymous identifier, the proof of purchase issued by the store (Apple receipt or Google purchase token), technical data (device type and operating system, language and currency), the date you last used the app and, like any internet service, your <strong>IP address</strong>. According to its policy, RevenueCat stores this data on servers located in the United States.</p>
+<p><strong>Legal basis:</strong> performance of the service you request when you buy (Art. 6(1)(b) GDPR): without checking your purchase we could not activate the Pro features.</p>
+
 <h2 id="en-4">4. Advertising and consent</h2>
-<p>If you are located in the <strong>European Economic Area, the United Kingdom or Switzerland</strong>, the first time you open one of our applications you will see a consent message managed through Google's <strong>User Messaging Platform (UMP)</strong>, a certified platform within IAB Europe's <em>Transparency &amp; Consent Framework</em> (TCF).</p>
+<p>If you are located in the <strong>European Economic Area, the United Kingdom or Switzerland</strong>, the first time you open one of our applications that show ads you will see a consent message managed through Google's <strong>User Messaging Platform (UMP)</strong>, a certified platform within IAB Europe's <em>Transparency &amp; Consent Framework</em> (TCF).</p>
 <p>In that message you can:</p>
 <ul>
   <li><strong>Consent</strong> to the processing of your data for personalised advertising.</li>
@@ -446,7 +499,7 @@ footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; colo
 <p>Withdrawing consent does not affect the lawfulness of processing carried out beforehand, and does not prevent you from continuing to use the application normally.</p>
 
 <h2 id="en-5">5. Providers and recipients</h2>
-<p>We do not sell, rent or trade your data. The only third parties involved are technology providers acting as processors or joint controllers:</p>
+<p>We do not sell, rent or trade your data. The only third parties involved are technology providers acting as processors or joint controllers and, in some cases, sites that host content the app downloads directly:</p>
 <div class="tablewrap">
 <table>
   <thead><tr><th>Provider</th><th>Service</th><th>Information</th></tr></thead>
@@ -454,11 +507,15 @@ footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; colo
     <tr><td>Google Ireland Ltd. / Google LLC</td><td>AdMob (advertising)</td><td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy policy</a> · <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">Data usage</a></td></tr>
     <tr><td>Google Ireland Ltd. / Google LLC</td><td>Firebase (analytics, crashes and, in Refresca’t only, database)</td><td><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Privacy in Firebase</a></td></tr>
     <tr><td>Google Ireland Ltd. / Google LLC</td><td>Google Maps</td><td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy policy</a></td></tr>
-    <tr><td>Google Ireland Ltd. / Google LLC</td><td>Google Play (distribution)</td><td><a href="https://play.google.com/about/play-terms/" target="_blank" rel="noopener">Google Play Terms</a></td></tr>
-    <tr><td>Apple Inc.</td><td>App Store (distribution of the iOS apps)</td><td><a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Privacy Policy</a></td></tr>
-    <tr><td>Open-Meteo</td><td>Weather forecast <span class="no">(VisaTrip)</span></td><td><a href="https://open-meteo.com/en/terms" target="_blank" rel="noopener">Terms</a></td></tr>
+    <tr><td>Google Ireland Ltd. / Google LLC</td><td>Google Play (distribution and, in Ferrata, payment for purchases)</td><td><a href="https://play.google.com/about/play-terms/" target="_blank" rel="noopener">Google Play Terms</a></td></tr>
+    <tr><td>Apple Inc.</td><td>App Store (distribution of the iOS apps and, in Ferrata, payment for purchases) and Apple Maps <span class="no">(Ferrata on iOS)</span></td><td><a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Privacy Policy</a></td></tr>
+    <tr><td>Open-Meteo</td><td>Weather forecast <span class="no">(VisaTrip and Ferrata)</span></td><td><a href="https://open-meteo.com/en/terms" target="_blank" rel="noopener">Terms</a></td></tr>
     <tr><td>jsDelivr</td><td>Exchange rates <span class="no">(VisaTrip)</span></td><td><a href="https://www.jsdelivr.com/terms/privacy-policy-jsdelivr-net" target="_blank" rel="noopener">Privacy policy</a></td></tr>
     <tr><td>Nager.Date</td><td>Public holidays <span class="no">(VisaTrip)</span></td><td><a href="https://date.nager.at/" target="_blank" rel="noopener">Website</a></td></tr>
+    <tr><td>RevenueCat, Inc.</td><td>Subscription and purchase management <span class="no">(Ferrata)</span></td><td><a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">Privacy policy</a></td></tr>
+    <tr><td>IONOS SE</td><td>Hosting of our own server <span class="no">(Ferrata)</span></td><td><a href="https://www.ionos.com/terms-gtc/privacy-policy/" target="_blank" rel="noopener">Privacy policy</a></td></tr>
+    <tr><td>deandar.com</td><td>Hosting of route photos <span class="no">(Ferrata)</span></td><td>—</td></tr>
+    <tr><td>Wikimedia Foundation</td><td>Hosting of occasional route photos <span class="no">(Ferrata)</span></td><td><a href="https://foundation.wikimedia.org/wiki/Policy:Privacy_policy" target="_blank" rel="noopener">Privacy policy</a></td></tr>
   </tbody>
 </table>
 </div>
@@ -472,20 +529,23 @@ footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; colo
   <li>Passwords or credentials (there is no registration or sign-in).</li>
   <li>Contacts, messages, calls or calendar.</li>
   <li>Photographs, camera, microphone or personal files.</li>
-  <li>Payment or financial data (there are no in-app purchases).</li>
+  <li>Payment or financial data: we never receive or store your card or payment method details. No application offers in-app purchases except Ferrata, whose purchases are charged by Google Play and the App Store (see 3.7).</li>
   <li>Special category data (health, political opinions, religion, sexual orientation, biometrics).</li>
-  <li>Your precise location on any server of ours.</li>
+  <li>Your precise location on any server of ours, except for the coordinates you yourself leave when suggesting a new route in Ferrata (see 3.3 and 3.5).</li>
 </ul>
+<p><strong>Notes on Ferrata.</strong> Ferrata stores two optional pieces of personal data on your device, both entered by you: a display name (added to the alert message you send to your emergency contact) and the name and phone number of that contact (see 3.6). The app does not send them to our servers or to third parties. Nor do we ask for your name or email when you send contributions (see 3.5), although anything you write in a free-text field we will receive as written. The data Ferrata stores on your device (favourites, settings, emergency contact, etc.) may be included in your operating system's backups (Google or iCloud) if you have them enabled; those backups are managed by Google and Apple, not by us.</p>
 
 <h2 id="en-7">7. Retention periods</h2>
-<p>We do not maintain any database containing users' personal information. Data processed by Google services is retained in accordance with that provider's policies, indicatively:</p>
+<p>Except for Ferrata's contributions database (see 3.5), we do not maintain any database containing users' personal information. Data processed by third-party services is retained in accordance with each provider's policies, indicatively:</p>
 <ul>
   <li><strong>Crash reports (Crashlytics):</strong> approximately 90 days.</li>
   <li><strong>Usage analytics:</strong> up to 14 months for event-level data, depending on the Firebase retention configuration.</li>
   <li><strong>Advertising data:</strong> in accordance with Google AdMob's retention policies.</li>
-  <li><strong>Location:</strong> not retained; used in memory and discarded.</li>
+  <li><strong>Purchases (RevenueCat, Ferrata only):</strong> in accordance with RevenueCat's retention policies. The anonymous identifier is kept on your device until you uninstall the app.</li>
+  <li><strong>Contributions (Ferrata only):</strong> kept on our server for as long as they are needed to review them and, if approved, to keep them published. The app does not send your identity with them; if you want us to remove one, write to us (see section 9).</li>
+  <li><strong>Location:</strong> not retained; used in memory and discarded (except for the coordinates of a route you suggest in Ferrata, see 3.5).</li>
 </ul>
-<p>These periods are defined by Google and may change; we recommend consulting their policies, linked in section 5.</p>
+<p>These periods are defined by Google and RevenueCat and may change; we recommend consulting their policies, linked in section 5.</p>
 
 <h2 id="en-8">8. International transfers</h2>
 <p>The providers listed above may process data on servers located outside the European Economic Area, primarily in the United States. Such transfers rely on the mechanisms set out in Chapter V of the GDPR, in particular the <strong>EU–US Data Privacy Framework</strong> and the <strong>Standard Contractual Clauses</strong> approved by the European Commission.</p>
@@ -511,7 +571,7 @@ footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; colo
 <p>Our applications are <strong>not directed to children under 14</strong> and do not participate in Google Play's "Designed for Families" programme. We do not knowingly collect data from children of that age. If you become aware that a child has provided us with data, please contact us and we will delete it.</p>
 
 <h2 id="en-11">11. Security</h2>
-<p>All communications between the applications and the services they use take place over <strong>encrypted connections (HTTPS/TLS)</strong>. As we do not operate our own servers holding personal data, the exposure surface is limited to Google's infrastructure, which is subject to its own security measures.</p>
+<p>All communications between the applications and the services they use take place over <strong>encrypted connections (HTTPS/TLS)</strong>. As we do not operate our own servers holding users' personal data —except Ferrata's server (see 3.5), which only stores the catalogue and the contributions you choose to send, with no accounts—, the exposure surface is limited to the providers' infrastructure (mainly Google), which is subject to its own security measures.</p>
 
 <h2 id="en-12">12. Changes to this policy</h2>
 <p>We may update this policy to reflect changes in the applications or in applicable law. The date of the latest revision appears at the top of the document. Should there be substantial changes to the purposes of processing, we will inform you through the application itself or the consent message.</p>
