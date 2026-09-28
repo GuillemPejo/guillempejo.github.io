@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Términos de uso de Ferrata · Guillem Pejó</title>
-<meta name="description" content="Términos de uso de la aplicación Ferrata (Android e iOS), publicada por Guillem Pejó (Tacoly) en Google Play y la App Store.">
+<meta name="description" content="Terms of use of the Ferrata app (Android and iOS), published by Guillem Pejó (Tacoly) on Google Play and the App Store.">
 <meta name="author" content="Guillem Pejó">
 <meta name="robots" content="index, follow">
 <link rel="shortcut icon" href="../img/favicon.ico">
@@ -19,14 +19,6 @@
     --accent:#7cb0f5; --card:#181b1f; --thead:#1e2228; --warn-bg:#2a2416; --warn-line:#6b5722;
   }
 }
-:root[data-theme="dark"]{
-  --bg:#121417; --fg:#e6e9ec; --muted:#9aa2aa; --line:#2a2f35;
-  --accent:#7cb0f5; --card:#181b1f; --thead:#1e2228; --warn-bg:#2a2416; --warn-line:#6b5722;
-}
-:root[data-theme="light"]{
-  --bg:#ffffff; --fg:#1a1c1e; --muted:#5c6166; --line:#e3e6e8;
-  --accent:#1a73e8; --card:#f7f9fa; --thead:#eef2f5; --warn-bg:#fff8e6; --warn-line:#f0c36d;
-}
 *{box-sizing:border-box}
 body{
   margin:0; background:var(--bg); color:var(--fg);
@@ -36,11 +28,18 @@ body{
 .wrap{max-width:720px; margin:0 auto; padding:0 20px 80px}
 header.top{
   border-bottom:1px solid var(--line); background:var(--bg);
-  position:sticky; top:0; z-index:10; padding:14px 0;
+  position:sticky; top:0; z-index:10; padding:12px 0;
 }
-.top-inner{max-width:720px; margin:0 auto; padding:0 20px; display:flex; align-items:center; justify-content:space-between; gap:16px}
+.top-inner{max-width:720px; margin:0 auto; padding:0 20px; display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap}
 .brand{font-weight:600; font-size:15px; text-decoration:none; color:var(--fg)}
 .brand span{color:var(--muted); font-weight:400}
+.langs{display:flex; gap:6px; flex-wrap:wrap}
+.langs button{
+  font:inherit; font-size:13px; font-weight:500; cursor:pointer;
+  padding:6px 12px; border-radius:999px; border:1px solid var(--line);
+  background:transparent; color:var(--muted);
+}
+.langs button[aria-pressed="true"]{background:var(--accent); border-color:var(--accent); color:#fff}
 h1{font-size:30px; line-height:1.25; margin:36px 0 6px; letter-spacing:-.01em}
 h2{font-size:19px; margin:32px 0 8px; padding-top:10px; border-top:1px solid var(--line); letter-spacing:-.01em}
 p,li{color:var(--fg)}
@@ -50,9 +49,11 @@ a{color:var(--accent)}
 ul,ol{padding-left:22px}
 li{margin:5px 0}
 .card{background:var(--warn-bg); border-left:4px solid var(--warn-line); padding:14px 18px; margin:18px 0; border-radius:0 8px 8px 0}
-.card p:first-child{margin-top:0}
-.card p:last-child{margin-bottom:0}
+.card p{margin:0}
 footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; color:var(--muted); font-size:14px}
+footer p{margin:0}
+[hidden]{display:none !important}
+@media (max-width:560px){ h1{font-size:25px} }
 </style>
 </head>
 <body>
@@ -60,60 +61,243 @@ footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; colo
 <header class="top">
   <div class="top-inner">
     <a class="brand" href="../">Guillem Pejó <span>· Tacoly</span></a>
+    <div class="langs">
+    <button type="button" id="btn-es" onclick="setLang('es')" aria-pressed="true">Español</button>
+    <button type="button" id="btn-en" onclick="setLang('en')" aria-pressed="false">English</button>
+    <button type="button" id="btn-ca" onclick="setLang('ca')" aria-pressed="false">Català</button>
+    <button type="button" id="btn-de" onclick="setLang('de')" aria-pressed="false">Deutsch</button>
+    <button type="button" id="btn-fr" onclick="setLang('fr')" aria-pressed="false">Français</button>
+    <button type="button" id="btn-it" onclick="setLang('it')" aria-pressed="false">Italiano</button>
+    </div>
   </div>
 </header>
 
 <div class="wrap">
-<main>
 
+<main id="es" lang="es">
 <h1>Términos de uso de Ferrata</h1>
 <p class="lead">Aplicable a la aplicación Ferrata, publicada por Guillem Pejó (Tacoly) en Google Play (Android) y la App Store (iOS).</p>
 <p class="updated">Última actualización: 27 de septiembre de 2026</p>
-
-<div class="card">
-<p><strong>Lo importante en dos líneas.</strong> Ferrata es una guía informativa de vías ferratas. La montaña es una actividad de riesgo: la información de la app no sustituye tu criterio, tu formación ni el material adecuado. La suscripción Premium se renueva sola y se cancela desde Google Play o el App Store, cuando quieras.</p>
-</div>
-
+<div class="card"><p><strong>Lo importante en dos líneas.</strong> Ferrata es una guía informativa de vías ferratas. La montaña es una actividad de riesgo: la información de la app no sustituye tu criterio, tu formación ni el material adecuado. La suscripción Ferrata Pro se renueva sola y se cancela desde Google Play o el App Store, cuando quieras.</p></div>
 <h2>1. Qué es Ferrata</h2>
 <p>Ferrata es una aplicación para Android e iOS que reúne fichas de vías ferratas (localización, grado de dificultad, descripción, acceso, meteo y fotos) elaboradas a partir de fuentes públicas y de aportaciones de la comunidad. Al instalarla y usarla aceptas estos términos.</p>
-
 <h2>2. Uso responsable y limitación de responsabilidad</h2>
 <p>La vía ferrata es una actividad de montaña con riesgo de lesiones graves o muerte. Los datos de la app (estado de la vía, dificultad, tiempos, meteorología, coordenadas) pueden estar desactualizados, ser incompletos o contener errores. Antes de salir, contrasta la información con fuentes oficiales, comprueba el estado real de la instalación y las condiciones del día, y no acometas una vía por encima de tu nivel. El uso de la app es bajo tu exclusiva responsabilidad; en la medida permitida por la ley, el titular no responde de daños derivados de decisiones tomadas a partir de la información mostrada.</p>
-
-<h2>3. Versión gratuita y Premium</h2>
-<p>La app funciona gratis con el catálogo completo, mapa, favoritos, registro de vías hechas y modo seguridad. La suscripción <strong>Ferrata Pro</strong> añade: sin anuncios, fichas sin conexión ilimitadas, el track GPS de Wikiloc de cada vía, meteorología avanzada con alertas y estadísticas avanzadas. Las funciones de la versión gratuita no se restringen por contratar o no Pro.</p>
-
+<h2>3. Versión gratuita y Pro</h2>
+<p>La app funciona gratis con el catálogo completo, mapa, guardadas, registro de vías hechas y modo seguridad. La suscripción <strong>Ferrata Pro</strong> añade: sin anuncios, fichas sin conexión ilimitadas, el track GPS de Wikiloc de cada vía, meteorología avanzada con alertas y estadísticas avanzadas. Las funciones de la versión gratuita no se restringen por contratar o no Pro.</p>
 <h2>4. Suscripción, precio, prueba y cancelación</h2>
 <ul>
   <li>Planes: mensual o anual. El precio exacto en tu moneda se muestra en la app antes de confirmar.</li>
   <li>Prueba gratuita: cuando se ofrece, dura los días indicados en pantalla. Si no cancelas antes de que termine, la suscripción empieza y se cobra al precio del plan elegido.</li>
   <li>Renovación automática: la suscripción se renueva al final de cada periodo salvo que la canceles al menos 24 horas antes.</li>
-  <li>Cancelación: se gestiona en tu cuenta de <strong>Google Play</strong> o del <strong>App Store</strong>, no desde la app. Al cancelar sigues siendo Premium hasta el final del periodo ya pagado.</li>
+  <li>Cancelación: se gestiona en tu cuenta de <strong>Google Play</strong> o del <strong>App Store</strong>, no desde la app. Al cancelar sigues teniendo Ferrata Pro hasta el final del periodo ya pagado.</li>
   <li>Pagos y reembolsos: los gestiona la tienda (Google o Apple) según sus propias condiciones.</li>
 </ul>
-
 <h2>5. Aportaciones de la comunidad</h2>
 <p>Puedes proponer cambios de estado de una vía, sugerencias de corrección y vías nuevas. No hay cuentas: no pedimos tu nombre ni tu correo. Al enviarlas garantizas que el contenido es tuyo o tienes derecho a compartirlo, y concedes al titular una licencia gratuita, mundial y no exclusiva para publicarlo en la app y sus servicios asociados.</p>
 <p>Nada de lo que envías cambia la app de los demás hasta que una persona lo revisa y lo aprueba; las aportaciones pueden editarse o rechazarse. No envíes contenido ilegal, ofensivo o engañoso, ni que vulnere derechos de terceros, ni datos personales (tuyos o de otras personas): podemos rechazar o retirar cualquier aportación. La app no ofrece reseñas ni comentarios públicos de usuarios; solo permite valorar de 1 a 5 estrellas una vía que ya has hecho, de forma anónima, y muestra únicamente la media cuando hay suficientes valoraciones.</p>
 <p>Si ves algo inadecuado en una ficha, usa «Sugerir un cambio» dentro de la propia ficha o escribe al correo de contacto (apartado 8): lo revisamos y, si procede, lo retiramos.</p>
-
 <h2>6. Propiedad intelectual</h2>
 <p>El software, el diseño y la recopilación del catálogo son del titular. Las fotos y textos de terceros pertenecen a sus autores y se muestran con atribución cuando procede. No está permitido extraer el catálogo de forma masiva ni redistribuirlo.</p>
-
 <h2>7. Cambios</h2>
 <p>Estos términos pueden actualizarse; la fecha de arriba indica la versión vigente. Los cambios relevantes se avisarán en la app.</p>
-
 <h2>8. Contacto</h2>
-<p>Para cualquier consulta: <strong><a href="mailto:tacolyapps@gmail.com">tacolyapps@gmail.com</a></strong>.</p>
+<p>Para cualquier consulta: <strong><a href="mailto:tacolyapps@gmail.com">tacolyapps@gmail.com</a></strong></p>
 <p class="updated"><a href="../apps-privacy/">Política de privacidad</a></p>
-
+<footer><p>© 2026 Guillem Pejó · Tacoly — <a href="../">Volver al inicio</a></p></footer>
 </main>
 
-<footer>
-  <p>© 2026 Guillem Pejó · Tacoly — <a href="../">Volver al inicio</a></p>
-</footer>
+<main id="en" hidden lang="en">
+<h1>Ferrata Terms of Use</h1>
+<p class="lead">Applicable to the Ferrata app, published by Guillem Pejó (Tacoly) on Google Play (Android) and the App Store (iOS).</p>
+<p class="updated">Last updated: 27 September 2026</p>
+<div class="card"><p><strong>The essentials in two lines.</strong> Ferrata is an informational guide to via ferratas. The mountains are a risky activity: the app's information does not replace your judgement, your training or the right equipment. The Ferrata Pro subscription renews automatically and can be cancelled from Google Play or the App Store at any time.</p></div>
+<h2>1. What Ferrata is</h2>
+<p>Ferrata is an app for Android and iOS that brings together guides to via ferratas (location, difficulty grade, description, access, weather and photos) compiled from public sources and community contributions. By installing and using it you accept these terms.</p>
+<h2>2. Responsible use and limitation of liability</h2>
+<p>Via ferrata climbing is a mountain activity with a risk of serious injury or death. The data in the app (route status, difficulty, times, weather, coordinates) may be out of date, incomplete or contain errors. Before setting out, check the information against official sources, verify the real condition of the equipment and the conditions on the day, and do not attempt a route beyond your level. You use the app at your own sole risk; to the extent permitted by law, the owner is not liable for damages arising from decisions made on the basis of the information shown.</p>
+<h2>3. Free version and Pro</h2>
+<p>The app is free to use with the full catalogue, map, saved routes, log of completed routes and safety mode. The <strong>Ferrata Pro</strong> subscription adds: no ads, unlimited offline route guides, the Wikiloc GPS track of each route, advanced weather with alerts and advanced statistics. Free features are not restricted whether or not you subscribe to Pro.</p>
+<h2>4. Subscription, price, trial and cancellation</h2>
+<ul>
+  <li>Plans: monthly or annual. The exact price in your currency is shown in the app before you confirm.</li>
+  <li>Free trial: when offered, it lasts the number of days shown on screen. If you do not cancel before it ends, the subscription starts and is charged at the price of the chosen plan.</li>
+  <li>Automatic renewal: the subscription renews at the end of each period unless you cancel at least 24 hours beforehand.</li>
+  <li>Cancellation: managed in your <strong>Google Play</strong> or <strong>App Store</strong> account, not from the app. If you cancel, you keep Ferrata Pro until the end of the period already paid.</li>
+  <li>Payments and refunds: handled by the store (Google or Apple) under its own terms.</li>
+</ul>
+<h2>5. Community contributions</h2>
+<p>You can suggest status changes for a route, correction suggestions and new routes. There are no accounts: we do not ask for your name or email. By submitting them you warrant that the content is yours or that you have the right to share it, and you grant the owner a free, worldwide, non-exclusive licence to publish it in the app and its associated services.</p>
+<p>Nothing you submit changes other people's app until a person reviews and approves it; contributions may be edited or rejected. Do not submit illegal, offensive or misleading content, content that infringes third-party rights, or personal data (yours or anyone else's): we may reject or remove any contribution. The app has no public user reviews or comments; it only lets you rate a route you have already completed from 1 to 5 stars, anonymously, and shows only the average when there are enough ratings.</p>
+<p>If you see something inappropriate in a route guide, use “Suggest a change” inside the guide itself or write to the contact email (section 8): we will review it and, if appropriate, remove it.</p>
+<h2>6. Intellectual property</h2>
+<p>The software, the design and the compilation of the catalogue belong to the owner. Third-party photos and texts belong to their authors and are shown with attribution where applicable. Mass extraction or redistribution of the catalogue is not permitted.</p>
+<h2>7. Changes</h2>
+<p>These terms may be updated; the date above shows the current version. Relevant changes will be announced in the app.</p>
+<h2>8. Contact</h2>
+<p>For any enquiry: <strong><a href="mailto:tacolyapps@gmail.com">tacolyapps@gmail.com</a></strong></p>
+<p class="updated"><a href="../apps-privacy/">Privacy policy</a></p>
+<footer><p>© 2026 Guillem Pejó · Tacoly — <a href="../">Back to home</a></p></footer>
+</main>
+
+<main id="ca" hidden lang="ca">
+<h1>Termes d'ús de Ferrata</h1>
+<p class="lead">Aplicable a l'aplicació Ferrata, publicada per Guillem Pejó (Tacoly) a Google Play (Android) i a l'App Store (iOS).</p>
+<p class="updated">Darrera actualització: 27 de setembre de 2026</p>
+<div class="card"><p><strong>El més important en dues línies.</strong> Ferrata és una guia informativa de vies ferrades. La muntanya és una activitat de risc: la informació de l'app no substitueix el teu criteri, la teva formació ni el material adequat. La subscripció Ferrata Pro es renova sola i es cancel·la des de Google Play o l'App Store, quan vulguis.</p></div>
+<h2>1. Què és Ferrata</h2>
+<p>Ferrata és una aplicació per a Android i iOS que reuneix fitxes de vies ferrades (localització, grau de dificultat, descripció, accés, meteo i fotos) elaborades a partir de fonts públiques i d'aportacions de la comunitat. En instal·lar-la i utilitzar-la, acceptes aquests termes.</p>
+<h2>2. Ús responsable i limitació de responsabilitat</h2>
+<p>La via ferrada és una activitat de muntanya amb risc de lesions greus o mort. Les dades de l'app (estat de la via, dificultat, temps, meteorologia, coordenades) poden estar desactualitzades, ser incompletes o contenir errors. Abans de sortir, contrasta la informació amb fonts oficials, comprova l'estat real de la instal·lació i les condicions del dia, i no emprenguis una via per sobre del teu nivell. L'ús de l'app és sota la teva exclusiva responsabilitat; en la mesura que la llei ho permeti, el titular no respon dels danys derivats de decisions preses a partir de la informació mostrada.</p>
+<h2>3. Versió gratuïta i Pro</h2>
+<p>L'app funciona gratis amb el catàleg complet, mapa, desades, registre de vies fetes i mode seguretat. La subscripció <strong>Ferrata Pro</strong> afegeix: sense anuncis, fitxes sense connexió il·limitades, el track GPS de Wikiloc de cada via, meteorologia avançada amb alertes i estadístiques avançades. Les funcions de la versió gratuïta no es restringeixen per contractar o no Pro.</p>
+<h2>4. Subscripció, preu, prova i cancel·lació</h2>
+<ul>
+  <li>Plans: mensual o anual. El preu exacte en la teva moneda es mostra a l'app abans de confirmar.</li>
+  <li>Prova gratuïta: quan s'ofereix, dura els dies indicats en pantalla. Si no cancel·les abans que acabi, la subscripció comença i es cobra al preu del pla escollit.</li>
+  <li>Renovació automàtica: la subscripció es renova al final de cada període tret que la cancel·lis almenys 24 hores abans.</li>
+  <li>Cancel·lació: es gestiona al teu compte de <strong>Google Play</strong> o de l'<strong>App Store</strong>, no des de l'app. En cancel·lar continues tenint Ferrata Pro fins al final del període ja pagat.</li>
+  <li>Pagaments i reemborsaments: els gestiona la botiga (Google o Apple) segons les seves pròpies condicions.</li>
+</ul>
+<h2>5. Aportacions de la comunitat</h2>
+<p>Pots proposar canvis d'estat d'una via, suggeriments de correcció i vies noves. No hi ha comptes: no et demanem ni el nom ni el correu. En enviar-les garanteixes que el contingut és teu o que tens dret a compartir-lo, i concedeixes al titular una llicència gratuïta, mundial i no exclusiva per publicar-lo a l'app i als seus serveis associats.</p>
+<p>Res del que envies canvia l'app dels altres fins que una persona ho revisa i ho aprova; les aportacions es poden editar o rebutjar. No enviïs contingut il·legal, ofensiu o enganyós, ni que vulneri drets de tercers, ni dades personals (teves o d'altres persones): podem rebutjar o retirar qualsevol aportació. L'app no ofereix ressenyes ni comentaris públics d'usuaris; només permet valorar d'1 a 5 estrelles una via que ja has fet, de manera anònima, i només mostra la mitjana quan hi ha prou valoracions.</p>
+<p>Si veus alguna cosa inadequada en una fitxa, fes servir «Suggerir un canvi» dins la mateixa fitxa o escriu al correu de contacte (apartat 8): ho revisem i, si escau, ho retirem.</p>
+<h2>6. Propietat intel·lectual</h2>
+<p>El programari, el disseny i la recopilació del catàleg són del titular. Les fotos i textos de tercers pertanyen als seus autors i es mostren amb atribució quan escau. No es permet extreure el catàleg de manera massiva ni redistribuir-lo.</p>
+<h2>7. Canvis</h2>
+<p>Aquests termes es poden actualitzar; la data de dalt indica la versió vigent. Els canvis rellevants s'avisaran a l'app.</p>
+<h2>8. Contacte</h2>
+<p>Per a qualsevol consulta: <strong><a href="mailto:tacolyapps@gmail.com">tacolyapps@gmail.com</a></strong></p>
+<p class="updated"><a href="../apps-privacy/">Política de privadesa</a></p>
+<footer><p>© 2026 Guillem Pejó · Tacoly — <a href="../">Torna a l'inici</a></p></footer>
+</main>
+
+<main id="de" hidden lang="de">
+<h1>Nutzungsbedingungen von Ferrata</h1>
+<p class="lead">Gilt für die App Ferrata, veröffentlicht von Guillem Pejó (Tacoly) bei Google Play (Android) und im App Store (iOS).</p>
+<p class="updated">Zuletzt aktualisiert: 27. September 2026</p>
+<div class="card"><p><strong>Das Wichtigste in zwei Zeilen.</strong> Ferrata ist ein Informationsführer für Klettersteige. Berge sind eine risikoreiche Aktivität: Die Informationen der App ersetzen weder dein Urteilsvermögen noch deine Ausbildung noch die passende Ausrüstung. Das Abo Ferrata Pro verlängert sich automatisch und kann jederzeit über Google Play oder den App Store gekündigt werden.</p></div>
+<h2>1. Was Ferrata ist</h2>
+<p>Ferrata ist eine App für Android und iOS, die Steckbriefe zu Klettersteigen (Lage, Schwierigkeitsgrad, Beschreibung, Zustieg, Wetter und Fotos) bündelt, erstellt aus öffentlichen Quellen und Beiträgen der Community. Mit der Installation und Nutzung akzeptierst du diese Bedingungen.</p>
+<h2>2. Verantwortungsvolle Nutzung und Haftungsbeschränkung</h2>
+<p>Klettersteiggehen ist eine Bergaktivität mit dem Risiko schwerer Verletzungen oder des Todes. Die Daten der App (Zustand des Klettersteigs, Schwierigkeit, Zeiten, Wetter, Koordinaten) können veraltet, unvollständig oder fehlerhaft sein. Prüfe die Angaben vor dem Aufbruch anhand offizieller Quellen, kontrolliere den tatsächlichen Zustand der Anlage und die Bedingungen des Tages und wage dich nicht an einen Klettersteig, der über deinem Können liegt. Die Nutzung der App erfolgt auf dein alleiniges Risiko; soweit gesetzlich zulässig, haftet der Anbieter nicht für Schäden, die aus Entscheidungen auf Grundlage der angezeigten Informationen entstehen.</p>
+<h2>3. Kostenlose Version und Pro</h2>
+<p>Die App ist kostenlos nutzbar, mit vollständigem Katalog, Karte, Gespeicherten, Protokoll absolvierter Klettersteige und Sicherheitsmodus. Das Abo <strong>Ferrata Pro</strong> bietet zusätzlich: keine Werbung, unbegrenzte Offline-Steckbriefe, den Wikiloc-GPS-Track jeder Route, erweitertes Wetter mit Warnungen und erweiterte Statistiken. Die Funktionen der kostenlosen Version werden nicht eingeschränkt, egal ob du Pro abschließt oder nicht.</p>
+<h2>4. Abo, Preis, Testphase und Kündigung</h2>
+<ul>
+  <li>Tarife: monatlich oder jährlich. Der genaue Preis in deiner Währung wird in der App vor der Bestätigung angezeigt.</li>
+  <li>Kostenlose Testphase: sofern angeboten, dauert sie die auf dem Bildschirm angegebenen Tage. Wenn du nicht vor Ablauf kündigst, beginnt das Abo und wird zum Preis des gewählten Tarifs abgebucht.</li>
+  <li>Automatische Verlängerung: Das Abo verlängert sich am Ende jedes Zeitraums, sofern du nicht mindestens 24 Stunden vorher kündigst.</li>
+  <li>Kündigung: erfolgt in deinem <strong>Google-Play</strong>- oder <strong>App-Store</strong>-Konto, nicht in der App. Nach der Kündigung behältst du Ferrata Pro bis zum Ende des bereits bezahlten Zeitraums.</li>
+  <li>Zahlungen und Erstattungen: werden vom Store (Google oder Apple) nach dessen eigenen Bedingungen abgewickelt.</li>
+</ul>
+<h2>5. Beiträge der Community</h2>
+<p>Du kannst Zustandsänderungen einer Route, Korrekturvorschläge und neue Routen vorschlagen. Es gibt keine Konten: Wir fragen weder nach deinem Namen noch nach deiner E-Mail-Adresse. Mit dem Einsenden versicherst du, dass der Inhalt von dir stammt oder du berechtigt bist, ihn zu teilen, und räumst dem Anbieter eine unentgeltliche, weltweite, nicht ausschließliche Lizenz ein, ihn in der App und den zugehörigen Diensten zu veröffentlichen.</p>
+<p>Nichts, was du einsendest, verändert die App anderer, bevor eine Person es geprüft und freigegeben hat; Beiträge können bearbeitet oder abgelehnt werden. Sende keine rechtswidrigen, beleidigenden oder irreführenden Inhalte, keine Inhalte, die Rechte Dritter verletzen, und keine personenbezogenen Daten (eigene oder fremde): Wir können jeden Beitrag ablehnen oder entfernen. Die App bietet keine öffentlichen Nutzerbewertungen oder Kommentare; sie erlaubt nur, eine bereits absolvierte Route anonym mit 1 bis 5 Sternen zu bewerten, und zeigt nur den Durchschnitt an, wenn genügend Bewertungen vorliegen.</p>
+<p>Wenn dir etwas Unpassendes in einem Steckbrief auffällt, nutze „Änderung vorschlagen“ im Steckbrief selbst oder schreibe an die Kontakt-E-Mail (Abschnitt 8): Wir prüfen es und entfernen es gegebenenfalls.</p>
+<h2>6. Geistiges Eigentum</h2>
+<p>Die Software, das Design und die Zusammenstellung des Katalogs gehören dem Anbieter. Fotos und Texte Dritter gehören ihren Urhebern und werden gegebenenfalls mit Quellenangabe angezeigt. Das massenhafte Auslesen oder Weiterverbreiten des Katalogs ist nicht gestattet.</p>
+<h2>7. Änderungen</h2>
+<p>Diese Bedingungen können aktualisiert werden; das Datum oben zeigt die geltende Fassung. Wesentliche Änderungen werden in der App bekannt gegeben.</p>
+<h2>8. Kontakt</h2>
+<p>Bei Fragen: <strong><a href="mailto:tacolyapps@gmail.com">tacolyapps@gmail.com</a></strong></p>
+<p class="updated"><a href="../apps-privacy/">Datenschutzerklärung</a></p>
+<footer><p>© 2026 Guillem Pejó · Tacoly — <a href="../">Zurück zur Startseite</a></p></footer>
+</main>
+
+<main id="fr" hidden lang="fr">
+<h1>Conditions d'utilisation de Ferrata</h1>
+<p class="lead">Applicables à l'application Ferrata, publiée par Guillem Pejó (Tacoly) sur Google Play (Android) et l'App Store (iOS).</p>
+<p class="updated">Dernière mise à jour : 27 septembre 2026</p>
+<div class="card"><p><strong>L'essentiel en deux lignes.</strong> Ferrata est un guide informatif de vias ferratas. La montagne est une activité à risque : les informations de l'app ne remplacent ni ton jugement, ni ta formation, ni le matériel adapté. L'abonnement Ferrata Pro se renouvelle automatiquement et s'annule depuis Google Play ou l'App Store, quand tu veux.</p></div>
+<h2>1. Qu'est-ce que Ferrata</h2>
+<p>Ferrata est une application pour Android et iOS qui rassemble des fiches de vias ferratas (localisation, cotation, description, accès, météo et photos) élaborées à partir de sources publiques et de contributions de la communauté. En l'installant et en l'utilisant, tu acceptes ces conditions.</p>
+<h2>2. Utilisation responsable et limitation de responsabilité</h2>
+<p>La via ferrata est une activité de montagne comportant un risque de blessures graves ou de mort. Les données de l'app (état de la voie, difficulté, durées, météo, coordonnées) peuvent être périmées, incomplètes ou comporter des erreurs. Avant de partir, recoupe les informations avec des sources officielles, vérifie l'état réel de l'équipement et les conditions du jour, et ne t'engage pas dans une via au-dessus de ton niveau. L'utilisation de l'app se fait sous ta seule responsabilité ; dans la mesure permise par la loi, le titulaire n'est pas responsable des dommages résultant de décisions prises à partir des informations affichées.</p>
+<h2>3. Version gratuite et Pro</h2>
+<p>L'app est gratuite avec le catalogue complet, la carte, les enregistrées, le journal des voies faites et le mode sécurité. L'abonnement <strong>Ferrata Pro</strong> ajoute : aucune publicité, fiches hors ligne illimitées, la trace GPS Wikiloc de chaque voie, une météo avancée avec alertes et des statistiques avancées. Les fonctions de la version gratuite ne sont pas restreintes, que tu souscrives ou non à Pro.</p>
+<h2>4. Abonnement, prix, essai et résiliation</h2>
+<ul>
+  <li>Formules : mensuelle ou annuelle. Le prix exact dans ta devise s'affiche dans l'app avant de confirmer.</li>
+  <li>Essai gratuit : lorsqu'il est proposé, il dure le nombre de jours indiqué à l'écran. Si tu ne résilies pas avant la fin, l'abonnement démarre et est facturé au prix de la formule choisie.</li>
+  <li>Renouvellement automatique : l'abonnement se renouvelle à la fin de chaque période, sauf résiliation au moins 24 heures avant.</li>
+  <li>Résiliation : elle se gère depuis ton compte <strong>Google Play</strong> ou <strong>App Store</strong>, pas depuis l'app. En cas de résiliation, tu conserves Ferrata Pro jusqu'à la fin de la période déjà payée.</li>
+  <li>Paiements et remboursements : gérés par la boutique (Google ou Apple) selon ses propres conditions.</li>
+</ul>
+<h2>5. Contributions de la communauté</h2>
+<p>Tu peux proposer des changements d'état d'une voie, des suggestions de correction et de nouvelles voies. Il n'y a pas de comptes : nous ne te demandons ni ton nom ni ton e-mail. En les envoyant, tu garantis que le contenu est de toi ou que tu as le droit de le partager, et tu accordes au titulaire une licence gratuite, mondiale et non exclusive pour le publier dans l'app et ses services associés.</p>
+<p>Rien de ce que tu envoies ne modifie l'app des autres tant qu'une personne ne l'a pas examiné et approuvé ; les contributions peuvent être modifiées ou refusées. N'envoie pas de contenu illégal, offensant ou trompeur, ni qui porte atteinte aux droits de tiers, ni de données personnelles (les tiennes ou celles d'autres personnes) : nous pouvons refuser ou retirer toute contribution. L'app ne propose ni avis ni commentaires publics d'utilisateurs ; elle permet seulement de noter de 1 à 5 étoiles une voie que tu as déjà faite, de façon anonyme, et n'affiche que la moyenne lorsqu'il y a assez de notes.</p>
+<p>Si tu vois quelque chose d'inapproprié dans une fiche, utilise « Suggérer une modification » dans la fiche elle-même ou écris à l'adresse de contact (section 8) : nous l'examinons et, le cas échéant, nous le retirons.</p>
+<h2>6. Propriété intellectuelle</h2>
+<p>Le logiciel, le design et la compilation du catalogue appartiennent au titulaire. Les photos et textes de tiers appartiennent à leurs auteurs et sont affichés avec attribution lorsque cela s'applique. L'extraction massive ou la redistribution du catalogue n'est pas autorisée.</p>
+<h2>7. Modifications</h2>
+<p>Ces conditions peuvent être mises à jour ; la date ci-dessus indique la version en vigueur. Les changements importants seront signalés dans l'app.</p>
+<h2>8. Contact</h2>
+<p>Pour toute question : <strong><a href="mailto:tacolyapps@gmail.com">tacolyapps@gmail.com</a></strong></p>
+<p class="updated"><a href="../apps-privacy/">Politique de confidentialité</a></p>
+<footer><p>© 2026 Guillem Pejó · Tacoly — <a href="../">Retour à l'accueil</a></p></footer>
+</main>
+
+<main id="it" hidden lang="it">
+<h1>Termini di utilizzo di Ferrata</h1>
+<p class="lead">Applicabili all'app Ferrata, pubblicata da Guillem Pejó (Tacoly) su Google Play (Android) e App Store (iOS).</p>
+<p class="updated">Ultimo aggiornamento: 27 settembre 2026</p>
+<div class="card"><p><strong>L'essenziale in due righe.</strong> Ferrata è una guida informativa sulle vie ferrate. La montagna è un'attività a rischio: le informazioni dell'app non sostituiscono il tuo giudizio, la tua preparazione né l'attrezzatura adeguata. L'abbonamento Ferrata Pro si rinnova automaticamente e si annulla da Google Play o dall'App Store, quando vuoi.</p></div>
+<h2>1. Che cos'è Ferrata</h2>
+<p>Ferrata è un'app per Android e iOS che raccoglie schede di vie ferrate (posizione, grado di difficoltà, descrizione, accesso, meteo e foto) elaborate a partire da fonti pubbliche e da contributi della community. Installandola e usandola accetti questi termini.</p>
+<h2>2. Uso responsabile e limitazione di responsabilità</h2>
+<p>La via ferrata è un'attività di montagna con rischio di lesioni gravi o morte. I dati dell'app (stato della via, difficoltà, tempi, meteo, coordinate) possono essere non aggiornati, incompleti o contenere errori. Prima di partire, verifica le informazioni con fonti ufficiali, controlla lo stato reale dell'attrezzatura e le condizioni del giorno, e non affrontare una via superiore al tuo livello. L'uso dell'app avviene a tuo esclusivo rischio; nella misura consentita dalla legge, il titolare non risponde dei danni derivanti da decisioni prese in base alle informazioni mostrate.</p>
+<h2>3. Versione gratuita e Pro</h2>
+<p>L'app è gratuita con il catalogo completo, la mappa, le salvate, il registro delle vie fatte e la modalità sicurezza. L'abbonamento <strong>Ferrata Pro</strong> aggiunge: nessuna pubblicità, schede offline illimitate, la traccia GPS di Wikiloc di ogni via, meteo avanzato con avvisi e statistiche avanzate. Le funzioni della versione gratuita non vengono limitate se sottoscrivi o meno Pro.</p>
+<h2>4. Abbonamento, prezzo, prova e annullamento</h2>
+<ul>
+  <li>Piani: mensile o annuale. Il prezzo esatto nella tua valuta viene mostrato nell'app prima di confermare.</li>
+  <li>Prova gratuita: quando è offerta, dura i giorni indicati a schermo. Se non annulli prima che termini, l'abbonamento inizia e viene addebitato al prezzo del piano scelto.</li>
+  <li>Rinnovo automatico: l'abbonamento si rinnova alla fine di ogni periodo, salvo annullamento almeno 24 ore prima.</li>
+  <li>Annullamento: si gestisce dal tuo account <strong>Google Play</strong> o <strong>App Store</strong>, non dall'app. Se annulli, mantieni Ferrata Pro fino alla fine del periodo già pagato.</li>
+  <li>Pagamenti e rimborsi: li gestisce lo store (Google o Apple) secondo le proprie condizioni.</li>
+</ul>
+<h2>5. Contributi della community</h2>
+<p>Puoi proporre cambi di stato di una via, suggerimenti di correzione e nuove vie. Non ci sono account: non chiediamo il tuo nome né la tua email. Inviandoli garantisci che il contenuto è tuo o che hai il diritto di condividerlo, e concedi al titolare una licenza gratuita, mondiale e non esclusiva per pubblicarlo nell'app e nei servizi collegati.</p>
+<p>Nulla di ciò che invii modifica l'app degli altri finché una persona non lo esamina e lo approva; i contributi possono essere modificati o rifiutati. Non inviare contenuti illegali, offensivi o ingannevoli, né che violino diritti di terzi, né dati personali (tuoi o di altre persone): possiamo rifiutare o rimuovere qualsiasi contributo. L'app non offre recensioni né commenti pubblici degli utenti; permette solo di valutare da 1 a 5 stelle una via che hai già fatto, in forma anonima, e mostra soltanto la media quando ci sono abbastanza valutazioni.</p>
+<p>Se vedi qualcosa di inappropriato in una scheda, usa «Suggerisci una modifica» nella scheda stessa o scrivi all'email di contatto (punto 8): lo esaminiamo e, se del caso, lo rimuoviamo.</p>
+<h2>6. Proprietà intellettuale</h2>
+<p>Il software, il design e la raccolta del catalogo sono del titolare. Le foto e i testi di terzi appartengono ai rispettivi autori e vengono mostrati con attribuzione quando previsto. Non è consentito estrarre il catalogo in modo massivo né ridistribuirlo.</p>
+<h2>7. Modifiche</h2>
+<p>Questi termini possono essere aggiornati; la data qui sopra indica la versione in vigore. Le modifiche rilevanti saranno comunicate nell'app.</p>
+<h2>8. Contatto</h2>
+<p>Per qualsiasi domanda: <strong><a href="mailto:tacolyapps@gmail.com">tacolyapps@gmail.com</a></strong></p>
+<p class="updated"><a href="../apps-privacy/">Informativa sulla privacy</a></p>
+<footer><p>© 2026 Guillem Pejó · Tacoly — <a href="../">Torna all'inizio</a></p></footer>
+</main>
 
 </div>
+
+<script>
+var LANGS = ['es', 'en', 'ca', 'de', 'fr', 'it'];
+var TITLES = {"es":"Términos de uso de Ferrata","en":"Ferrata Terms of Use","ca":"Termes d\'ús de Ferrata","de":"Nutzungsbedingungen von Ferrata","fr":"Conditions d\'utilisation de Ferrata","it":"Termini di utilizzo di Ferrata"};
+function setLang(lang) {
+  if (LANGS.indexOf(lang) < 0) lang = 'en';
+  LANGS.forEach(function (c) {
+    document.getElementById(c).hidden = c !== lang;
+    document.getElementById('btn-' + c).setAttribute('aria-pressed', c === lang ? 'true' : 'false');
+  });
+  document.documentElement.lang = lang;
+  document.title = TITLES[lang] + ' · Guillem Pejó';
+  try { localStorage.setItem('terms-lang', lang); } catch (e) {}
+}
+(function () {
+  // 1) ?lang=xx (la app abre esta página con el idioma elegido en ella), 2) lo que eligió quien lee,
+  // 3) el idioma del navegador, 4) inglés.
+  var p = null, saved = null;
+  try { p = new URLSearchParams(location.search).get('lang'); } catch (e) {}
+  try { saved = localStorage.getItem('terms-lang'); } catch (e) {}
+  var nav = ((navigator.language || 'en') + '').slice(0, 2).toLowerCase();
+  var lang = LANGS.indexOf(p) >= 0 ? p : LANGS.indexOf(saved) >= 0 ? saved : LANGS.indexOf(nav) >= 0 ? nav : 'en';
+  setLang(lang);
+})();
+</script>
 
 </body>
 </html>
