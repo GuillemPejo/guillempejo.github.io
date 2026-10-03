@@ -102,7 +102,7 @@ footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; colo
 
 <h1>Política de Privacidad de las Aplicaciones</h1>
 <p class="lead">Aplicable a todas las aplicaciones móviles publicadas por Guillem Pejó (Tacoly): Android en Google Play e iOS en la App Store.</p>
-<p class="updated">Última actualización: 24 de septiembre de 2026 · Versión 1.5</p>
+<p class="updated">Última actualización: 3 de octubre de 2026 · Versión 1.6</p>
 
 <div class="toc">
   <p>Contenido</p>
@@ -154,6 +154,7 @@ footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; colo
     <tr><td>Refresca't · Piscines BCN</td><td><code>com.tacoly.refrescat</code></td><td class="c yes">Sí</td><td class="c no">No</td><td class="c yes">Sí</td><td class="c yes">Sí</td></tr>
     <tr><td>VisaTrip: Visados y Pasaporte <span class="no">(Android e iOS)</span></td><td><code>com.tacoly.visatrip</code><br><code>com.tacoly.visatrip.ios</code></td><td class="c no">No</td><td class="c no">No</td><td class="c yes">Sí</td><td class="c yes">Sí</td></tr>
     <tr><td>Paellator: Paella Recipes <span class="no">(Android e iOS)</span></td><td><code>com.tacoly.paellator</code><br><code>com.tacoly.paellator.ios</code></td><td class="c no">No</td><td class="c yes">Sí</td><td class="c yes">Sí</td><td class="c yes">Sí</td></tr>
+    <tr><td>Axolo: un dato curioso al día <span class="no">(Android e iOS)</span></td><td><code>com.tacoly.axolo</code><br><code>com.tacoly.axolo.ios</code></td><td class="c no">No</td><td class="c yes">Sí</td><td class="c yes">Sí</td><td class="c yes">Sí</td></tr>
     <tr><td>Ferrata <span class="no">(Android e iOS)</span></td><td><code>com.tacoly.ferrata</code><br><code>com.tacoly.ferrata.ios</code></td><td class="c yes">Sí</td><td class="c yes">Sí</td><td class="c yes">Sí</td><td class="c yes">Sí</td></tr>
     <tr><td>Decamping</td><td><code>com.tacoly.decamping</code></td><td class="c yes">Sí</td><td class="c yes">Sí</td><td class="c yes">Sí</td><td class="c yes">Sí</td></tr>
   </tbody>
@@ -200,13 +201,15 @@ footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; colo
 <p>El permiso es <strong>totalmente opcional</strong>: se solicita en el momento en que intentas usar una función que lo necesita (en Ferrata, también puede solicitarse al final de la presentación inicial, con una explicación previa), y las aplicaciones son plenamente funcionales si lo deniegas. Puedes revocarlo cuando quieras en <em>Ajustes → Aplicaciones → [aplicación] → Permisos</em> (Android) o en <em>Ajustes → [aplicación] → Ubicación</em> (iOS).</p>
 <p><strong>Base jurídica:</strong> tu <em>consentimiento</em> (art. 6.1.a RGPD), otorgado mediante el diálogo de permisos del sistema (Android o iOS).</p>
 
-<h3>3.4 Notificaciones <span class="no">(solo Parques ×6, Paellator, Decamping y Ferrata)</span></h3>
+<h3>3.4 Notificaciones <span class="no">(solo Parques ×6, Paellator, Decamping, Ferrata y Axolo)</span></h3>
+<p><strong>Axolo</strong> puede enviarte, si lo activas, un aviso diario con el dato curioso del día a la hora que elijas. Es una notificación local, generada en tu dispositivo; puedes cambiar la hora o desactivarla en la propia aplicación.</p>
 <p>Parques ×6, Paellator y Decamping pueden enviarte notificaciones locales con contenido de interés (por ejemplo, el «parque del día», o un recordatorio para volver a planificar tu escapada). Se generan íntegramente en tu dispositivo y no implican el envío de datos personales a nuestros servidores.</p>
 <p>En <strong>Ferrata</strong>, las notificaciones son <strong>alertas de tormenta</strong> para las vías que has guardado en favoritos, una función de <strong>Ferrata Pro</strong>. Para generarlas, la aplicación consulta a Open-Meteo la previsión de esas vías (hasta 10), enviándole las coordenadas de las vías y no las tuyas (ver 3.5). Lo hace al abrir la aplicación y, cuando el sistema lo permite, en segundo plano hasta cada 6 horas. Si hay tormenta prevista, el aviso se muestra en tu dispositivo. Son notificaciones locales: Ferrata no utiliza notificaciones push.</p>
 <p><strong>Base jurídica:</strong> tu <em>consentimiento</em>, otorgado mediante el diálogo de permisos del sistema (Android o iOS). Puedes desactivarlas en cualquier momento desde los ajustes del sistema.</p>
 
 <h3>3.5 Contenido de las aplicaciones</h3>
 <p>En <strong>Refresca’t</strong>, la información de las piscinas y el envío de sugerencias usan <strong>Google Cloud Firestore</strong>. La descarga de contenido es de <strong>solo lectura</strong>; lo único que se escribe es el texto que tú envías voluntariamente como sugerencia.</p>
+<p><strong>Axolo</strong> lleva su catálogo de datos curiosos dentro de la aplicación y, para recibir datos nuevos sin actualizarla, descarga periódicamente la versión publicada desde <strong>GitHub Pages</strong> (GitHub, Inc.). La descarga no incluye ningún identificador tuyo; como en cualquier petición a Internet, GitHub recibe tu <strong>dirección IP</strong>. Tus temas, tu racha y tus reacciones se guardan solo en tu dispositivo.</p>
 <p>En el <strong>resto de aplicaciones</strong> (Parques ×6, VisaTrip, Paellator y Decamping) el contenido principal viaja <strong>dentro de la propia aplicación</strong> y funciona sin conexión: no hay base de datos en la nube ni servidor propio.</p>
 <p><strong>VisaTrip</strong> consulta además estos servicios de terceros para datos que cambian, sin enviarles ningún identificador tuyo. Como en cualquier petición a Internet, reciben tu <strong>dirección IP</strong>:</p>
 <ul>
@@ -233,7 +236,7 @@ footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; colo
   <li><strong>Añadir a Fotos</strong> (VisaTrip en iOS): permite guardar en tu carrete la imagen de tu mapa de viajes cuando pulsas «Guardar». Es un permiso de <em>solo escritura</em>: la aplicación no puede ver tus fotos.</li>
   <li><strong>Contactos</strong> (Ferrata): sirve para elegir tu contacto de emergencia en el modo Seguridad. La aplicación <strong>no lee tu agenda</strong>: abre el selector de contactos del propio sistema y solo recibe el nombre y el teléfono del contacto que tú elijas (también puedes teclearlos a mano), por lo que no hace falta conceder ningún permiso de acceso a la agenda. Ese contacto se guarda en tu dispositivo, no se envía a nuestros servidores y solo se usa para preparar el SMS de aviso que envías tú; al SMS va únicamente el teléfono, como destinatario.</li>
   <li><strong>Actualización en segundo plano</strong> (Ferrata): permite comprobar la previsión de tormenta de tus vías guardadas cuando la aplicación no está abierta (ver 3.4). No utiliza tu ubicación.</li>
-  <li><strong>Seguimiento (ATT)</strong> (VisaTrip, Paellator y Ferrata en iOS): Apple exige pedirte permiso antes de usar el identificador de publicidad del dispositivo (IDFA). Si lo rechazas, la aplicación sigue funcionando igual y los anuncios pasan a ser no personalizados.</li>
+  <li><strong>Seguimiento (ATT)</strong> (VisaTrip, Paellator, Ferrata y Axolo en iOS): Apple exige pedirte permiso antes de usar el identificador de publicidad del dispositivo (IDFA). Si lo rechazas, la aplicación sigue funcionando igual y los anuncios pasan a ser no personalizados.</li>
 </ul>
 
 <h3>3.7 Compras dentro de la aplicación <span class="no">(solo Ferrata)</span></h3>
@@ -269,6 +272,7 @@ footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; colo
     <tr><td>Apple Inc.</td><td>App Store (distribución de las aplicaciones iOS y, en Ferrata, cobro de las compras) y mapas de Apple <span class="no">(Ferrata en iOS)</span></td><td><a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Política de privacidad</a></td></tr>
     <tr><td>Open-Meteo</td><td>Previsión meteorológica <span class="no">(VisaTrip y Ferrata)</span></td><td><a href="https://open-meteo.com/en/terms" target="_blank" rel="noopener">Condiciones</a></td></tr>
     <tr><td>jsDelivr</td><td>Tipos de cambio <span class="no">(VisaTrip)</span></td><td><a href="https://www.jsdelivr.com/terms/privacy-policy-jsdelivr-net" target="_blank" rel="noopener">Política de privacidad</a></td></tr>
+    <tr><td>GitHub (GitHub Pages)</td><td>Catálogo de datos curiosos <span class="no">(Axolo)</span></td><td><a href="https://docs.github.com/es/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">Política de privacidad</a></td></tr>
     <tr><td>Nager.Date</td><td>Días festivos <span class="no">(VisaTrip)</span></td><td><a href="https://date.nager.at/" target="_blank" rel="noopener">Sitio web</a></td></tr>
     <tr><td>RevenueCat, Inc.</td><td>Gestión de suscripciones y compras <span class="no">(Ferrata)</span></td><td><a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">Política de privacidad</a></td></tr>
     <tr><td>IONOS SE</td><td>Alojamiento del servidor propio <span class="no">(Ferrata)</span></td><td><a href="https://www.ionos.com/terms-gtc/privacy-policy/" target="_blank" rel="noopener">Política de privacidad</a></td></tr>
@@ -352,7 +356,7 @@ footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; colo
 
 <h1>Apps Privacy Policy</h1>
 <p class="lead">Applicable to all mobile applications published by Guillem Pejó (Tacoly): Android on Google Play and iOS on the App Store.</p>
-<p class="updated">Last updated: 24 September 2026 · Version 1.5</p>
+<p class="updated">Last updated: 3 October 2026 · Version 1.6</p>
 
 <div class="toc">
   <p>Contents</p>
@@ -404,6 +408,7 @@ footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; colo
     <tr><td>Refresca't · Piscines BCN</td><td><code>com.tacoly.refrescat</code></td><td class="c yes">Yes</td><td class="c no">No</td><td class="c yes">Yes</td><td class="c yes">Yes</td></tr>
     <tr><td>VisaTrip: Visa &amp; Passport <span class="no">(Android and iOS)</span></td><td><code>com.tacoly.visatrip</code><br><code>com.tacoly.visatrip.ios</code></td><td class="c no">No</td><td class="c no">No</td><td class="c yes">Yes</td><td class="c yes">Yes</td></tr>
     <tr><td>Paellator: Paella Recipes <span class="no">(Android and iOS)</span></td><td><code>com.tacoly.paellator</code><br><code>com.tacoly.paellator.ios</code></td><td class="c no">No</td><td class="c yes">Yes</td><td class="c yes">Yes</td><td class="c yes">Yes</td></tr>
+    <tr><td>Axolo: one curious fact a day <span class="no">(Android and iOS)</span></td><td><code>com.tacoly.axolo</code><br><code>com.tacoly.axolo.ios</code></td><td class="c no">No</td><td class="c yes">Yes</td><td class="c yes">Yes</td><td class="c yes">Yes</td></tr>
     <tr><td>Ferrata <span class="no">(Android and iOS)</span></td><td><code>com.tacoly.ferrata</code><br><code>com.tacoly.ferrata.ios</code></td><td class="c yes">Yes</td><td class="c yes">Yes</td><td class="c yes">Yes</td><td class="c yes">Yes</td></tr>
     <tr><td>Decamping</td><td><code>com.tacoly.decamping</code></td><td class="c yes">Yes</td><td class="c yes">Yes</td><td class="c yes">Yes</td><td class="c yes">Yes</td></tr>
   </tbody>
@@ -450,13 +455,15 @@ footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; colo
 <p>The permission is <strong>entirely optional</strong>: it is requested at the moment you try to use a feature that needs it (in Ferrata it may also be requested at the end of the initial walkthrough, with a prior explanation), and the applications remain fully functional if you deny it. You may revoke it at any time under <em>Settings → Apps → [application] → Permissions</em> (Android) or <em>Settings → [application] → Location</em> (iOS).</p>
 <p><strong>Legal basis:</strong> your <em>consent</em> (Art. 6(1)(a) GDPR), given through the system permission dialog (Android or iOS).</p>
 
-<h3>3.4 Notifications <span class="no">(Parques ×6, Paellator, Decamping and Ferrata only)</span></h3>
+<h3>3.4 Notifications <span class="no">(Parques ×6, Paellator, Decamping, Ferrata and Axolo only)</span></h3>
+<p><strong>Axolo</strong> can send you, if you turn it on, a daily reminder with the curious fact of the day at the time you choose. It is a local notification generated on your device; you can change the time or turn it off in the app.</p>
 <p>Parques ×6, Paellator and Decamping may send you local notifications with content of interest (for example, the "park of the day", or a reminder to plan your next getaway). They are generated entirely on your device and do not involve sending any personal data to our servers.</p>
 <p>In <strong>Ferrata</strong>, notifications are <strong>storm alerts</strong> for the routes you have saved as favourites, a <strong>Ferrata Pro</strong> feature. To generate them, the app asks Open-Meteo for the forecast of those routes (up to 10), sending it the coordinates of the routes and not yours (see 3.5). It does so when you open the app and, when the system allows it, in the background up to every 6 hours. If a storm is forecast, the alert is shown on your device. They are local notifications: Ferrata does not use push notifications.</p>
 <p><strong>Legal basis:</strong> your <em>consent</em>, given through the system permission dialog (Android or iOS). You can disable them at any time in your system settings.</p>
 
 <h3>3.5 Application content</h3>
 <p>In <strong>Refresca’t</strong>, swimming-pool information and the suggestions you send use <strong>Google Cloud Firestore</strong>. Content downloads are <strong>read-only</strong>; the only thing written is the text you choose to send as a suggestion.</p>
+<p><strong>Axolo</strong> ships its catalogue of curious facts inside the app and, to get new facts without an update, periodically downloads the published version from <strong>GitHub Pages</strong> (GitHub, Inc.). The download includes no identifier of yours; as with any request on the Internet, GitHub receives your <strong>IP address</strong>. Your topics, streak and reactions are stored only on your device.</p>
 <p>In <strong>all the other apps</strong> (Parques ×6, VisaTrip, Paellator and Decamping) the main content ships <strong>inside the app itself</strong> and works offline: there is no cloud database and no server of our own.</p>
 <p><strong>VisaTrip</strong> also queries these third-party services for data that changes, without sending them any identifier of yours. As with any internet request, they receive your <strong>IP address</strong>:</p>
 <ul>
@@ -483,7 +490,7 @@ footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; colo
   <li><strong>Add to Photos</strong> (VisaTrip on iOS): lets you save the image of your travel map to your camera roll when you tap Save. It is a <em>write-only</em> permission: the app cannot see your photos.</li>
   <li><strong>Contacts</strong> (Ferrata): used to choose your emergency contact in Safety mode. The app <strong>does not read your address book</strong>: it opens the system's own contact picker and only receives the name and phone number of the contact you choose (you can also type them in by hand), so no address-book permission needs to be granted. That contact is stored on your device, is not sent to our servers and is only used to prepare the alert SMS that you send yourself; only the phone number goes into the SMS, as the recipient.</li>
   <li><strong>Background refresh</strong> (Ferrata): lets the app check the storm forecast for your saved routes while the app is not open (see 3.4). It does not use your location.</li>
-  <li><strong>Tracking (ATT)</strong> (VisaTrip, Paellator and Ferrata on iOS): Apple requires us to ask for your permission before using the device advertising identifier (IDFA). If you decline, the app works exactly the same and ads become non-personalised.</li>
+  <li><strong>Tracking (ATT)</strong> (VisaTrip, Paellator, Ferrata and Axolo on iOS): Apple requires us to ask for your permission before using the device advertising identifier (IDFA). If you decline, the app works exactly the same and ads become non-personalised.</li>
 </ul>
 
 <h3>3.7 In-app purchases <span class="no">(Ferrata only)</span></h3>
@@ -519,6 +526,7 @@ footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; colo
     <tr><td>Apple Inc.</td><td>App Store (distribution of the iOS apps and, in Ferrata, payment for purchases) and Apple Maps <span class="no">(Ferrata on iOS)</span></td><td><a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Privacy Policy</a></td></tr>
     <tr><td>Open-Meteo</td><td>Weather forecast <span class="no">(VisaTrip and Ferrata)</span></td><td><a href="https://open-meteo.com/en/terms" target="_blank" rel="noopener">Terms</a></td></tr>
     <tr><td>jsDelivr</td><td>Exchange rates <span class="no">(VisaTrip)</span></td><td><a href="https://www.jsdelivr.com/terms/privacy-policy-jsdelivr-net" target="_blank" rel="noopener">Privacy policy</a></td></tr>
+    <tr><td>GitHub (GitHub Pages)</td><td>Catalogue of curious facts <span class="no">(Axolo)</span></td><td><a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">Privacy policy</a></td></tr>
     <tr><td>Nager.Date</td><td>Public holidays <span class="no">(VisaTrip)</span></td><td><a href="https://date.nager.at/" target="_blank" rel="noopener">Website</a></td></tr>
     <tr><td>RevenueCat, Inc.</td><td>Subscription and purchase management <span class="no">(Ferrata)</span></td><td><a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">Privacy policy</a></td></tr>
     <tr><td>IONOS SE</td><td>Hosting of our own server <span class="no">(Ferrata)</span></td><td><a href="https://www.ionos.com/terms-gtc/privacy-policy/" target="_blank" rel="noopener">Privacy policy</a></td></tr>
