@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Axolo · Un dato curioso al día</title>
+<meta name="description" content="Axolo te guarda un dato curioso verificado cada día, sellado hasta que lo descubres tú. Racha, álbum de pegatinas y widgets. Gratis, en español, inglés y catalán.">
+<meta property="og:title" content="Axolo · Un dato curioso al día">
+<meta property="og:description" content="Un dato curioso verificado cada día, con su fuente. Racha, pegatinas y widgets.">
+<meta property="og:image" content="https://guillempejo.github.io/axolo/icon.png">
+<link rel="icon" href="icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Figtree:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f4ff;--surface:#fff;--ink:#1a1530;--muted:#5d5878;--line:#e2defa;--brand:#5b4bff;--brand-deep:#3a2bc4;--on-brand:#fff;--warm:#ff7a1a;--ok:#10b981;--blob1:#c9c2ff;--blob2:#ffd2ad;--blob3:#b8f0de;--shadow:#1a153022}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#110f1f;--surface:#1d1a33;--ink:#f4f2ff;--muted:#aaa5c9;--line:#2e2a4a;--brand:#8d82ff;--brand-deep:#5b4bff;--on-brand:#110f1f;--blob1:#3a2fa8;--blob2:#7a3a0e;--blob3:#0b5a47;--shadow:#0008;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#110f1f;--surface:#1d1a33;--ink:#f4f2ff;--muted:#aaa5c9;--line:#2e2a4a;--brand:#8d82ff;--brand-deep:#5b4bff;--on-brand:#110f1f;--blob1:#3a2fa8;--blob2:#7a3a0e;--blob3:#0b5a47;--shadow:#0008;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 Figtree,system-ui,sans-serif;overflow-x:hidden}
+h1,h2,h3{font-family:"Bricolage Grotesque",Figtree,system-ui,sans-serif;line-height:1.08;text-wrap:balance;margin:0}
+a{color:var(--brand)}
+:focus-visible{outline:3px solid var(--brand);outline-offset:3px;border-radius:10px}
+.wrap{width:min(1080px,100% - 32px);margin-inline:auto;position:relative}
+
+/* fondo animado */
+.blobs{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.blobs i{position:absolute;border-radius:50%;filter:blur(70px);opacity:.75;animation:drift 18s ease-in-out infinite alternate}
+.blobs i:nth-child(1){width:520px;height:520px;background:var(--blob1);top:-120px;left:-120px}
+.blobs i:nth-child(2){width:440px;height:440px;background:var(--blob2);top:30%;right:-140px;animation-delay:-6s}
+.blobs i:nth-child(3){width:480px;height:480px;background:var(--blob3);bottom:-160px;left:25%;animation-delay:-12s}
+@keyframes drift{to{transform:translate(60px,40px) scale(1.15)}}
+
+header{display:flex;align-items:center;justify-content:space-between;padding-block:18px;gap:12px}
+.logo{display:flex;align-items:center;gap:10px;font:800 22px "Bricolage Grotesque",sans-serif;color:var(--ink);text-decoration:none}
+.logo img{width:40px;height:40px;border-radius:12px}
+.lang{display:inline-flex;border:2px solid var(--line);border-radius:999px;padding:3px;background:var(--surface)}
+.lang button{border:0;background:none;color:var(--muted);font:700 14px Figtree,sans-serif;min-height:40px;min-width:48px;border-radius:999px;cursor:pointer;transition:background .2s,color .2s}
+.lang button[aria-pressed="true"]{background:var(--brand);color:var(--on-brand)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:36px;align-items:center;padding-block:28px 72px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font:800 13px Figtree,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--warm);background:var(--surface);border:2px solid var(--line);border-radius:999px;padding:5px 14px}
+.eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--warm);animation:ping 1.6s ease-out infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 #ff7a1a88}100%{box-shadow:0 0 0 10px #ff7a1a00}}
+h1{font-size:clamp(42px,6.4vw,76px);font-weight:800;margin-block:18px 20px;letter-spacing:-.02em}
+h1 em{font-style:normal;background:linear-gradient(100deg,var(--brand),var(--warm));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:19px;color:var(--muted);max-width:33em;margin:0 0 28px}
+.stores{display:flex;gap:12px;flex-wrap:wrap}
+.badge{display:inline-flex;align-items:center;gap:12px;min-height:58px;padding:8px 22px 8px 16px;border-radius:14px;background:#0b0b10;color:#fff;border:1.5px solid #4a4a58;text-decoration:none;transition:transform .2s;position:relative}
+.badge:hover{transform:translateY(-3px)}
+span.badge{cursor:default;opacity:.8}
+span.badge:hover{transform:none}
+.badge svg{width:30px;height:30px;flex:none}
+.badge span{display:flex;flex-direction:column;line-height:1.15;font-weight:700;font-size:20px}
+.badge small{font-size:11px;font-weight:600;opacity:.85;letter-spacing:.02em}
+.badge .soon{position:absolute;top:-10px;right:-8px;background:var(--warm);color:#1a1530;font:800 11px Figtree,sans-serif;border-radius:999px;padding:2px 9px;letter-spacing:.04em;text-transform:uppercase}
+.chips{display:flex;gap:10px 16px;flex-wrap:wrap;margin-top:26px;color:var(--muted);font-weight:600;font-size:15px}
+.chips b{color:var(--ink)}
+
+/* móvil con la tarjeta */
+.stage{display:grid;place-items:center;position:relative}
+.phone{width:min(330px,100%);aspect-ratio:9/18.5;border-radius:44px;background:var(--surface);border:10px solid #14111f;box-shadow:0 30px 60px var(--shadow),0 0 0 2px var(--line);position:relative;padding:18px 16px;display:flex;flex-direction:column;gap:12px;animation:float 6s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-12px) rotate(.6deg)}}
+.phone::before{content:"";position:absolute;top:8px;left:50%;width:84px;height:22px;border-radius:99px;background:#14111f;transform:translateX(-50%)}
+.top{display:flex;align-items:center;justify-content:space-between;margin-top:22px}
+.top b{font:800 15px "Bricolage Grotesque",sans-serif}
+.streak{display:inline-flex;align-items:center;gap:5px;font-weight:800;background:#ff7a1a22;color:var(--warm);border-radius:999px;padding:3px 11px;font-size:14px}
+.streak span{display:inline-block;min-width:1ch;font-variant-numeric:tabular-nums}
+.card-demo{perspective:1100px;flex:1;display:flex}
+.sealed{width:100%;border:0;border-radius:26px;padding:0;cursor:pointer;position:relative;transform-style:preserve-3d;transition:transform .8s cubic-bezier(.3,1.5,.5,1);background:none;font:inherit;color:inherit;text-align:left}
+.sealed[aria-pressed="true"]{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;border-radius:26px;padding:20px;backface-visibility:hidden;display:flex;flex-direction:column;justify-content:center;box-shadow:0 8px 0 var(--edge)}
+.front{background:var(--warm);--edge:#b85200;color:#1a1530;align-items:center;text-align:center;gap:14px}
+.front img{width:96px;border-radius:24px;animation:pulse 1.8s ease-in-out infinite}
+.front b{font:800 21px "Bricolage Grotesque",sans-serif}
+.front small{font-weight:700;opacity:.75}
+.back{background:var(--surface);--edge:var(--line);transform:rotateY(180deg);gap:10px;border:2px solid var(--line)}
+.chip{align-self:flex-start;background:#9c4a2f;color:#fff;border-radius:999px;padding:2px 12px;font:800 11px Figtree,sans-serif;letter-spacing:.08em;text-transform:uppercase}
+.back h3{font-size:20px;font-weight:800}
+.back p{margin:0;color:var(--muted);font-size:14px;line-height:1.5}
+.back .src{font-size:12px}
+@keyframes pulse{50%{transform:scale(1.08)}}
+.pop{position:absolute;pointer-events:none;width:12px;height:12px;border-radius:3px;z-index:5}
+.sticker{position:absolute;width:64px;height:64px;border-radius:20px;display:grid;place-items:center;font-size:30px;box-shadow:0 6px 0 #0003;animation:bob 5s ease-in-out infinite;z-index:2}
+.sticker.s1{left:-6%;top:12%;background:#5b4bff}.sticker.s2{right:-4%;top:42%;background:#2f9e44;animation-delay:-2s}.sticker.s3{left:-2%;bottom:10%;background:#f43f6b;animation-delay:-3.5s}
+@keyframes bob{50%{transform:translateY(-14px) rotate(8deg)}}
+
+/* cinta de temas */
+.marquee{overflow:hidden;padding-block:8px;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.track{display:flex;gap:12px;width:max-content;animation:scroll 55s linear infinite}
+.marquee:hover .track{animation-play-state:paused}
+@keyframes scroll{to{transform:translateX(-50%)}}
+.tag{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:9px 18px;font-weight:800;font-size:15px;white-space:nowrap;color:#fff;box-shadow:0 4px 0 #0003}
+
+section{padding-block:68px}
+h2{font-size:clamp(30px,4.2vw,48px);font-weight:800;margin-bottom:12px;letter-spacing:-.01em}
+.sub{color:var(--muted);max-width:36em;margin:0 0 34px;font-size:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.feat{background:var(--surface);border:2px solid var(--line);border-radius:28px;padding:26px;transition:transform .25s,box-shadow .25s}
+.feat:hover{transform:translateY(-6px);box-shadow:0 18px 30px var(--shadow)}
+.feat .n{display:inline-grid;place-items:center;width:48px;height:48px;border-radius:16px;background:var(--brand);color:var(--on-brand);font:800 22px "Bricolage Grotesque",sans-serif;margin-bottom:16px;box-shadow:0 5px 0 var(--brand-deep)}
+.feat h3{font-size:23px;margin-bottom:8px}
+.feat p{margin:0;color:var(--muted);font-size:16px}
+
+/* racha */
+.streak-sec{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center}
+.week{background:var(--surface);border:2px solid var(--line);border-radius:30px;padding:28px;display:grid;gap:18px;justify-items:center}
+.days{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.day{width:46px;height:46px;border-radius:15px;background:var(--bg);border:2px solid var(--line);display:grid;place-items:center;font-weight:800;color:var(--muted);transition:all .35s cubic-bezier(.3,1.6,.5,1)}
+.day.on{background:var(--warm);border-color:var(--warm);color:#1a1530;transform:scale(1.12) rotate(-4deg);box-shadow:0 5px 0 #b85200}
+.flame{font:800 54px "Bricolage Grotesque",sans-serif;display:flex;align-items:center;gap:10px;font-variant-numeric:tabular-nums}
+.flame span:first-child{display:inline-block;animation:flick 1.2s ease-in-out infinite}
+@keyframes flick{50%{transform:scale(1.15) rotate(-6deg)}}
+
+.trust{background:linear-gradient(135deg,var(--brand-deep),#6a3df0);color:#fff;border-radius:36px;padding:clamp(28px,5vw,56px);display:grid;gap:14px;position:relative;overflow:hidden}
+.trust::after{content:"";position:absolute;width:300px;height:300px;border-radius:50%;background:#ffffff14;right:-80px;top:-90px}
+.trust h2{margin:0;color:#fff}.trust p{margin:0;max-width:40em;color:#e9e6ff}
+.cta{text-align:center}
+.cta .stores{justify-content:center}
+footer{border-top:2px solid var(--line);padding-block:32px;color:var(--muted);font-size:15px;display:flex;gap:16px 28px;flex-wrap:wrap;justify-content:space-between}
+footer a{color:var(--muted)}
+
+/* aparición al hacer scroll: solo se oculta si hay JS y se respeta reduced-motion */
+.js .rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+.js .rv.in{opacity:1;transform:none}
+@media (max-width:860px){.hero,.streak-sec{grid-template-columns:1fr}.hero{padding-block:12px 48px;gap:44px}.phone{max-height:560px}.sticker{display:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.js .rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="blobs" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="wrap">
+<header>
+  <a class="logo" href="#"><img src="icon.png" alt="" width="40" height="40">Axolo</a>
+  <div class="lang" role="group" aria-label="Idioma / Language">
+    <button type="button" data-l="es" aria-pressed="true">ES</button>
+    <button type="button" data-l="en" aria-pressed="false">EN</button>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div>
+    <span class="eyebrow" data-es="Un dato curioso al día" data-en="One fun fact a day">Un dato curioso al día</span>
+    <h1><span data-es="Cada mañana, " data-en="Every morning, ">Cada mañana, </span><em data-es="algo que no sabías." data-en="something you didn't know.">algo que no sabías.</em></h1>
+    <p class="lead" data-es="Axolo te guarda un dato curioso, verificado y con su fuente, sellado hasta que lo descubres tú. Suma días a tu racha, colecciona pegatinas y llévalo en tu pantalla de inicio." data-en="Axolo keeps a verified fun fact, with its source, sealed until you reveal it. Grow your streak, collect stickers and keep it on your home screen.">Axolo te guarda un dato curioso, verificado y con su fuente, sellado hasta que lo descubres tú. Suma días a tu racha, colecciona pegatinas y llévalo en tu pantalla de inicio.</p>
+    <div class="stores"><span class="badge" aria-disabled="true" aria-label="App Store"><svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M16.37 1.43c0 1.14-.46 2.22-1.2 3-.8.84-2.1 1.49-3.15 1.4-.13-1.1.42-2.25 1.15-2.99.82-.85 2.2-1.46 3.2-1.41zM20.5 17.1c-.55 1.27-.81 1.84-1.52 2.96-.99 1.57-2.39 3.52-4.12 3.54-1.54.02-1.94-1-4.03-.99-2.09.01-2.53 1.01-4.07.99-1.73-.02-3.05-1.78-4.04-3.35C-.14 15.6-.43 10.5 1.28 7.87c1.2-1.86 3.1-2.95 4.88-2.95 1.81 0 2.95 1 4.45 1 1.45 0 2.34-1 4.44-1 1.58 0 3.26.86 4.46 2.35-3.92 2.15-3.28 7.75.99 9.83z"/></svg><span><small data-es="Descárgala en el" data-en="Download on the">Descárgala en el</small>App Store</span><em class="soon" style="font-style:normal">Próximamente</em></span><a class="badge" href="https://play.google.com/store/apps/details?id=com.tacoly.axolo&amp;referrer=utm_source%3Dlanding%26utm_medium%3Dbio" aria-label="Google Play"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#00d4ff" d="M3.6 1.5c-.3.3-.5.8-.5 1.4v18.2c0 .6.2 1.1.5 1.4l.1.1L14 12.3v-.2L3.7 1.4z"/><path fill="#ffce00" d="M17.4 15.7l-3.4-3.4v-.2l3.4-3.4.1.1 4 2.3c1.1.6 1.1 1.7 0 2.3l-4 2.3z"/><path fill="#f43f5e" d="M17.5 15.6L14 12.2 3.6 22.5c.4.4 1 .4 1.7.1l12.2-7z"/><path fill="#00e676" d="M17.5 8.8L5.3 1.9c-.7-.4-1.3-.3-1.7.1L14 12.2z"/></svg><span><small data-es="Disponible en" data-en="Get it on">Disponible en</small>Google Play</span></a></div>
+    <div class="chips"><span><b>19</b> <span data-es="temas" data-en="topics">temas</span></span><span>·</span><span data-es="Español, inglés y catalán" data-en="Spanish, English &amp; Catalan">Español, inglés y catalán</span><span>·</span><span data-es="Gratis" data-en="Free">Gratis</span></div>
+  </div>
+  <div class="stage">
+    <div class="sticker s1" aria-hidden="true">🚀</div><div class="sticker s2" aria-hidden="true">🌿</div><div class="sticker s3" aria-hidden="true">🧠</div>
+    <div class="phone">
+      <div class="top"><b>Axolo</b><span class="streak">🔥 <span id="phoneStreak">6</span></span></div>
+      <div class="card-demo">
+        <button class="sealed" id="card" type="button" aria-pressed="false" aria-label="Descubrir el dato">
+          <span class="face front"><img src="icon.png" alt="" width="96" height="96"><b data-es="Toca para descubrir" data-en="Tap to reveal">Toca para descubrir</b><small data-es="Tu dato de hoy" data-en="Today's fact">Tu dato de hoy</small></span>
+          <span class="face back" aria-live="polite">
+            <span class="chip" data-es="Mundo antiguo" data-en="Ancient world">Mundo antiguo</span>
+            <h3 id="hook"></h3>
+            <p id="body"></p>
+            <span class="src"></span>
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+
+<div class="marquee" aria-hidden="true"><div class="track" id="track"></div></div>
+
+<main>
+<section aria-labelledby="h-how" class="rv">
+  <h2 id="h-how" data-es="Un ritual de un minuto al día" data-en="A one-minute daily ritual">Un ritual de un minuto al día</h2>
+  <p class="sub" data-es="Sin cuentas, sin scroll infinito. Un dato, bien contado." data-en="No accounts, no endless scroll. One fact, well told.">Sin cuentas, sin scroll infinito. Un dato, bien contado.</p>
+  <div class="grid">
+    <div class="feat rv"><div class="n">1</div><h3 data-es="Elige tus temas" data-en="Pick your topics">Elige tus temas</h3><p data-es="Espacio, animales, historia, el mundo hispano, inventos, comida, mitos… Cada día, uno distinto." data-en="Space, animals, history, inventions, food, myths… A different one every day.">Espacio, animales, historia, el mundo hispano, inventos, comida, mitos… Cada día, uno distinto.</p></div>
+    <div class="feat rv"><div class="n">2</div><h3 data-es="Descubre el dato" data-en="Reveal the fact">Descubre el dato</h3><p data-es="Llega sellado a la hora que elijas. Lo abres, lo lees y sumas un día a tu racha." data-en="It arrives sealed at the time you choose. Open it, read it and add a day to your streak.">Llega sellado a la hora que elijas. Lo abres, lo lees y sumas un día a tu racha.</p></div>
+    <div class="feat rv"><div class="n">3</div><h3 data-es="Colecciona y comparte" data-en="Collect and share">Colecciona y comparte</h3><p data-es="Cada dato es una pegatina de tu álbum, y Axolo estrena accesorios. Compártelo en una tarjeta bonita." data-en="Every fact is a sticker in your album and Axolo unlocks outfits. Share it as a beautiful card.">Cada dato es una pegatina de tu álbum, y Axolo estrena accesorios. Compártelo en una tarjeta bonita.</p></div>
+  </div>
+</section>
+
+<section class="streak-sec rv" aria-labelledby="h-streak">
+  <div>
+    <h2 id="h-streak" data-es="Tu racha, tu ritual" data-en="Your streak, your ritual">Tu racha, tu ritual</h2>
+    <p class="sub" data-es="Un día tras otro, Axolo lo celebra contigo. ¿Se te pasó uno? Puedes salvar tu racha." data-en="Day after day, Axolo celebrates with you. Missed one? You can save your streak.">Un día tras otro, Axolo lo celebra contigo. ¿Se te pasó uno? Puedes salvar tu racha.</p>
+  </div>
+  <div class="week" id="week" role="img" aria-label="Racha de 7 días">
+    <div class="flame"><span>🔥</span><span id="flameN">0</span></div>
+    <div class="days"><i class="day">L</i><i class="day">M</i><i class="day">X</i><i class="day">J</i><i class="day">V</i><i class="day">S</i><i class="day">D</i></div>
+  </div>
+</section>
+
+<section class="rv">
+  <div class="trust">
+    <h2 data-es="Datos que puedes creerte" data-en="Facts you can trust">Datos que puedes creerte</h2>
+    <p data-es="Cada dato sale de una fuente que puedes consultar desde la app y se revisa a mano antes de publicarse, en español y en inglés. Nada de datos inventados." data-en="Every fact comes from a source you can open in the app and is reviewed by hand before it goes live, in Spanish and English. No made-up trivia.">Cada dato sale de una fuente que puedes consultar desde la app y se revisa a mano antes de publicarse, en español y en inglés. Nada de datos inventados.</p>
+  </div>
+</section>
+
+<section class="cta rv">
+  <h2 data-es="Empieza tu racha mañana" data-en="Start your streak tomorrow">Empieza tu racha mañana</h2>
+  <p class="sub" style="margin-inline:auto" data-es="Gratis, en tu móvil, en un minuto." data-en="Free, on your phone, in a minute.">Gratis, en tu móvil, en un minuto.</p>
+  <div class="stores"><span class="badge" aria-disabled="true" aria-label="App Store"><svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M16.37 1.43c0 1.14-.46 2.22-1.2 3-.8.84-2.1 1.49-3.15 1.4-.13-1.1.42-2.25 1.15-2.99.82-.85 2.2-1.46 3.2-1.41zM20.5 17.1c-.55 1.27-.81 1.84-1.52 2.96-.99 1.57-2.39 3.52-4.12 3.54-1.54.02-1.94-1-4.03-.99-2.09.01-2.53 1.01-4.07.99-1.73-.02-3.05-1.78-4.04-3.35C-.14 15.6-.43 10.5 1.28 7.87c1.2-1.86 3.1-2.95 4.88-2.95 1.81 0 2.95 1 4.45 1 1.45 0 2.34-1 4.44-1 1.58 0 3.26.86 4.46 2.35-3.92 2.15-3.28 7.75.99 9.83z"/></svg><span><small data-es="Descárgala en el" data-en="Download on the">Descárgala en el</small>App Store</span><em class="soon" style="font-style:normal">Próximamente</em></span><a class="badge" href="https://play.google.com/store/apps/details?id=com.tacoly.axolo&amp;referrer=utm_source%3Dlanding%26utm_medium%3Dbio" aria-label="Google Play"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#00d4ff" d="M3.6 1.5c-.3.3-.5.8-.5 1.4v18.2c0 .6.2 1.1.5 1.4l.1.1L14 12.3v-.2L3.7 1.4z"/><path fill="#ffce00" d="M17.4 15.7l-3.4-3.4v-.2l3.4-3.4.1.1 4 2.3c1.1.6 1.1 1.7 0 2.3l-4 2.3z"/><path fill="#f43f5e" d="M17.5 15.6L14 12.2 3.6 22.5c.4.4 1 .4 1.7.1l12.2-7z"/><path fill="#00e676" d="M17.5 8.8L5.3 1.9c-.7-.4-1.3-.3-1.7.1L14 12.2z"/></svg><span><small data-es="Disponible en" data-en="Get it on">Disponible en</small>Google Play</span></a></div>
+</section>
+</main>
+
+<footer>
+  <span>© Tacoly · <span data-es="Gratis, con anuncios" data-en="Free, with ads">Gratis, con anuncios</span></span>
+  <span><a href="https://guillempejo.github.io/apps-privacy/" data-es="Privacidad" data-en="Privacy">Privacidad</a> · <a href="mailto:tacolyapps@gmail.com" data-es="Contacto" data-en="Contact">Contacto</a></span>
+</footer>
+</div>
+
+<script>
+(function(){
+  var TOPICS=[{"c": "#5B4BFF", "d": "#fff", "es": "Espacio", "en": "Space"}, {"c": "#FF7A1A", "d": "#1a1530", "es": "Animales", "en": "Animals"}, {"c": "#F43F6B", "d": "#1a1530", "es": "Cuerpo humano", "en": "Human body"}, {"c": "#14B8A6", "d": "#1a1530", "es": "Mente", "en": "Mind"}, {"c": "#B7791F", "d": "#1a1530", "es": "Historia", "en": "History"}, {"c": "#9C4A2F", "d": "#fff", "es": "Mundo antiguo", "en": "Ancient world"}, {"c": "#2563EB", "d": "#fff", "es": "Países y lugares", "en": "Places"}, {"c": "#06AED4", "d": "#1a1530", "es": "Océanos", "en": "Oceans"}, {"c": "#2F9E44", "d": "#1a1530", "es": "Plantas", "en": "Plants"}, {"c": "#10B981", "d": "#1a1530", "es": "Ciencia", "en": "Science"}, {"c": "#4F7CAC", "d": "#fff", "es": "Inventos", "en": "Inventions"}, {"c": "#8B5CF6", "d": "#fff", "es": "Palabras", "en": "Words"}, {"c": "#E83FB8", "d": "#1a1530", "es": "Arte", "en": "Art"}, {"c": "#C026D3", "d": "#fff", "es": "Cine y series", "en": "Film & TV"}, {"c": "#F59E0B", "d": "#1a1530", "es": "Comida", "en": "Food"}, {"c": "#84CC16", "d": "#1a1530", "es": "Deportes", "en": "Sports"}, {"c": "#FACC15", "d": "#1a1530", "es": "Récords", "en": "Records"}, {"c": "#DC2626", "d": "#fff", "es": "Mundo hispano", "en": "Hispanic world"}, {"c": "#0EA5E9", "d": "#1a1530", "es": "Mitos desmentidos", "en": "Myths busted"}];
+  var T={
+    es:{label:'Descubrir el dato',hook:'La piedra de Rosetta parecía negra por la cera que la protegía',body:'En Londres se cubrió con cera de carnaúba para protegerla de los dedos de los visitantes. Oscureció la piedra y se la tomó por basalto negro; la limpieza de 1999 reveló su gris oscuro original.',src:'Wikipedia · Piedra de Rosetta',week:'Racha de 7 días',soon:'Próximamente'},
+    en:{label:'Reveal the fact',hook:'The Rosetta Stone looked black because of the wax that protected it',body:'In London it was covered in carnauba wax to protect it from visitors\' fingers. The wax darkened the stone and it was mistaken for black basalt; a 1999 cleaning revealed its original dark grey.',src:'Wikipedia · Rosetta Stone',week:'7-day streak',soon:'Coming soon'}
+  };
+  var card=document.getElementById('card'),lang='es';
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var static_=location.hash==='#static';
+
+  /* cinta de temas (doble para el bucle) */
+  var tr=document.getElementById('track');
+  function tags(){tr.innerHTML='';for(var k=0;k<2;k++)TOPICS.forEach(function(t){var s=document.createElement('span');s.className='tag';s.style.background=t.c;s.style.color=t.d;s.textContent=t[lang];tr.appendChild(s)})}
+
+  function setLang(l){
+    lang=l;document.documentElement.lang=l;
+    document.querySelectorAll('[data-'+l+']').forEach(function(e){e.textContent=e.getAttribute('data-'+l)});
+    document.querySelectorAll('.lang button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.l===l)});
+    document.getElementById('hook').textContent=T[l].hook;
+    document.getElementById('body').textContent=T[l].body;
+    document.querySelector('.back .src').textContent=T[l].src;
+    document.querySelectorAll('.soon').forEach(function(e){e.textContent=T[l].soon});
+    document.getElementById('week').setAttribute('aria-label',T[l].week);
+    card.setAttribute('aria-label',T[l].label);
+    document.title=l==='es'?'Axolo · Un dato curioso al día':'Axolo · One fun fact a day';
+    tags();
+    try{localStorage.setItem('axolo-lang',l)}catch(e){}
+  }
+  document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.l)})});
+
+  /* confeti al destapar */
+  function confetti(){
+    if(reduce)return;
+    var r=card.getBoundingClientRect(),cols=['#ff7a1a','#5b4bff','#10b981','#f43f6b','#facc15'];
+    for(var i=0;i<26;i++){
+      var p=document.createElement('i');p.className='pop';p.style.background=cols[i%5];
+      p.style.left=(r.left+r.width/2+scrollX)+'px';p.style.top=(r.top+r.height/2+scrollY)+'px';p.style.position='absolute';
+      document.body.appendChild(p);
+      var a=Math.random()*Math.PI*2,d=90+Math.random()*130;
+      p.animate([{transform:'translate(0,0) rotate(0)',opacity:1},{transform:'translate('+Math.cos(a)*d+'px,'+(Math.sin(a)*d+80)+'px) rotate('+(Math.random()*540)+'deg)',opacity:0}],{duration:900+Math.random()*500,easing:'cubic-bezier(.2,.8,.3,1)'}).onfinish=(function(el){return function(){el.remove()}})(p);
+    }
+  }
+  card.addEventListener('click',function(){
+    var on=card.getAttribute('aria-pressed')!=='true';
+    card.setAttribute('aria-pressed',on);
+    if(on){setTimeout(confetti,380);var s=document.getElementById('phoneStreak');s.textContent=7}
+    else document.getElementById('phoneStreak').textContent=6;
+  });
+
+  /* aparición al hacer scroll + racha que se llena */
+  function fillWeek(){
+    var days=document.querySelectorAll('.day'),n=document.getElementById('flameN'),i=0;
+    if(reduce||static_){days.forEach(function(d){d.classList.add('on')});n.textContent=7;return}
+    (function step(){if(i>=7)return;days[i].classList.add('on');i++;n.textContent=i;setTimeout(step,260)})();
+  }
+  if(!static_&&!reduce&&'IntersectionObserver' in window){
+    document.documentElement.classList.add('js');
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);if(e.target.id==='h-streak'||e.target.classList.contains('streak-sec'))fillWeek()}
+    })},{threshold:.18});
+    document.querySelectorAll('.rv').forEach(function(el,i){el.style.transitionDelay=(el.classList.contains('feat')?(i%3)*.1:0)+'s';io.observe(el)});
+  }else{fillWeek()}
+
+  // ?src=tiktok|instagram|youtube (enlace de cada perfil) → utm_source en Google Play: la Play Console dice de qué red viene cada descarga.
+  // ?lang=es|en fuerza el idioma (perfiles en inglés).
+  var q=new URLSearchParams(location.search),src=(q.get('src')||'').replace(/[^a-z0-9_-]/gi,'').slice(0,30);
+  if(src){document.querySelectorAll('a.badge[aria-label="Google Play"]').forEach(function(a){a.href=a.href.replace('utm_source%3Dlanding','utm_source%3D'+src)})}
+  var l='en';try{l=q.get('lang')||localStorage.getItem('axolo-lang')||(navigator.language||'en').slice(0,2)}catch(e){}
+  // Inglés por defecto; español si el navegador está en español, catalán, gallego o euskera (misma regla que la app).
+  setLang(['es','ca','gl','eu'].indexOf(l)>=0?'es':'en');
+})();
+</script>
+</body>
+</html>
