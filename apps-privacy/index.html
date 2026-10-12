@@ -102,7 +102,7 @@ footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; colo
 
 <h1>Política de Privacidad de las Aplicaciones</h1>
 <p class="lead">Aplicable a todas las aplicaciones móviles publicadas por Guillem Pejó (Tacoly): Android en Google Play e iOS en la App Store.</p>
-<p class="updated">Última actualización: 3 de octubre de 2026 · Versión 1.7</p>
+<p class="updated">Última actualización: 12 de octubre de 2026 · Versión 1.8</p>
 
 <div class="toc">
   <p>Contenido</p>
@@ -157,15 +157,17 @@ footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; colo
     <tr><td>Axolo: un dato curioso al día <span class="no">(Android e iOS)</span></td><td><code>com.tacoly.axolo</code><br><code>com.tacoly.axolo.ios</code></td><td class="c no">No</td><td class="c yes">Sí</td><td class="c yes">Sí</td><td class="c yes">Sí</td></tr>
     <tr><td>Ferrata <span class="no">(Android e iOS)</span></td><td><code>com.tacoly.ferrata</code><br><code>com.tacoly.ferrata.ios</code></td><td class="c yes">Sí</td><td class="c no">No</td><td class="c yes">Sí</td><td class="c yes">Sí</td></tr>
     <tr><td>Decamping</td><td><code>com.tacoly.decamping</code></td><td class="c yes">Sí</td><td class="c yes">Sí</td><td class="c yes">Sí</td><td class="c yes">Sí</td></tr>
+    <tr><td>OverlandKit <span class="no">(Android e iOS)</span></td><td><code>com.tacoly.overlandkit</code><br><code>com.tacoly.overlandkit.ios</code></td><td class="c yes">Sí</td><td class="c yes">Sí</td><td class="c no">No</td><td class="c yes">Solo errores</td></tr>
   </tbody>
 </table>
 </div>
 <p><strong>Ferrata</strong> se describe aquí en su versión 2.0 y posteriores, y funciona igual en Android e iOS: <strong>con publicidad en la versión gratuita y sin anuncios con Ferrata Pro</strong>. Ferrata es además la única aplicación de la tabla que ofrece <strong>compras dentro de la aplicación</strong> (Ferrata Pro, ver 3.7) y la única que utiliza un <strong>servidor propio</strong> (ver 3.5).</p>
+<p><strong>OverlandKit</strong> no muestra publicidad ni usa analítica de uso: solo envía informes de fallos (ver 3.2).</p>
 
 <h2 id="es-3">3. Datos que tratamos</h2>
 <p><strong>Ninguna de nuestras aplicaciones requiere registro ni cuenta de usuario.</strong> No te pedimos nombre, dirección de correo electrónico ni número de teléfono, y no disponemos de ningún sistema de acceso o identificación. Algunas funciones opcionales de Ferrata te permiten guardar en tu dispositivo un nombre visible o un contacto de emergencia; esos datos no se envían a nuestros servidores (ver 3.6 y sección 6).</p>
 
-<h3>3.1 Datos de publicidad <span class="no">(todas las aplicaciones)</span></h3>
+<h3>3.1 Datos de publicidad <span class="no">(todas salvo OverlandKit)</span></h3>
 <p>Mostramos anuncios a través de <strong>Google AdMob</strong> para poder ofrecer las aplicaciones de forma gratuita. Para ello, Google puede tratar:</p>
 <ul>
   <li>El <strong>identificador de publicidad de Android</strong> (Advertising ID), que puedes restablecer o eliminar en cualquier momento.</li>
@@ -185,13 +187,15 @@ footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; colo
   <li>Modelo de dispositivo, versión del sistema operativo, versión de la aplicación, país e idioma.</li>
   <li>Informes de fallos: registro de la incidencia, estado del dispositivo en ese momento y traza del error.</li>
 </ul>
+<p>En <strong>OverlandKit</strong> solo se usa <strong>Firebase Crashlytics</strong> (informes de fallos): no hay analítica de uso ni eventos de pantallas.</p>
 <p><strong>Base jurídica:</strong> <em>interés legítimo</em> (art. 6.1.f RGPD) en garantizar el correcto funcionamiento y la estabilidad de las aplicaciones. Puedes oponerte a este tratamiento escribiéndonos.</p>
 
-<h3>3.3 Ubicación <span class="no">(solo Parques ×6, Refresca't, Decamping y Ferrata)</span></h3>
+<h3>3.3 Ubicación <span class="no">(solo Parques ×6, Refresca't, Decamping, Ferrata y OverlandKit)</span></h3>
 <p>Parques ×6, Refresca't y Decamping pueden solicitar acceso a tu <strong>ubicación aproximada y, en algunas, precisa</strong> con la única finalidad de calcular qué parques, piscinas o campings tienes más cerca y a qué distancia. En Decamping el acceso es únicamente a la <strong>ubicación aproximada</strong>.</p>
 <p><strong>Ferrata</strong> puede solicitar tu ubicación (en Android, aproximada o precisa; en iOS, solo <strong>mientras la aplicación está en uso</strong>) para mostrarte las vías más cercanas y su distancia, centrar el mapa en tu posición y mostrarla en el mapa de cada vía. En el <em>modo Seguridad</em> también la muestra en pantalla para que puedas comunicarla a los servicios de emergencia. Ferrata no accede a tu ubicación en segundo plano.</p>
+<p><strong>OverlandKit</strong> pide tu <strong>ubicación aproximada</strong>, solo mientras la usas, para calcular dónde salen y se ponen el sol y la luna, cómo aparcar y la previsión del tiempo de la noche. El sol y la luna se calculan en tu dispositivo; para el tiempo, la aplicación envía tu <strong>zona redondeada a unos 1 km</strong> (nunca tu posición exacta) a <strong>Open-Meteo</strong> y a <strong>MET Norway</strong>, sin ningún identificador tuyo. La <strong>ubicación precisa</strong> solo se pide, opcionalmente, en la herramienta Ruta para darte la altitud por GPS, y <strong>no sale de tu dispositivo</strong>. OverlandKit no accede a tu ubicación en segundo plano.</p>
 <div class="card">
-  <p><strong>Tu ubicación no sale de tu dispositivo.</strong> No la almacenamos en ningún servidor, no la asociamos a ningún identificador y no la compartimos con terceros. La única excepción son los dos casos de Ferrata descritos a continuación, que inicias tú.</p>
+  <p><strong>Tu ubicación no sale de tu dispositivo.</strong> No la almacenamos en ningún servidor, no la asociamos a ningún identificador y no la compartimos con terceros. Las únicas excepciones son los dos casos de Ferrata descritos a continuación, que inicias tú, y la previsión del tiempo de OverlandKit, que envía tu zona redondeada a unos 1 km (ver arriba).</p>
 </div>
 <p>En <strong>Ferrata</strong>, una ubicación solo puede salir de tu dispositivo en estos dos casos, y siempre mediante un gesto expreso tuyo:</p>
 <ul>
@@ -201,15 +205,17 @@ footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; colo
 <p>El permiso es <strong>totalmente opcional</strong>: se solicita en el momento en que intentas usar una función que lo necesita (en Ferrata, también puede solicitarse al final de la presentación inicial, con una explicación previa), y las aplicaciones son plenamente funcionales si lo deniegas. Puedes revocarlo cuando quieras en <em>Ajustes → Aplicaciones → [aplicación] → Permisos</em> (Android) o en <em>Ajustes → [aplicación] → Ubicación</em> (iOS).</p>
 <p><strong>Base jurídica:</strong> tu <em>consentimiento</em> (art. 6.1.a RGPD), otorgado mediante el diálogo de permisos del sistema (Android o iOS).</p>
 
-<h3>3.4 Notificaciones <span class="no">(solo Parques ×6, Paellator, Decamping y Axolo)</span></h3>
+<h3>3.4 Notificaciones <span class="no">(solo Parques ×6, Paellator, Decamping, Axolo y OverlandKit)</span></h3>
 <p><strong>Axolo</strong> puede enviarte, si lo activas, un aviso diario con el dato curioso del día a la hora que elijas. Es una notificación local, generada en tu dispositivo; puedes cambiar la hora o desactivarla en la propia aplicación.</p>
 <p>Parques ×6, Paellator y Decamping pueden enviarte notificaciones locales con contenido de interés (por ejemplo, el «parque del día», o un recordatorio para volver a planificar tu escapada). Se generan íntegramente en tu dispositivo y no implican el envío de datos personales a nuestros servidores.</p>
+<p><strong>OverlandKit</strong> puede avisarte, si lo activas, de que esta noche va a llover para que cierres claraboyas y ventanas. Es una notificación local, programada en tu dispositivo con la previsión ya descargada.</p>
 <p><strong>Ferrata</strong> no envía notificaciones.</p>
 <p><strong>Base jurídica:</strong> tu <em>consentimiento</em>, otorgado mediante el diálogo de permisos del sistema (Android o iOS). Puedes desactivarlas en cualquier momento desde los ajustes del sistema.</p>
 
 <h3>3.5 Contenido de las aplicaciones</h3>
 <p>En <strong>Refresca’t</strong>, la información de las piscinas y el envío de sugerencias usan <strong>Google Cloud Firestore</strong>. La descarga de contenido es de <strong>solo lectura</strong>; lo único que se escribe es el texto que tú envías voluntariamente como sugerencia.</p>
 <p><strong>Axolo</strong> lleva su catálogo de datos curiosos dentro de la aplicación y, para recibir datos nuevos sin actualizarla, descarga periódicamente la versión publicada desde <strong>GitHub Pages</strong> (GitHub, Inc.). La descarga no incluye ningún identificador tuyo; como en cualquier petición a Internet, GitHub recibe tu <strong>dirección IP</strong>. Tus temas, tu racha y tus reacciones se guardan solo en tu dispositivo.</p>
+<p><strong>OverlandKit</strong> calcula todo en tu dispositivo (nivel, inclinación, sol, luna y estrellas) y no tiene servidor propio. Solo se conecta a Internet para la previsión del tiempo, que pide a <strong>Open-Meteo</strong> y a <strong>MET Norway</strong> (Instituto Meteorológico de Noruega) con tu zona redondeada a unos 1 km (ver 3.3), y la guarda en tu dispositivo para verla sin conexión. No les envía ningún identificador tuyo; como en cualquier petición a Internet, reciben tu <strong>dirección IP</strong>. Tu vehículo, sus medidas y tus ajustes se guardan solo en tu dispositivo.</p>
 <p>En el <strong>resto de aplicaciones</strong> (Parques ×6, VisaTrip, Paellator y Decamping) el contenido principal viaja <strong>dentro de la propia aplicación</strong> y funciona sin conexión: no hay base de datos en la nube ni servidor propio.</p>
 <p><strong>VisaTrip</strong> consulta además estos servicios de terceros para datos que cambian, sin enviarles ningún identificador tuyo. Como en cualquier petición a Internet, reciben tu <strong>dirección IP</strong>:</p>
 <ul>
@@ -232,6 +238,7 @@ footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; colo
 <ul>
   <li><strong>Acceso a Internet y estado de la red</strong> (todas): imprescindible para descargar contenido y anuncios.</li>
   <li><strong>Vibración</strong> (Paellator): retorno háptico del temporizador de cocina. No trata datos personales.</li>
+  <li><strong>Sensores de movimiento y brújula</strong> (OverlandKit): el acelerómetro y la brújula del móvil sirven para nivelar el vehículo, medir la inclinación en marcha y orientar el cielo. Se leen en el momento y no salen del dispositivo; no requieren permiso.</li>
   <li><strong>Escritura en almacenamiento</strong> (VisaTrip, solo en versiones antiguas de Android): permite guardar documentos generados por la propia aplicación en tu dispositivo. El archivo no se envía a ningún servidor.</li>
   <li><strong>Añadir a Fotos</strong> (VisaTrip en iOS): permite guardar en tu carrete la imagen de tu mapa de viajes cuando pulsas «Guardar». Es un permiso de <em>solo escritura</em>: la aplicación no puede ver tus fotos.</li>
   <li><strong>Contactos</strong> (Ferrata): sirve para elegir tu contacto de emergencia en el modo Seguridad. La aplicación <strong>no lee tu agenda</strong>: abre el selector de contactos del propio sistema y solo recibe el nombre y el teléfono del contacto que tú elijas (también puedes teclearlos a mano), por lo que no hace falta conceder ningún permiso de acceso a la agenda. Ese contacto se guarda en tu dispositivo, no se envía a nuestros servidores y solo se usa para preparar el SMS de aviso que envías tú; al SMS va únicamente el teléfono, como destinatario.</li>
@@ -269,7 +276,8 @@ footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; colo
     <tr><td>Google Ireland Ltd. / Google LLC</td><td>Google Maps</td><td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Política de privacidad</a></td></tr>
     <tr><td>Google Ireland Ltd. / Google LLC</td><td>Google Play (distribución y, en Ferrata, cobro de las compras)</td><td><a href="https://play.google.com/about/play-terms/" target="_blank" rel="noopener">Condiciones de Google Play</a></td></tr>
     <tr><td>Apple Inc.</td><td>App Store (distribución de las aplicaciones iOS y, en Ferrata, cobro de las compras) y mapas de Apple <span class="no">(Ferrata en iOS)</span></td><td><a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Política de privacidad</a></td></tr>
-    <tr><td>Open-Meteo</td><td>Previsión meteorológica <span class="no">(VisaTrip y Ferrata)</span></td><td><a href="https://open-meteo.com/en/terms" target="_blank" rel="noopener">Condiciones</a></td></tr>
+    <tr><td>Open-Meteo</td><td>Previsión meteorológica <span class="no">(VisaTrip, Ferrata y OverlandKit)</span></td><td><a href="https://open-meteo.com/en/terms" target="_blank" rel="noopener">Condiciones</a></td></tr>
+    <tr><td>MET Norway (Instituto Meteorológico de Noruega)</td><td>Previsión meteorológica <span class="no">(OverlandKit)</span></td><td><a href="https://api.met.no/doc/TermsOfService" target="_blank" rel="noopener">Condiciones</a></td></tr>
     <tr><td>jsDelivr</td><td>Tipos de cambio <span class="no">(VisaTrip)</span></td><td><a href="https://www.jsdelivr.com/terms/privacy-policy-jsdelivr-net" target="_blank" rel="noopener">Política de privacidad</a></td></tr>
     <tr><td>GitHub (GitHub Pages)</td><td>Catálogo de datos curiosos <span class="no">(Axolo)</span></td><td><a href="https://docs.github.com/es/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">Política de privacidad</a></td></tr>
     <tr><td>Nager.Date</td><td>Días festivos <span class="no">(VisaTrip)</span></td><td><a href="https://date.nager.at/" target="_blank" rel="noopener">Sitio web</a></td></tr>
@@ -355,7 +363,7 @@ footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; colo
 
 <h1>Apps Privacy Policy</h1>
 <p class="lead">Applicable to all mobile applications published by Guillem Pejó (Tacoly): Android on Google Play and iOS on the App Store.</p>
-<p class="updated">Last updated: 3 October 2026 · Version 1.7</p>
+<p class="updated">Last updated: 12 October 2026 · Version 1.8</p>
 
 <div class="toc">
   <p>Contents</p>
@@ -410,15 +418,17 @@ footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; colo
     <tr><td>Axolo: one curious fact a day <span class="no">(Android and iOS)</span></td><td><code>com.tacoly.axolo</code><br><code>com.tacoly.axolo.ios</code></td><td class="c no">No</td><td class="c yes">Yes</td><td class="c yes">Yes</td><td class="c yes">Yes</td></tr>
     <tr><td>Ferrata <span class="no">(Android and iOS)</span></td><td><code>com.tacoly.ferrata</code><br><code>com.tacoly.ferrata.ios</code></td><td class="c yes">Yes</td><td class="c no">No</td><td class="c yes">Yes</td><td class="c yes">Yes</td></tr>
     <tr><td>Decamping</td><td><code>com.tacoly.decamping</code></td><td class="c yes">Yes</td><td class="c yes">Yes</td><td class="c yes">Yes</td><td class="c yes">Yes</td></tr>
+    <tr><td>OverlandKit <span class="no">(Android and iOS)</span></td><td><code>com.tacoly.overlandkit</code><br><code>com.tacoly.overlandkit.ios</code></td><td class="c yes">Yes</td><td class="c yes">Yes</td><td class="c no">No</td><td class="c yes">Crashes only</td></tr>
   </tbody>
 </table>
 </div>
 <p><strong>Ferrata</strong> is described here as of version 2.0 and later, and works the same on Android and iOS: <strong>with ads in the free version and no ads with Ferrata Pro</strong>. Ferrata is also the only application in the table that offers <strong>in-app purchases</strong> (Ferrata Pro, see 3.7) and the only one that uses a <strong>server of its own</strong> (see 3.5).</p>
+<p><strong>OverlandKit</strong> shows no ads and uses no usage analytics: it only sends crash reports (see 3.2).</p>
 
 <h2 id="en-3">3. Data we process</h2>
 <p><strong>None of our applications require registration or a user account.</strong> We do not ask for your name, email address or phone number, and there is no sign-in or identification system of any kind. Some optional Ferrata features let you save a display name or an emergency contact on your device; that data is not sent to our servers (see 3.6 and section 6).</p>
 
-<h3>3.1 Advertising data <span class="no">(all applications)</span></h3>
+<h3>3.1 Advertising data <span class="no">(all except OverlandKit)</span></h3>
 <p>We serve ads through <strong>Google AdMob</strong> so that the applications can be offered free of charge. For this purpose Google may process:</p>
 <ul>
   <li>The <strong>Android Advertising ID</strong>, which you can reset or delete at any time.</li>
@@ -438,13 +448,15 @@ footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; colo
   <li>Device model, OS version, app version, country and language.</li>
   <li>Crash reports: the incident log, device state at that moment and the stack trace.</li>
 </ul>
+<p>In <strong>OverlandKit</strong> only <strong>Firebase Crashlytics</strong> (crash reports) is used: there are no usage analytics or screen events.</p>
 <p><strong>Legal basis:</strong> <em>legitimate interest</em> (Art. 6(1)(f) GDPR) in ensuring the correct operation, stability and continuous improvement of the applications. You may object to this processing by contacting us.</p>
 
-<h3>3.3 Location <span class="no">(Parques ×6, Refresca't, Decamping and Ferrata only)</span></h3>
+<h3>3.3 Location <span class="no">(Parques ×6, Refresca't, Decamping, Ferrata and OverlandKit only)</span></h3>
 <p>Parques ×6, Refresca't and Decamping may request access to your <strong>approximate and, in some, precise location</strong> for the sole purpose of calculating which parks, swimming pools or campsites are nearest to you and at what distance. In Decamping the access is to <strong>approximate location only</strong>.</p>
 <p><strong>Ferrata</strong> may request your location (on Android, approximate or precise; on iOS, only <strong>while the app is in use</strong>) to show you the nearest routes and their distance, to centre the map on your position and to show it on each route's map. In <em>Safety mode</em> it also displays your position on screen so that you can pass it on to the emergency services. Ferrata does not access your location in the background.</p>
+<p><strong>OverlandKit</strong> asks for your <strong>approximate location</strong>, only while you use it, to work out where the sun and moon rise and set, how to park, and tonight's weather forecast. Sun and moon are calculated on your device; for the weather, the app sends your <strong>area rounded to about 1 km</strong> (never your exact position) to <strong>Open-Meteo</strong> and <strong>MET Norway</strong>, with no identifier of yours. <strong>Precise location</strong> is only requested, optionally, in the Trail tool to give you your GPS altitude, and it <strong>never leaves your device</strong>. OverlandKit does not access your location in the background.</p>
 <div class="card">
-  <p><strong>Your location never leaves your device.</strong> We do not store it on any server, we do not associate it with any identifier, and we do not share it with third parties. The only exceptions are the two Ferrata cases described below, which you start yourself.</p>
+  <p><strong>Your location never leaves your device.</strong> We do not store it on any server, we do not associate it with any identifier, and we do not share it with third parties. The only exceptions are the two Ferrata cases described below, which you start yourself, and OverlandKit's weather forecast, which sends your area rounded to about 1 km (see above).</p>
 </div>
 <p>In <strong>Ferrata</strong>, a location can only leave your device in these two cases, and always through an express action of yours:</p>
 <ul>
@@ -454,15 +466,17 @@ footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; colo
 <p>The permission is <strong>entirely optional</strong>: it is requested at the moment you try to use a feature that needs it (in Ferrata it may also be requested at the end of the initial walkthrough, with a prior explanation), and the applications remain fully functional if you deny it. You may revoke it at any time under <em>Settings → Apps → [application] → Permissions</em> (Android) or <em>Settings → [application] → Location</em> (iOS).</p>
 <p><strong>Legal basis:</strong> your <em>consent</em> (Art. 6(1)(a) GDPR), given through the system permission dialog (Android or iOS).</p>
 
-<h3>3.4 Notifications <span class="no">(Parques ×6, Paellator, Decamping and Axolo only)</span></h3>
+<h3>3.4 Notifications <span class="no">(Parques ×6, Paellator, Decamping, Axolo and OverlandKit only)</span></h3>
 <p><strong>Axolo</strong> can send you, if you turn it on, a daily reminder with the curious fact of the day at the time you choose. It is a local notification generated on your device; you can change the time or turn it off in the app.</p>
 <p>Parques ×6, Paellator and Decamping may send you local notifications with content of interest (for example, the "park of the day", or a reminder to plan your next getaway). They are generated entirely on your device and do not involve sending any personal data to our servers.</p>
+<p><strong>OverlandKit</strong> can warn you, if you turn it on, that it will rain tonight so you can close skylights and windows. It is a local notification scheduled on your device from the forecast already downloaded.</p>
 <p><strong>Ferrata</strong> does not send notifications.</p>
 <p><strong>Legal basis:</strong> your <em>consent</em>, given through the system permission dialog (Android or iOS). You can disable them at any time in your system settings.</p>
 
 <h3>3.5 Application content</h3>
 <p>In <strong>Refresca’t</strong>, swimming-pool information and the suggestions you send use <strong>Google Cloud Firestore</strong>. Content downloads are <strong>read-only</strong>; the only thing written is the text you choose to send as a suggestion.</p>
 <p><strong>Axolo</strong> ships its catalogue of curious facts inside the app and, to get new facts without an update, periodically downloads the published version from <strong>GitHub Pages</strong> (GitHub, Inc.). The download includes no identifier of yours; as with any request on the Internet, GitHub receives your <strong>IP address</strong>. Your topics, streak and reactions are stored only on your device.</p>
+<p><strong>OverlandKit</strong> calculates everything on your device (level, tilt, sun, moon and stars) and has no server of its own. It only goes online for the weather forecast, which it requests from <strong>Open-Meteo</strong> and <strong>MET Norway</strong> (Norwegian Meteorological Institute) with your area rounded to about 1 km (see 3.3), and stores it on your device so you can see it offline. It sends them no identifier of yours; as with any request on the Internet, they receive your <strong>IP address</strong>. Your vehicle, its measurements and your settings are stored only on your device.</p>
 <p>In <strong>all the other apps</strong> (Parques ×6, VisaTrip, Paellator and Decamping) the main content ships <strong>inside the app itself</strong> and works offline: there is no cloud database and no server of our own.</p>
 <p><strong>VisaTrip</strong> also queries these third-party services for data that changes, without sending them any identifier of yours. As with any internet request, they receive your <strong>IP address</strong>:</p>
 <ul>
@@ -485,6 +499,7 @@ footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; colo
 <ul>
   <li><strong>Internet and network state access</strong> (all): required to download content and ads.</li>
   <li><strong>Vibration</strong> (Paellator): haptic feedback for the cooking timer. No personal data involved.</li>
+  <li><strong>Motion sensors and compass</strong> (OverlandKit): the phone's accelerometer and compass are used to level the vehicle, measure tilt while driving and orient the sky. They are read on the spot and never leave the device; no permission is needed.</li>
   <li><strong>Storage write</strong> (VisaTrip, older Android versions only): allows saving documents generated by the application itself on your device. The file is never uploaded to any server.</li>
   <li><strong>Add to Photos</strong> (VisaTrip on iOS): lets you save the image of your travel map to your camera roll when you tap Save. It is a <em>write-only</em> permission: the app cannot see your photos.</li>
   <li><strong>Contacts</strong> (Ferrata): used to choose your emergency contact in Safety mode. The app <strong>does not read your address book</strong>: it opens the system's own contact picker and only receives the name and phone number of the contact you choose (you can also type them in by hand), so no address-book permission needs to be granted. That contact is stored on your device, is not sent to our servers and is only used to prepare the alert SMS that you send yourself; only the phone number goes into the SMS, as the recipient.</li>
@@ -522,7 +537,8 @@ footer{border-top:1px solid var(--line); margin-top:44px; padding-top:20px; colo
     <tr><td>Google Ireland Ltd. / Google LLC</td><td>Google Maps</td><td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy policy</a></td></tr>
     <tr><td>Google Ireland Ltd. / Google LLC</td><td>Google Play (distribution and, in Ferrata, payment for purchases)</td><td><a href="https://play.google.com/about/play-terms/" target="_blank" rel="noopener">Google Play Terms</a></td></tr>
     <tr><td>Apple Inc.</td><td>App Store (distribution of the iOS apps and, in Ferrata, payment for purchases) and Apple Maps <span class="no">(Ferrata on iOS)</span></td><td><a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Privacy Policy</a></td></tr>
-    <tr><td>Open-Meteo</td><td>Weather forecast <span class="no">(VisaTrip and Ferrata)</span></td><td><a href="https://open-meteo.com/en/terms" target="_blank" rel="noopener">Terms</a></td></tr>
+    <tr><td>Open-Meteo</td><td>Weather forecast <span class="no">(VisaTrip, Ferrata and OverlandKit)</span></td><td><a href="https://open-meteo.com/en/terms" target="_blank" rel="noopener">Terms</a></td></tr>
+    <tr><td>MET Norway (Norwegian Meteorological Institute)</td><td>Weather forecast <span class="no">(OverlandKit)</span></td><td><a href="https://api.met.no/doc/TermsOfService" target="_blank" rel="noopener">Terms</a></td></tr>
     <tr><td>jsDelivr</td><td>Exchange rates <span class="no">(VisaTrip)</span></td><td><a href="https://www.jsdelivr.com/terms/privacy-policy-jsdelivr-net" target="_blank" rel="noopener">Privacy policy</a></td></tr>
     <tr><td>GitHub (GitHub Pages)</td><td>Catalogue of curious facts <span class="no">(Axolo)</span></td><td><a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">Privacy policy</a></td></tr>
     <tr><td>Nager.Date</td><td>Public holidays <span class="no">(VisaTrip)</span></td><td><a href="https://date.nager.at/" target="_blank" rel="noopener">Website</a></td></tr>
