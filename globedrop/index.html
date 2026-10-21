@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GlobeDrop · Drop the pin, guess the place</title>
+<meta name="description" content="GlobeDrop is a casual geography game: drop a pin on a 3D globe to guess where a flag, a dish, a landmark or a city is from. The Daily: 5 cards a day, the same for everyone. Coming soon to the App Store and Google Play.">
+<link rel="canonical" href="https://guillempejo.github.io/globedrop/">
+<meta name="author" content="Tacoly · Guillem Pejó">
+<meta name="theme-color" content="#FBF6EC" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101826" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="GlobeDrop">
+<meta property="og:title" content="GlobeDrop · Drop the pin, guess the place">
+<meta property="og:description" content="A geography game on a 3D globe. The Daily: 5 cards a day, the same for everyone. Can you beat this score? Coming soon to iPhone and Android.">
+<meta property="og:url" content="https://guillempejo.github.io/globedrop/">
+<meta property="og:image" content="https://guillempejo.github.io/globedrop/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="GlobeDrop app icon, a globe with a red pin, next to the words: Drop the pin. Guess the place.">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GlobeDrop · Drop the pin, guess the place">
+<meta name="twitter:description" content="A geography game on a 3D globe. The Daily: 5 cards a day, the same for everyone. Coming soon to iPhone and Android.">
+<meta name="twitter:image" content="https://guillempejo.github.io/globedrop/og.png">
+<meta name="twitter:image:alt" content="GlobeDrop app icon, a globe with a red pin, next to the words: Drop the pin. Guess the place.">
+<link rel="icon" href="icon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script>
+  // Idioma antes de pintar: ?lang= > elección guardada > idioma del navegador (es, ca, gl, eu → español). Sin JS, inglés.
+  (function () {
+    var l = null;
+    try { l = new URLSearchParams(location.search).get('lang') || localStorage.getItem('globedrop-lang'); } catch (e) {}
+    if (l !== 'es' && l !== 'en') l = ['es', 'ca', 'gl', 'eu'].indexOf((navigator.language || '').slice(0, 2).toLowerCase()) >= 0 ? 'es' : 'en';
+    document.documentElement.setAttribute('data-lang', l);
+    document.documentElement.lang = l;
+  })();
+</script>
+<style>
+/* Atlas de viaje (diseño v3 de la app) */
+:root{
+  --bg:#FBF6EC; --surface:#FFFFFF; --surface-2:#F4ECDC; --ink:#1D2B45; --muted:#55617A; --line:#E7DCC6;
+  --coral:#FF6447; --coral-deep:#D9472C; --sea:#2F7FD8; --sea-text:#1F5FAE; --teal:#14A89A; --mustard:#F4B32A;
+  --on-coral:#1D2B45; --shadow:rgba(29,43,69,.14);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#101826; --surface:#18233A; --surface-2:#1F2C47; --ink:#F3ECDD; --muted:#AEB8CB; --line:#2A3A5A;
+    --sea-text:#7FB4F0; --shadow:rgba(0,0,0,.45); color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#101826; --surface:#18233A; --surface-2:#1F2C47; --ink:#F3ECDD; --muted:#AEB8CB; --line:#2A3A5A;
+  --sea-text:#7FB4F0; --shadow:rgba(0,0,0,.45); color-scheme:dark;
+}
+html[data-lang="es"] [data-l="en"], html[data-lang="en"] [data-l="es"]{display:none !important}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 ui-rounded,"SF Pro Rounded",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;overflow-x:hidden}
+h1,h2,h3{line-height:1.12;margin:0;text-wrap:balance;letter-spacing:-.01em}
+a{color:var(--sea-text)}
+:focus-visible{outline:3px solid var(--sea);outline-offset:3px;border-radius:10px}
+.wrap{width:min(1060px,100% - 32px);margin-inline:auto}
+
+/* cabecera */
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:16px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:21px;color:var(--ink);text-decoration:none;min-height:48px}
+.logo img{width:40px;height:40px;border-radius:11px}
+.lang{display:inline-flex;gap:4px;border:2px solid var(--line);border-radius:999px;padding:3px;background:var(--surface)}
+.lang button{border:0;background:none;color:var(--muted);font:700 14px/1 inherit;font-family:inherit;min-height:42px;min-width:52px;border-radius:999px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+
+/* portada */
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding-block:20px 56px}
+.eyebrow{display:inline-block;font-weight:800;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--coral-deep);background:var(--surface);border:2px solid var(--line);border-radius:999px;padding:5px 14px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .eyebrow{color:var(--coral)}}
+:root[data-theme="dark"] .eyebrow{color:var(--coral)}
+h1{font-size:clamp(38px,6vw,66px);font-weight:900;margin:16px 0 18px}
+h1 em{font-style:normal;color:var(--coral)}
+.lead{font-size:19px;color:var(--muted);max-width:32em;margin:0 0 26px}
+.facts{display:flex;flex-wrap:wrap;gap:8px 18px;margin:22px 0 0;padding:0;list-style:none;color:var(--muted);font-weight:600;font-size:15px}
+.facts b{color:var(--ink)}
+
+/* botones de tienda: deshabilitados hasta que haya enlace */
+.stores{display:flex;flex-wrap:wrap;gap:14px}
+.badge{position:relative;display:inline-flex;align-items:center;gap:12px;min-height:60px;min-width:200px;padding:8px 22px 8px 16px;border-radius:16px;background:var(--ink);color:var(--bg);text-decoration:none;border:2px dashed transparent}
+span.badge{cursor:default;opacity:.92;border-color:var(--line);background:var(--surface);color:var(--ink)}
+a.badge{box-shadow:0 5px 0 var(--coral-deep)}
+.badge svg{width:28px;height:28px;flex:none}
+.badge > span{display:flex;flex-direction:column;line-height:1.15;font-weight:800;font-size:19px}
+.badge small{font-size:12px;font-weight:600;color:var(--muted)}
+.badge .soon{position:absolute;top:-11px;right:-8px;background:var(--coral);color:var(--on-coral);font-weight:800;font-size:11px;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:3px 10px}
+.cta-note{margin:14px 0 0;font-size:15px;color:var(--muted)}
+
+/* tarjeta de embarque de La Diaria */
+.pass{background:var(--surface);border-radius:26px;box-shadow:0 22px 48px var(--shadow);overflow:hidden;position:relative;transform:rotate(-1.5deg);max-width:420px;justify-self:center;width:100%}
+.pass__head{background:var(--ink);color:var(--bg);padding:16px 22px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .pass__head{background:#0B111C;color:#F3ECDD}}
+:root[data-theme="dark"] .pass__head{background:#0B111C;color:#F3ECDD}
+.pass__head b{font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+.pass__head img{width:34px;height:34px;border-radius:9px}
+.pass__body{padding:20px 22px 18px}
+.pass__title{font-size:30px;font-weight:900}
+.route{display:flex;align-items:center;gap:12px;margin:14px 0 18px}
+.route .code{font-size:30px;font-weight:900;letter-spacing:.04em}
+.route .code small{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+.route .line{flex:1;border-top:3px dotted var(--sea);position:relative;min-width:40px}
+.route .line::after{content:"";position:absolute;right:-4px;top:-9px;width:14px;height:14px;border-radius:50% 50% 50% 0;background:var(--coral);transform:rotate(-45deg)}
+.fields{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:0}
+.fields div{background:var(--surface-2);border-radius:12px;padding:8px 10px}
+.fields dt{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.fields dd{margin:0;font-weight:800;font-size:16px}
+.pass__stub{border-top:3px dashed var(--line);padding:16px 22px 20px;position:relative}
+.pass__stub::before,.pass__stub::after{content:"";position:absolute;top:-14px;width:26px;height:26px;border-radius:50%;background:var(--bg)}
+.pass__stub::before{left:-13px}.pass__stub::after{right:-13px}
+.result{font-size:15px;font-weight:700;margin:0;word-break:break-word}
+.result .sq{font-size:22px;letter-spacing:2px;display:block;margin-top:4px}
+
+section{padding-block:52px}
+h2{font-size:clamp(28px,4vw,42px);font-weight:900;margin-bottom:10px}
+.sub{color:var(--muted);max-width:38em;margin:0 0 30px;font-size:18px}
+
+/* qué significan los cuadrados */
+.legend{background:var(--surface);border:2px solid var(--line);border-radius:24px;padding:24px;display:grid;gap:16px}
+.legend .sample{font-size:17px;font-weight:700;background:var(--surface-2);border-radius:14px;padding:12px 16px;margin:0;overflow-wrap:anywhere}
+.legend ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.legend li{display:flex;align-items:center;gap:10px;font-weight:600}
+.legend .em{font-size:26px;line-height:1}
+
+/* cartas y modos */
+.kinds{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 34px;padding:0;list-style:none}
+.kinds li{background:var(--surface);border:2px solid var(--line);border-radius:18px;padding:16px;text-align:center;font-weight:800}
+.kinds .em{display:block;font-size:34px;line-height:1.2;margin-bottom:4px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:0;padding:0;list-style:none;counter-reset:s}
+.steps li{background:var(--surface);border:2px solid var(--line);border-radius:22px;padding:22px}
+.steps li::before{counter-increment:s;content:counter(s);display:inline-grid;place-items:center;width:44px;height:44px;border-radius:14px;background:var(--coral);color:var(--on-coral);font-weight:900;font-size:20px;margin-bottom:12px}
+.steps h3{font-size:20px;margin-bottom:6px}
+.steps p{margin:0;color:var(--muted);font-size:16px}
+.modes{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.mode{background:var(--surface);border-radius:24px;padding:24px;border-top:8px solid var(--c);box-shadow:0 10px 24px var(--shadow)}
+.mode h3{font-size:23px;margin-bottom:6px;display:flex;align-items:center;gap:10px}
+.mode h3 .em{font-size:26px}
+.mode p{margin:0;color:var(--muted);font-size:16px}
+.mode .tag{display:inline-block;margin-top:12px;font-size:13px;font-weight:800;color:var(--ink);background:var(--surface-2);border-radius:999px;padding:4px 12px}
+
+.final{text-align:center}
+.final .stores{justify-content:center}
+.final .sub{margin-inline:auto}
+
+footer{border-top:2px solid var(--line);padding-block:28px 40px;color:var(--muted);font-size:15px;display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;align-items:center}
+footer nav{display:flex;flex-wrap:wrap;gap:4px 8px}
+footer a{color:var(--muted);display:inline-flex;align-items:center;min-height:44px;padding-inline:6px}
+
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;gap:40px;padding-block:8px 40px}
+  .pass{transform:none}
+  .kinds{grid-template-columns:repeat(2,1fr)}
+  .steps,.modes{grid-template-columns:1fr}
+  .legend ul{grid-template-columns:1fr}
+}
+@media (max-width:420px){
+  .badge{min-width:0;width:100%}
+  .route .code{font-size:24px}
+  .fields dd{font-size:14px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <a class="logo" href="./"><img src="icon.png" alt="" width="40" height="40">GlobeDrop</a>
+  <div class="lang" role="group" aria-label="Idioma / Language">
+    <button type="button" data-set-lang="es" lang="es" aria-label="Español">ES</button>
+    <button type="button" data-set-lang="en" lang="en" aria-label="English">EN</button>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div>
+    <span class="eyebrow"><span data-l="es" lang="es">Juego de geografía</span><span data-l="en" lang="en">Geography game</span></span>
+    <h1>
+      <span data-l="es" lang="es">Suelta la chincheta. <em>Adivina el lugar.</em></span>
+      <span data-l="en" lang="en">Drop the pin. <em>Guess the place.</em></span>
+    </h1>
+    <p class="lead">
+      <span data-l="es" lang="es">Te enseñamos una bandera, un plato, un monumento o una ciudad, y tú lo sitúas con una chincheta en un globo 3D. Cuanto más cerca, más puntos. Partidas de un minuto.</span>
+      <span data-l="en" lang="en">We show you a flag, a dish, a landmark or a city, and you place it with a pin on a 3D globe. The closer you get, the more points you score. One-minute games.</span>
+    </p>
+
+    <!--
+      Tiendas: cuando GlobeDrop esté publicada, cambiar cada <span class="badge" aria-disabled="true"> por
+      <a class="badge" href="..."> y quitar su <em class="soon">. Hay dos bloques iguales (aquí y en «final»).
+        App Store:   https://apps.apple.com/app/id<ID_DE_APP_STORE>   (bundle com.tacoly.globedrop.ios)
+        Google Play: https://play.google.com/store/apps/details?id=com.tacoly.globedrop
+    -->
+    <div class="stores">
+      <span class="badge" aria-disabled="true"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 1.43c0 1.14-.46 2.22-1.2 3-.8.84-2.1 1.49-3.15 1.4-.13-1.1.42-2.25 1.15-2.99.82-.85 2.2-1.46 3.2-1.41zM20.5 17.1c-.55 1.27-.81 1.84-1.52 2.96-.99 1.57-2.39 3.52-4.12 3.54-1.54.02-1.94-1-4.03-.99-2.09.01-2.53 1.01-4.07.99-1.73-.02-3.05-1.78-4.04-3.35C-.14 15.6-.43 10.5 1.28 7.87c1.2-1.86 3.1-2.95 4.88-2.95 1.81 0 2.95 1 4.45 1 1.45 0 2.34-1 4.44-1 1.58 0 3.26.86 4.46 2.35-3.92 2.15-3.28 7.75.99 9.83z"/></svg><span><small><span data-l="es" lang="es">Muy pronto en el</span><span data-l="en" lang="en">Coming soon to the</span></small>App Store</span><em class="soon" style="font-style:normal"><span data-l="es" lang="es">Próximamente</span><span data-l="en" lang="en">Coming soon</span></em></span>
+      <span class="badge" aria-disabled="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#00c4ee" d="M3.6 1.5c-.3.3-.5.8-.5 1.4v18.2c0 .6.2 1.1.5 1.4l.1.1L14 12.3v-.2L3.7 1.4z"/><path fill="#f5b800" d="M17.4 15.7l-3.4-3.4v-.2l3.4-3.4.1.1 4 2.3c1.1.6 1.1 1.7 0 2.3l-4 2.3z"/><path fill="#f43f5e" d="M17.5 15.6L14 12.2 3.6 22.5c.4.4 1 .4 1.7.1l12.2-7z"/><path fill="#00c853" d="M17.5 8.8L5.3 1.9c-.7-.4-1.3-.3-1.7.1L14 12.2z"/></svg><span><small><span data-l="es" lang="es">Muy pronto en</span><span data-l="en" lang="en">Coming soon to</span></small>Google Play</span><em class="soon" style="font-style:normal"><span data-l="es" lang="es">Próximamente</span><span data-l="en" lang="en">Coming soon</span></em></span>
+    </div>
+    <p class="cta-note"><span data-l="es" lang="es">Próximamente en la App Store y en Google Play. Gratis.</span><span data-l="en" lang="en">Coming soon to the App Store and Google Play. Free.</span></p>
+
+    <ul class="facts">
+      <li><b><span data-l="es" lang="es">2.026</span><span data-l="en" lang="en">2,026</span></b> <span data-l="es" lang="es">cartas</span><span data-l="en" lang="en">cards</span></li>
+      <li><b>10</b> <span data-l="es" lang="es">idiomas</span><span data-l="en" lang="en">languages</span></li>
+      <li><span data-l="es" lang="es">iPhone y Android</span><span data-l="en" lang="en">iPhone and Android</span></li>
+    </ul>
+  </div>
+
+  <article class="pass" aria-labelledby="pass-title">
+    <div class="pass__head">
+      <b><span data-l="es" lang="es">Tarjeta de embarque</span><span data-l="en" lang="en">Boarding pass</span></b>
+      <img src="icon.png" alt="" width="34" height="34">
+    </div>
+    <div class="pass__body">
+      <h2 class="pass__title" id="pass-title"><span data-l="es" lang="es">La Diaria</span><span data-l="en" lang="en">The Daily</span></h2>
+      <div class="route" aria-hidden="true">
+        <span class="code"><small><span data-l="es" lang="es">Desde</span><span data-l="en" lang="en">From</span></small><span data-l="es" lang="es">TÚ</span><span data-l="en" lang="en">YOU</span></span>
+        <span class="line"></span>
+        <span class="code"><small><span data-l="es" lang="es">Hasta</span><span data-l="en" lang="en">To</span></small>🌍</span>
+      </div>
+      <dl class="fields">
+        <div><dt><span data-l="es" lang="es">Salida</span><span data-l="en" lang="en">Departs</span></dt><dd><span data-l="es" lang="es">Cada día</span><span data-l="en" lang="en">Daily</span></dd></div>
+        <div><dt><span data-l="es" lang="es">Cartas</span><span data-l="en" lang="en">Cards</span></dt><dd>5</dd></div>
+        <div><dt><span data-l="es" lang="es">Pasaje</span><span data-l="en" lang="en">Seats</span></dt><dd><span data-l="es" lang="es">Todos</span><span data-l="en" lang="en">Everyone</span></dd></div>
+      </dl>
+    </div>
+    <div class="pass__stub">
+      <p class="result"><span data-l="es" lang="es">Las mismas 5 cartas para todo el mundo. Juega y compara:</span><span data-l="en" lang="en">The same 5 cards for everyone. Play and compare:</span>
+        <span class="sq" data-l="es" lang="es" role="img" aria-label="Ejemplo de resultado: 1.284 km, tres cuadrados verdes, uno amarillo y uno rojo">📍 1.284 km 🟩🟩🟨🟩🟥</span><span class="sq" data-l="en" lang="en" role="img" aria-label="Sample score: 1,284 km, three green squares, one yellow and one red">📍 1,284 km 🟩🟩🟨🟩🟥</span></p>
+    </div>
+  </article>
+</div>
+
+<section id="resultado" aria-labelledby="h-share">
+  <h2 id="h-share"><span data-l="es" lang="es">¿Te han pasado un resultado?</span><span data-l="en" lang="en">Someone sent you a score?</span></h2>
+  <p class="sub"><span data-l="es" lang="es">Cada cuadrado es una de las 5 cartas de La Diaria de ese día, y los kilómetros son la distancia total entre sus chinchetas y los lugares de verdad. Menos kilómetros, mejor.</span><span data-l="en" lang="en">Each square is one of that day’s 5 Daily cards, and the kilometres are the total distance between their pins and the real places. Fewer kilometres is better.</span></p>
+  <div class="legend">
+    <p class="sample"><span data-l="es" lang="es">📍 GlobeDrop #142 — 1.284 km 🟩🟩🟨🟩🟥</span><span data-l="en" lang="en">📍 GlobeDrop #142 — 1,284 km 🟩🟩🟨🟩🟥</span></p>
+    <ul>
+      <li><span class="em" aria-hidden="true">🟩</span><span><span data-l="es" lang="es">a menos de 300 km</span><span data-l="en" lang="en">under 300 km</span></span></li>
+      <li><span class="em" aria-hidden="true">🟨</span><span><span data-l="es" lang="es">a menos de 1.500 km</span><span data-l="en" lang="en">under 1,500 km</span></span></li>
+      <li><span class="em" aria-hidden="true">🟥</span><span><span data-l="es" lang="es">más lejos</span><span data-l="en" lang="en">farther</span></span></li>
+    </ul>
+  </div>
+</section>
+
+<section aria-labelledby="h-how">
+  <h2 id="h-how"><span data-l="es" lang="es">Cómo se juega</span><span data-l="en" lang="en">How to play</span></h2>
+  <p class="sub"><span data-l="es" lang="es">Cuatro tipos de carta, de todos los rincones del mundo.</span><span data-l="en" lang="en">Four kinds of card, from every corner of the world.</span></p>
+  <ul class="kinds">
+    <li><span class="em" aria-hidden="true">🏳️</span><span data-l="es" lang="es">Banderas</span><span data-l="en" lang="en">Flags</span></li>
+    <li><span class="em" aria-hidden="true">🍜</span><span data-l="es" lang="es">Platos</span><span data-l="en" lang="en">Dishes</span></li>
+    <li><span class="em" aria-hidden="true">🗼</span><span data-l="es" lang="es">Monumentos</span><span data-l="en" lang="en">Landmarks</span></li>
+    <li><span class="em" aria-hidden="true">🏙️</span><span data-l="es" lang="es">Ciudades</span><span data-l="en" lang="en">Cities</span></li>
+  </ul>
+  <ol class="steps">
+    <li><h3><span data-l="es" lang="es">Mira la carta</span><span data-l="en" lang="en">Look at the card</span></h3><p><span data-l="es" lang="es">Una bandera, un plato, un monumento o una ciudad. ¿De dónde es?</span><span data-l="en" lang="en">A flag, a dish, a landmark or a city. Where is it from?</span></p></li>
+    <li><h3><span data-l="es" lang="es">Suelta la chincheta</span><span data-l="en" lang="en">Drop the pin</span></h3><p><span data-l="es" lang="es">Gira el globo 3D, acércate y deja la chincheta donde creas que está.</span><span data-l="en" lang="en">Spin the 3D globe, zoom in and drop the pin where you think it is.</span></p></li>
+    <li><h3><span data-l="es" lang="es">Mira a cuánto te quedas</span><span data-l="en" lang="en">See how close you got</span></h3><p><span data-l="es" lang="es">Los kilómetros que te separan del lugar real deciden tus puntos. ¡Una diana vale oro!</span><span data-l="en" lang="en">The distance to the real place decides your points. A bullseye is worth gold!</span></p></li>
+  </ol>
+</section>
+
+<section aria-labelledby="h-modes">
+  <h2 id="h-modes"><span data-l="es" lang="es">Cuatro formas de dar la vuelta al mundo</span><span data-l="en" lang="en">Four ways to travel the world</span></h2>
+  <p class="sub"><span data-l="es" lang="es">Un minuto al día o una tarde entera: tú eliges.</span><span data-l="en" lang="en">One minute a day or a whole afternoon: your call.</span></p>
+  <div class="modes">
+    <article class="mode" style="--c:var(--coral)">
+      <h3><span class="em" aria-hidden="true">🎫</span><span data-l="es" lang="es">La Diaria</span><span data-l="en" lang="en">The Daily</span></h3>
+      <p><span data-l="es" lang="es">5 cartas al día, las mismas para todo el mundo. Mantén la racha y comparte tu resultado sin destripar las respuestas.</span><span data-l="en" lang="en">5 cards a day, the same for everyone. Keep your streak going and share your score without spoiling the answers.</span></p>
+    </article>
+    <article class="mode" style="--c:var(--mustard)">
+      <h3><span class="em" aria-hidden="true">⛽</span><span data-l="es" lang="es">Supervivencia</span><span data-l="en" lang="en">Survival</span></h3>
+      <p><span data-l="es" lang="es">Cartas sin fin y un depósito de combustible: cuanto más lejos sueltas la chincheta, más gastas, y cada diana te da un poco más. ¿Hasta dónde llegas?</span><span data-l="en" lang="en">Endless cards and a fuel tank: the farther your pin lands, the more fuel you burn, and every bullseye tops you up. How far can you go?</span></p>
+    </article>
+    <article class="mode" style="--c:var(--sea)">
+      <h3><span class="em" aria-hidden="true">🗺️</span>Atlas</h3>
+      <p><span data-l="es" lang="es">20 paquetes temáticos de niveles para ganar estrellas a tu ritmo, con pistas cuando te atascas.</span><span data-l="en" lang="en">20 themed level packs to earn stars at your own pace, with hints when you get stuck.</span></p>
+    </article>
+    <article class="mode" style="--c:var(--teal)">
+      <h3><span class="em" aria-hidden="true">🛂</span><span data-l="es" lang="es">Pasaporte</span><span data-l="en" lang="en">Passport</span></h3>
+      <p><span data-l="es" lang="es">Gana sellos de bronce, plata y oro de cada país que aciertas y llena tu pasaporte.</span><span data-l="en" lang="en">Earn bronze, silver and gold stamps for every country you nail and fill up your passport.</span></p>
+    </article>
+  </div>
+</section>
+
+<section class="final" aria-labelledby="h-final">
+  <h2 id="h-final"><span data-l="es" lang="es">Prepara el pasaporte</span><span data-l="en" lang="en">Get your passport ready</span></h2>
+  <p class="sub"><span data-l="es" lang="es">GlobeDrop llega muy pronto a iPhone y Android, gratis y en 10 idiomas.</span><span data-l="en" lang="en">GlobeDrop is coming soon to iPhone and Android, free and in 10 languages.</span></p>
+  <div class="stores">
+    <span class="badge" aria-disabled="true"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 1.43c0 1.14-.46 2.22-1.2 3-.8.84-2.1 1.49-3.15 1.4-.13-1.1.42-2.25 1.15-2.99.82-.85 2.2-1.46 3.2-1.41zM20.5 17.1c-.55 1.27-.81 1.84-1.52 2.96-.99 1.57-2.39 3.52-4.12 3.54-1.54.02-1.94-1-4.03-.99-2.09.01-2.53 1.01-4.07.99-1.73-.02-3.05-1.78-4.04-3.35C-.14 15.6-.43 10.5 1.28 7.87c1.2-1.86 3.1-2.95 4.88-2.95 1.81 0 2.95 1 4.45 1 1.45 0 2.34-1 4.44-1 1.58 0 3.26.86 4.46 2.35-3.92 2.15-3.28 7.75.99 9.83z"/></svg><span><small><span data-l="es" lang="es">Muy pronto en el</span><span data-l="en" lang="en">Coming soon to the</span></small>App Store</span><em class="soon" style="font-style:normal"><span data-l="es" lang="es">Próximamente</span><span data-l="en" lang="en">Coming soon</span></em></span>
+    <span class="badge" aria-disabled="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#00c4ee" d="M3.6 1.5c-.3.3-.5.8-.5 1.4v18.2c0 .6.2 1.1.5 1.4l.1.1L14 12.3v-.2L3.7 1.4z"/><path fill="#f5b800" d="M17.4 15.7l-3.4-3.4v-.2l3.4-3.4.1.1 4 2.3c1.1.6 1.1 1.7 0 2.3l-4 2.3z"/><path fill="#f43f5e" d="M17.5 15.6L14 12.2 3.6 22.5c.4.4 1 .4 1.7.1l12.2-7z"/><path fill="#00c853" d="M17.5 8.8L5.3 1.9c-.7-.4-1.3-.3-1.7.1L14 12.2z"/></svg><span><small><span data-l="es" lang="es">Muy pronto en</span><span data-l="en" lang="en">Coming soon to</span></small>Google Play</span><em class="soon" style="font-style:normal"><span data-l="es" lang="es">Próximamente</span><span data-l="en" lang="en">Coming soon</span></em></span>
+  </div>
+</section>
+</main>
+
+<footer>
+  <span>© 2026 Tacoly · <span data-l="es" lang="es">Gratis, con anuncios y compras opcionales</span><span data-l="en" lang="en">Free, with ads and optional purchases</span></span>
+  <nav aria-label="Enlaces / Links">
+    <a href="../apps-privacy/"><span data-l="es" lang="es">Privacidad</span><span data-l="en" lang="en">Privacy</span></a>
+    <a href="mailto:tacolyapps@gmail.com?subject=GlobeDrop"><span data-l="es" lang="es">Contacto</span><span data-l="en" lang="en">Contact</span></a>
+    <a href="../"><span data-l="es" lang="es">Más apps</span><span data-l="en" lang="en">More apps</span></a>
+  </nav>
+</footer>
+</div>
+
+<script>
+(function () {
+  var titles = { es: 'GlobeDrop · Suelta la chincheta, adivina el lugar', en: 'GlobeDrop · Drop the pin, guess the place' };
+  function setLang(l) {
+    document.documentElement.setAttribute('data-lang', l);
+    document.documentElement.lang = l;
+    document.title = titles[l];
+    document.querySelectorAll('[data-set-lang]').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-set-lang') === l ? 'true' : 'false'); });
+    try { localStorage.setItem('globedrop-lang', l); } catch (e) {}
+  }
+  document.querySelectorAll('[data-set-lang]').forEach(function (b) {
+    b.addEventListener('click', function () { setLang(b.getAttribute('data-set-lang')); });
+  });
+  var cur = document.documentElement.getAttribute('data-lang') === 'es' ? 'es' : 'en';
+  document.title = titles[cur];
+  document.querySelectorAll('[data-set-lang]').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-set-lang') === cur ? 'true' : 'false'); });
+})();
+</script>
+</body>
+</html>
