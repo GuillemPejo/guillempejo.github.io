@@ -17,16 +17,18 @@
 <meta property="og:image" content="https://guillempejo.github.io/globedrop/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="GlobeDrop app icon, a globe with a red pin, next to the words: Drop the pin. Guess the place.">
+<meta property="og:image:alt" content="A globe with a red pin dropped on it next to a GlobeDrop boarding pass for The Daily and the words: Drop the pin. Guess the place.">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="es_ES">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="GlobeDrop · Drop the pin, guess the place">
 <meta name="twitter:description" content="A geography game on a 3D globe. The Daily: 5 cards a day, the same for everyone. Coming soon to iPhone and Android.">
 <meta name="twitter:image" content="https://guillempejo.github.io/globedrop/og.png">
-<meta name="twitter:image:alt" content="GlobeDrop app icon, a globe with a red pin, next to the words: Drop the pin. Guess the place.">
+<meta name="twitter:image:alt" content="A globe with a red pin dropped on it next to a GlobeDrop boarding pass for The Daily and the words: Drop the pin. Guess the place.">
 <link rel="icon" href="icon.png" type="image/png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preload" href="fonts/bricolage_extrabold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/outfit_regular.woff2" as="font" type="font/woff2" crossorigin>
 <script>
   // Idioma antes de pintar: ?lang= > elección guardada > idioma del navegador (es, ca, gl, eu → español). Sin JS, inglés.
   (function () {
@@ -35,143 +37,395 @@
     if (l !== 'es' && l !== 'en') l = ['es', 'ca', 'gl', 'eu'].indexOf((navigator.language || '').slice(0, 2).toLowerCase()) >= 0 ? 'es' : 'en';
     document.documentElement.setAttribute('data-lang', l);
     document.documentElement.lang = l;
+    document.documentElement.classList.add('js');
   })();
 </script>
 <style>
+/* Fuentes de la app (OFL, subconjunto latino): Bricolage Grotesque ExtraBold y Outfit */
+@font-face{font-family:"Bricolage";src:url(fonts/bricolage_extrabold.woff2) format("woff2");font-weight:800;font-display:swap}
+@font-face{font-family:"Outfit";src:url(fonts/outfit_regular.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Outfit";src:url(fonts/outfit_semibold.woff2) format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Outfit";src:url(fonts/outfit_bold.woff2) format("woff2");font-weight:700;font-display:swap}
+
 /* Atlas de viaje (diseño v3 de la app) */
 :root{
-  --bg:#FBF6EC; --surface:#FFFFFF; --surface-2:#F4ECDC; --ink:#1D2B45; --muted:#55617A; --line:#E7DCC6;
-  --coral:#FF6447; --coral-deep:#D9472C; --sea:#2F7FD8; --sea-text:#1F5FAE; --teal:#14A89A; --mustard:#F4B32A;
-  --on-coral:#1D2B45; --shadow:rgba(29,43,69,.14);
+  --bg:#FBF6EC; --surface:#FFFFFF; --surface-2:#F3ECDD; --ink:#1D2B45; --muted:#55617A; --line:#E6DCC8;
+  --coral:#FF6447; --coral-deep:#E2482C; --coral-text:#C13A20; --coral-tint:#FFE6E0;
+  --sea:#2F7FD8; --sea-deep:#1F5FB0; --sea-text:#1F5FAE; --sea-tint:#E3EFFC;
+  --teal:#14A89A; --teal-deep:#0B7A6F; --teal-tint:#DDF5F1;
+  --mustard:#F4B32A; --mustard-deep:#B07A06; --mustard-tint:#FDF1D4;
+  --plum:#7D5BE6; --plum-deep:#5E3FC7; --plum-tint:#ECE6FD;
+  --brick:#E5534B; --navy:#1B3A66; --gold:#E2BF63;
+  --paper:#FFFDF8; --paper-ink:#1D2B45;
+  --card-shadow:0 10px 30px rgba(29,43,69,.10),0 2px 6px rgba(29,43,69,.06);
+  --lift-shadow:0 24px 48px rgba(29,43,69,.18),0 6px 14px rgba(29,43,69,.08);
+  --drop:drop-shadow(0 10px 18px rgba(29,43,69,.13)) drop-shadow(0 2px 3px rgba(29,43,69,.08));
+  --card-line:transparent;
+  --spring:cubic-bezier(.34,1.56,.64,1); --spring-soft:cubic-bezier(.22,1.25,.36,1); --out:cubic-bezier(.16,1,.3,1);
+  --stamp-ease:cubic-bezier(.3,1.6,.55,1);
+  --display:"Bricolage","Outfit",ui-rounded,system-ui,sans-serif;
   color-scheme:light;
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --bg:#101826; --surface:#18233A; --surface-2:#1F2C47; --ink:#F3ECDD; --muted:#AEB8CB; --line:#2A3A5A;
-    --sea-text:#7FB4F0; --shadow:rgba(0,0,0,.45); color-scheme:dark;
+    --bg:#101826; --surface:#18233A; --surface-2:#22304A; --ink:#F3EEE4; --muted:#AAB4C7; --line:#2D3C58;
+    --coral-text:#FF8A70; --coral-tint:#3F2420; --sea-text:#86B9F2; --sea-tint:#1C3352; --teal-tint:#163A39;
+    --mustard-tint:#3B311A; --plum-tint:#2B2449; --teal-deep:#3FD0C0; --mustard-deep:#F4B32A; --plum-deep:#A58BFF; --sea-deep:#7FB4F0; --coral-deep:#FF6447;
+    --paper:#F1EADB;
+    --card-shadow:0 14px 34px rgba(0,0,0,.38); --lift-shadow:0 26px 52px rgba(0,0,0,.5);
+    --drop:drop-shadow(0 12px 20px rgba(0,0,0,.4)) drop-shadow(0 2px 3px rgba(0,0,0,.3));
+    --card-line:#2D3C58; color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --bg:#101826; --surface:#18233A; --surface-2:#1F2C47; --ink:#F3ECDD; --muted:#AEB8CB; --line:#2A3A5A;
-  --sea-text:#7FB4F0; --shadow:rgba(0,0,0,.45); color-scheme:dark;
+  --bg:#101826; --surface:#18233A; --surface-2:#22304A; --ink:#F3EEE4; --muted:#AAB4C7; --line:#2D3C58;
+  --coral-text:#FF8A70; --coral-tint:#3F2420; --sea-text:#86B9F2; --sea-tint:#1C3352; --teal-tint:#163A39;
+  --mustard-tint:#3B311A; --plum-tint:#2B2449; --teal-deep:#3FD0C0; --mustard-deep:#F4B32A; --plum-deep:#A58BFF; --sea-deep:#7FB4F0; --coral-deep:#FF6447;
+  --paper:#F1EADB;
+  --card-shadow:0 14px 34px rgba(0,0,0,.38); --lift-shadow:0 26px 52px rgba(0,0,0,.5);
+  --drop:drop-shadow(0 12px 20px rgba(0,0,0,.4)) drop-shadow(0 2px 3px rgba(0,0,0,.3));
+  --card-line:#2D3C58; color-scheme:dark;
 }
 html[data-lang="es"] [data-l="en"], html[data-lang="en"] [data-l="es"]{display:none !important}
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 ui-rounded,"SF Pro Rounded",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;overflow-x:hidden}
-h1,h2,h3{line-height:1.12;margin:0;text-wrap:balance;letter-spacing:-.01em}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;overflow-x:clip}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 "Outfit",ui-rounded,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;overflow-x:clip;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--display);font-weight:800;line-height:1.06;margin:0;text-wrap:balance;letter-spacing:-.02em}
+p{margin:0}
 a{color:var(--sea-text)}
 :focus-visible{outline:3px solid var(--sea);outline-offset:3px;border-radius:10px}
-.wrap{width:min(1060px,100% - 32px);margin-inline:auto}
+.wrap{width:min(1120px,100% - 32px);margin-inline:auto}
+.sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+svg.i{width:24px;height:24px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 
-/* cabecera */
-.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:16px}
-.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:21px;color:var(--ink);text-decoration:none;min-height:48px}
-.logo img{width:40px;height:40px;border-radius:11px}
-.lang{display:inline-flex;gap:4px;border:2px solid var(--line);border-radius:999px;padding:3px;background:var(--surface)}
-.lang button{border:0;background:none;color:var(--muted);font:700 14px/1 inherit;font-family:inherit;min-height:42px;min-width:52px;border-radius:999px;cursor:pointer}
+/* ---------- Aparición al hacer scroll ---------- */
+.js .rv{opacity:0;transform:translate3d(0,22px,0)}
+.js .rv.in{opacity:1;transform:none;transition:opacity .7s var(--out),transform .9s var(--spring-soft);transition-delay:calc(var(--i,0) * 80ms)}
+
+/* ---------- Cabecera ---------- */
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:14px;position:relative;z-index:3}
+.logo{display:flex;align-items:center;gap:10px;font:800 22px/1 var(--display);letter-spacing:-.02em;color:var(--ink);text-decoration:none;min-height:48px}
+.logo img{width:40px;height:40px;border-radius:11px;box-shadow:0 3px 8px rgba(29,43,69,.16)}
+.lang{display:inline-flex;gap:2px;border:1px solid var(--line);border-radius:999px;padding:3px;background:var(--surface);box-shadow:0 2px 8px rgba(29,43,69,.06)}
+.lang button{border:0;background:none;color:var(--muted);font:700 14px/1 "Outfit",sans-serif;letter-spacing:.04em;min-height:42px;min-width:50px;border-radius:999px;cursor:pointer;transition:background-color .25s,color .25s,transform .2s var(--spring)}
+.lang button:active{transform:scale(.94)}
 .lang button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
 
-/* portada */
-.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding-block:20px 56px}
-.eyebrow{display:inline-block;font-weight:800;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--coral-deep);background:var(--surface);border:2px solid var(--line);border-radius:999px;padding:5px 14px}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .eyebrow{color:var(--coral)}}
-:root[data-theme="dark"] .eyebrow{color:var(--coral)}
-h1{font-size:clamp(38px,6vw,66px);font-weight:900;margin:16px 0 18px}
-h1 em{font-style:normal;color:var(--coral)}
-.lead{font-size:19px;color:var(--muted);max-width:32em;margin:0 0 26px}
-.facts{display:flex;flex-wrap:wrap;gap:8px 18px;margin:22px 0 0;padding:0;list-style:none;color:var(--muted);font-weight:600;font-size:15px}
-.facts b{color:var(--ink)}
+/* ---------- Portada ---------- */
+.hero{position:relative;isolation:isolate;padding-bottom:40px}
+.hero::before{content:"";position:absolute;z-index:-1;inset:-90px 0 auto auto;width:min(760px,120vw);height:620px;background:radial-gradient(closest-side,rgba(255,100,71,.16),rgba(255,100,71,0));pointer-events:none}
+.hero__grid{display:grid;grid-template-columns:1fr;grid-template-areas:"copy" "globe" "cta";gap:8px;align-items:center}
+.hero__copy{grid-area:copy;padding-top:8px}
+.hero__cta{grid-area:cta}
+.kicker{display:inline-flex;align-items:center;gap:8px;font:600 13px/1 "Outfit",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--coral-text)}
+.kicker svg{width:18px;height:18px}
+.hero .kicker{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:8px 14px 8px 10px;box-shadow:0 2px 10px rgba(29,43,69,.05)}
+h1{font-size:clamp(42px,11.4vw,76px);margin:18px 0 16px;letter-spacing:-.035em}
+h1 em{font-style:normal;color:var(--coral-deep);position:relative;white-space:nowrap}
+h1 em::after{content:"";position:absolute;left:2%;right:4%;bottom:-.1em;height:.22em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' preserveAspectRatio='none'%3E%3Cpath d='M2 9C40 3 70 12 104 7s70-6 94-1' fill='none' stroke='%23FF6447' stroke-width='3.2' stroke-linecap='round' stroke-dasharray='7 7'/%3E%3C/svg%3E") 0 0/100% 100% no-repeat;opacity:.9}
+.lead{font-size:clamp(18px,4.6vw,21px);line-height:1.5;color:var(--muted);max-width:30em}
 
-/* botones de tienda: deshabilitados hasta que haya enlace */
-.stores{display:flex;flex-wrap:wrap;gap:14px}
-.badge{position:relative;display:inline-flex;align-items:center;gap:12px;min-height:60px;min-width:200px;padding:8px 22px 8px 16px;border-radius:16px;background:var(--ink);color:var(--bg);text-decoration:none;border:2px dashed transparent}
-span.badge{cursor:default;opacity:.92;border-color:var(--line);background:var(--surface);color:var(--ink)}
-a.badge{box-shadow:0 5px 0 var(--coral-deep)}
+.stores{display:flex;flex-wrap:wrap;gap:12px}
+.badge{position:relative;display:inline-flex;align-items:center;gap:12px;min-height:60px;flex:1 1 180px;padding:9px 22px 9px 16px;border-radius:16px;background:var(--surface);color:var(--ink);text-decoration:none;border:1px solid var(--line);box-shadow:0 2px 10px rgba(29,43,69,.05)}
+span.badge{cursor:default}
+a.badge{background:var(--ink);color:var(--bg);border-color:transparent;box-shadow:0 6px 14px rgba(29,43,69,.25);transition:transform .2s var(--spring),box-shadow .2s}
+a.badge:active{transform:scale(.97);box-shadow:0 1px 4px rgba(29,43,69,.25)}
 .badge svg{width:28px;height:28px;flex:none}
-.badge > span{display:flex;flex-direction:column;line-height:1.15;font-weight:800;font-size:19px}
-.badge small{font-size:12px;font-weight:600;color:var(--muted)}
-.badge .soon{position:absolute;top:-11px;right:-8px;background:var(--coral);color:var(--on-coral);font-weight:800;font-size:11px;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:3px 10px}
-.cta-note{margin:14px 0 0;font-size:15px;color:var(--muted)}
+.badge > span{display:flex;flex-direction:column;line-height:1.15;font-weight:700;font-size:19px}
+.badge small{font-size:12px;font-weight:600;color:var(--muted);letter-spacing:.01em}
+.badge .soon{position:absolute;top:-10px;right:-6px;font:800 10.5px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--coral-text);background:var(--surface);border:1.5px solid currentColor;outline:1.5px solid currentColor;outline-offset:1.5px;border-radius:6px;padding:4px 7px;transform:rotate(5deg);font-style:normal}
+.cta-note{margin:16px 0 0;font-size:15px;color:var(--muted)}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 0;padding:0;list-style:none}
+.facts li{display:inline-flex;align-items:center;gap:8px;background:var(--surface-2);border-radius:12px;padding:8px 12px 8px 10px;font-weight:600;font-size:15px;color:var(--muted)}
+.facts b{color:var(--ink);font-weight:700}
+.facts svg{width:18px;height:18px;color:var(--coral-deep)}
 
-/* tarjeta de embarque de La Diaria */
-.pass{background:var(--surface);border-radius:26px;box-shadow:0 22px 48px var(--shadow);overflow:hidden;position:relative;transform:rotate(-1.5deg);max-width:420px;justify-self:center;width:100%}
-.pass__head{background:var(--ink);color:var(--bg);padding:16px 22px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .pass__head{background:#0B111C;color:#F3ECDD}}
-:root[data-theme="dark"] .pass__head{background:#0B111C;color:#F3ECDD}
-.pass__head b{font-size:13px;letter-spacing:.14em;text-transform:uppercase}
-.pass__head img{width:34px;height:34px;border-radius:9px}
-.pass__body{padding:20px 22px 18px}
-.pass__title{font-size:30px;font-weight:900}
-.route{display:flex;align-items:center;gap:12px;margin:14px 0 18px}
-.route .code{font-size:30px;font-weight:900;letter-spacing:.04em}
-.route .code small{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
-.route .line{flex:1;border-top:3px dotted var(--sea);position:relative;min-width:40px}
-.route .line::after{content:"";position:absolute;right:-4px;top:-9px;width:14px;height:14px;border-radius:50% 50% 50% 0;background:var(--coral);transform:rotate(-45deg)}
-.fields{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:0}
-.fields div{background:var(--surface-2);border-radius:12px;padding:8px 10px}
-.fields dt{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.fields dd{margin:0;font-weight:800;font-size:16px}
-.pass__stub{border-top:3px dashed var(--line);padding:16px 22px 20px;position:relative}
-.pass__stub::before,.pass__stub::after{content:"";position:absolute;top:-14px;width:26px;height:26px;border-radius:50%;background:var(--bg)}
-.pass__stub::before{left:-13px}.pass__stub::after{right:-13px}
-.result{font-size:15px;font-weight:700;margin:0;word-break:break-word}
-.result .sq{font-size:22px;letter-spacing:2px;display:block;margin-top:4px}
+/* globo */
+.globe{grid-area:globe;position:relative;justify-self:center;width:min(86vw,360px);aspect-ratio:1;margin:26px 0 34px;--rim:#9CCBFF}
+.globe__float{position:absolute;inset:0;animation:float 7s ease-in-out infinite}
+.globe__halo{position:absolute;inset:-4.5%;border-radius:50%;background:radial-gradient(closest-side,rgba(156,203,255,0) 88%,rgba(156,203,255,.5) 90%,rgba(156,203,255,.18) 100%)}
+.globe canvas{position:absolute;inset:0;width:100%;height:100%;border-radius:50%;touch-action:pan-y;cursor:grab;-webkit-tap-highlight-color:transparent}
+.globe.grab canvas{cursor:grabbing}
+.globe__shine{position:absolute;inset:0;border-radius:50%;pointer-events:none;background:radial-gradient(circle at 30% 26%,rgba(255,255,255,.34),rgba(255,255,255,0) 34%),radial-gradient(circle at 50% 50%,rgba(13,28,58,0) 58%,rgba(13,28,58,.30) 100%);box-shadow:inset 5px 7px 10px -4px rgba(255,255,255,.55),inset -10px -14px 24px -8px rgba(10,22,48,.35)}
+.globe__shadow{position:absolute;left:14%;right:14%;bottom:-13%;height:9%;border-radius:50%;background:radial-gradient(closest-side,rgba(29,43,69,.30),rgba(29,43,69,0));animation:shadow 7s ease-in-out infinite;z-index:-1}
+@keyframes float{0%,100%{transform:translate3d(0,-7px,0)}50%{transform:translate3d(0,7px,0)}}
+@keyframes shadow{0%,100%{transform:scale(.86);opacity:.7}50%{transform:scale(1);opacity:1}}
+.globe:not(.ready) canvas{opacity:0}
+.globe canvas{transition:opacity .6s}
+/* chincheta */
+.pin{position:absolute;left:0;top:0;width:0;height:0;pointer-events:none;will-change:transform}
+.pin__fx{position:absolute;left:0;top:0}
+.pin__body{position:absolute;left:-15px;top:-41px;width:30px;height:42px;transform-origin:50% 100%;opacity:0;filter:drop-shadow(2px 4px 3px rgba(10,20,40,.3))}
+.pin__hole{position:absolute;left:-9px;top:-4px;width:18px;height:8px;border-radius:50%;background:rgba(15,28,55,.45);box-shadow:0 0 0 2px rgba(255,255,255,.85);opacity:0;transform:scale(.2)}
+.pin__ripple{position:absolute;left:-26px;top:-12px;width:52px;height:24px;border-radius:50%;border:2.5px solid #fff;opacity:0}
+.pin__fx.drop .pin__body{animation:pin-drop .9s var(--out) forwards}
+.pin__fx.drop .pin__hole{animation:hole .35s .38s var(--spring) forwards}
+.pin__fx.drop .pin__ripple{animation:ripple 1s .38s var(--out) forwards}
+.pin__fx.drop .pin__ripple + .pin__ripple{animation-delay:.58s}
+.pin__fx.lift .pin__body{animation:pin-lift .45s ease-in forwards}
+.pin__fx.lift .pin__hole{transition:opacity .3s;opacity:0}
+@keyframes pin-drop{
+  0%{opacity:0;transform:translate3d(0,-150px,0) rotate(10deg) scale(.9)}
+  12%{opacity:1}
+  42%{transform:translate3d(0,0,0) rotate(10deg) scale(1.06,.86)}
+  60%{transform:translate3d(0,-14px,0) rotate(10deg) scale(.97,1.04)}
+  76%{transform:translate3d(0,0,0) rotate(10deg) scale(1.02,.97)}
+  100%{opacity:1;transform:translate3d(0,0,0) rotate(10deg) scale(1)}}
+@keyframes pin-lift{0%{opacity:1;transform:rotate(10deg)}100%{opacity:0;transform:translate3d(0,-40px,0) rotate(10deg) scale(.8)}}
+@keyframes hole{to{opacity:1;transform:scale(1)}}
+@keyframes ripple{0%{opacity:.95;transform:scale(.2)}100%{opacity:0;transform:scale(2.3)}}
+/* resultado junto a la chincheta */
+.gchip{position:absolute;left:0;top:0;width:0;height:0;pointer-events:none;will-change:transform}
+.gchip > span{position:absolute;left:18px;bottom:30px;display:flex;align-items:center;gap:8px;white-space:nowrap;background:var(--surface);color:var(--ink);border-radius:12px;padding:7px 12px 7px 8px;box-shadow:0 8px 20px rgba(13,25,50,.22);font-size:14px;font-weight:600;line-height:1.1;opacity:0;transform:translate3d(-8px,6px,0) scale(.9);transform-origin:0 100%;transition:opacity .25s,transform .45s var(--spring)}
+.gchip.flip > span{left:auto;right:18px;transform-origin:100% 100%}
+.gchip.show > span{opacity:1;transform:none}
+.gchip b{font-weight:700}
+.gchip .gchip__km{color:var(--muted);font-weight:600}
+.tile{display:inline-block;width:1em;height:1em;border-radius:.24em;background:var(--line);flex:none;box-shadow:inset 0 -.12em 0 rgba(0,0,0,.14),inset 0 .08em 0 rgba(255,255,255,.35)}
+.tile.g{background:#2DB36B}.tile.y{background:#F4B32A}.tile.r{background:#E5534B}
+.gchip .tile{font-size:18px}
 
-section{padding-block:52px}
-h2{font-size:clamp(28px,4vw,42px);font-weight:900;margin-bottom:10px}
-.sub{color:var(--muted);max-width:38em;margin:0 0 30px;font-size:18px}
+/* ---------- Secciones ---------- */
+section{padding-block:64px}
+.head{max-width:40em;margin-bottom:30px}
+h2{font-size:clamp(32px,7.4vw,50px);margin:12px 0 12px;letter-spacing:-.03em}
+.sub{color:var(--muted);font-size:18px;max-width:36em}
 
-/* qué significan los cuadrados */
-.legend{background:var(--surface);border:2px solid var(--line);border-radius:24px;padding:24px;display:grid;gap:16px}
-.legend .sample{font-size:17px;font-weight:700;background:var(--surface-2);border-radius:14px;padding:12px 16px;margin:0;overflow-wrap:anywhere}
-.legend ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.legend li{display:flex;align-items:center;gap:10px;font-weight:600}
-.legend .em{font-size:26px;line-height:1}
+/* ---------- La Diaria: tarjeta de embarque ---------- */
+.daily__grid{display:grid;gap:44px;align-items:center}
+.pass-wrap{filter:var(--drop);max-width:520px;width:100%;justify-self:center}
+.pass{position:relative;transform:rotate(-1.2deg)}
+.pass > *{background:var(--surface)}
+.pass__main{border-radius:24px 24px 0 0;overflow:hidden;-webkit-mask:radial-gradient(circle 14px at 0 100%,#0000 96%,#000) ,radial-gradient(circle 14px at 100% 100%,#0000 96%,#000);-webkit-mask-composite:source-in;mask:radial-gradient(circle 14px at 0 100%,#0000 96%,#000) ,radial-gradient(circle 14px at 100% 100%,#0000 96%,#000);mask-composite:intersect}
+.pass__stub{position:relative;border-radius:0 0 24px 24px;padding:18px 22px 20px;-webkit-mask:radial-gradient(circle 14px at 0 0,#0000 96%,#000),radial-gradient(circle 14px at 100% 0,#0000 96%,#000);-webkit-mask-composite:source-in;mask:radial-gradient(circle 14px at 0 0,#0000 96%,#000),radial-gradient(circle 14px at 100% 0,#0000 96%,#000);mask-composite:intersect}
+.pass__stub::before{content:"";position:absolute;left:22px;right:22px;top:-1px;height:2px;background:repeating-linear-gradient(90deg,var(--line) 0 8px,transparent 8px 15px)}
+.pass__head{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--ink);color:var(--bg);padding:14px 20px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .pass__head{background:#0B111C;color:#F3EEE4}}
+:root[data-theme="dark"] .pass__head{background:#0B111C;color:#F3EEE4}
+.pass__brand{display:flex;align-items:center;gap:8px;font:800 17px/1 var(--display);letter-spacing:-.01em}
+.pass__brand svg{width:18px;height:24px;color:var(--coral)}
+.lbl{display:block;font:600 11px/1.2 "Outfit",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.pass__head .lbl{color:inherit;opacity:.75}
+.pass__body{padding:18px 20px 22px;position:relative}
+.pass__top{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
+.pass__num{font:800 52px/.95 var(--display);letter-spacing:-.04em;margin-top:6px}
+.iata{display:flex;align-items:center;gap:10px;text-align:center}
+.iata b{display:block;font:800 26px/1 var(--display);letter-spacing:.02em}
+.iata .lbl{margin-bottom:4px}
+.iata svg{width:22px;height:22px;color:var(--sea);fill:currentColor;stroke:none}
+.route{position:relative;list-style:none;margin:30px 0 4px;padding:0;display:grid;grid-template-columns:repeat(5,1fr)}
+.route::before{content:"";position:absolute;left:10%;right:10%;top:21px;height:2px;background:repeating-linear-gradient(90deg,var(--sea) 0 6px,transparent 6px 12px);opacity:.55}
+.js .route::before{animation:dash .9s linear infinite}
+@keyframes dash{to{background-position:12px 0}}
+.stop{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;z-index:1}
+.stop__dot{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--surface);border:2px dashed var(--line);color:var(--muted);transition:background-color .3s,border-color .3s,color .3s}
+.stop__dot svg{width:22px;height:22px}
+.stop__km{font-size:12px;font-weight:700;color:var(--muted);white-space:nowrap;opacity:0;transform:translate3d(0,-4px,0);transition:opacity .3s,transform .4s var(--spring)}
+.stop.cur .stop__dot{border-style:solid;border-color:var(--coral);background:var(--coral-tint);color:var(--coral-deep);animation:pulse 1.2s ease-in-out infinite}
+.stop.done .stop__dot{border:0;color:#fff;background:var(--res);animation:stop-in .5s var(--stamp-ease)}
+.stop.done .stop__km{opacity:1;transform:none}
+.stop[data-r="g"]{--res:#2DB36B}.stop[data-r="y"]{--res:#E9A514}.stop[data-r="r"]{--res:#E5534B}
+@keyframes stop-in{0%{transform:scale(.4)}100%{transform:scale(1)}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,100,71,.35)}50%{box-shadow:0 0 0 7px rgba(255,100,71,0)}}
+.plane{position:absolute;left:0;right:0;top:-24px;height:22px;pointer-events:none;z-index:2}
+.plane__carrier{position:absolute;inset:0;transform:translate3d(-90%,0,0);transition:transform .8s cubic-bezier(.5,0,.25,1)}
+.plane__carrier svg{position:absolute;right:-11px;top:0;width:22px;height:22px;color:var(--ink);fill:currentColor;stroke:none;animation:sway 1.6s ease-in-out infinite;filter:drop-shadow(0 2px 2px rgba(29,43,69,.25))}
+.landed .plane__carrier svg{opacity:0;transition:opacity .4s .5s}
+@keyframes sway{0%,100%{transform:translate3d(0,-1.5px,0) rotate(-4deg)}50%{transform:translate3d(0,1.5px,0) rotate(4deg)}}
+.fields{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:18px 0 0}
+.fields div{border-top:1px solid var(--line);padding-top:10px}
+.fields dd{margin:3px 0 0;font-weight:700;font-size:16px;line-height:1.2}
+.stub__row{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.pass__tiles{display:flex;gap:6px;margin-top:8px;font-size:26px}
+.pass__tiles .tile{transform:scale(.55);opacity:.55;transition:transform .5s var(--stamp-ease),opacity .3s,background-color .3s}
+.pass__tiles .tile:not(.on){background:var(--line)!important}
+.pass__tiles .tile.on{transform:none;opacity:1}
+.stub__nums{display:flex;gap:18px;margin-top:12px;font-size:15px;color:var(--muted);font-weight:600}
+.stub__nums b{font:800 24px/1 var(--display);color:var(--ink);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+/* sello de goma */
+.rstamp{display:inline-block;font:800 17px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-c,var(--teal-deep));border:2.5px solid currentColor;outline:2.5px solid currentColor;outline-offset:2.5px;border-radius:9px;padding:8px 12px 7px;transform:rotate(-8deg);white-space:nowrap;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='70'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='2' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -3.2 2.75'/%3E%3C/filter%3E%3Crect width='140' height='70' filter='url(%23n)'/%3E%3C/svg%3E") 0 0/140px 70px;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='70'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='2' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -3.2 2.75'/%3E%3C/filter%3E%3Crect width='140' height='70' filter='url(%23n)'/%3E%3C/svg%3E") 0 0/140px 70px}
+.js .stamp-in{opacity:0;transform:rotate(var(--rot,-8deg)) scale(1.45)}
+.js .stamp-in.in{opacity:.92;transform:rotate(var(--rot,-8deg)) scale(1);transition:transform .5s var(--stamp-ease) var(--d,0s),opacity .12s var(--d,0s)}
+.pass__stamp{flex:none;--rot:-9deg;font-size:16px}
 
-/* cartas y modos */
-.kinds{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 34px;padding:0;list-style:none}
-.kinds li{background:var(--surface);border:2px solid var(--line);border-radius:18px;padding:16px;text-align:center;font-weight:800}
-.kinds .em{display:block;font-size:34px;line-height:1.2;margin-bottom:4px}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:0;padding:0;list-style:none;counter-reset:s}
-.steps li{background:var(--surface);border:2px solid var(--line);border-radius:22px;padding:22px}
-.steps li::before{counter-increment:s;content:counter(s);display:inline-grid;place-items:center;width:44px;height:44px;border-radius:14px;background:var(--coral);color:var(--on-coral);font-weight:900;font-size:20px;margin-bottom:12px}
-.steps h3{font-size:20px;margin-bottom:6px}
-.steps p{margin:0;color:var(--muted);font-size:16px}
-.modes{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-.mode{background:var(--surface);border-radius:24px;padding:24px;border-top:8px solid var(--c);box-shadow:0 10px 24px var(--shadow)}
-.mode h3{font-size:23px;margin-bottom:6px;display:flex;align-items:center;gap:10px}
-.mode h3 .em{font-size:26px}
-.mode p{margin:0;color:var(--muted);font-size:16px}
-.mode .tag{display:inline-block;margin-top:12px;font-size:13px;font-weight:800;color:var(--ink);background:var(--surface-2);border-radius:999px;padding:4px 12px}
+/* explicación de los cuadrados */
+.share h3{font-size:clamp(26px,5.6vw,34px);margin:12px 0 10px}
+.share > p{color:var(--muted);font-size:17px}
+.bubble{position:relative;margin:24px 0 22px;background:var(--surface-2);border-radius:20px 20px 20px 6px;padding:14px 16px;max-width:360px}
+.bubble__meta{font-size:12px;font-weight:600;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
+.bubble p{font-weight:600;font-size:17px;overflow-wrap:anywhere}
+.bubble .tiles{display:flex;gap:5px;font-size:22px;margin-top:8px}
+.legend{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.legend li{display:flex;align-items:center;gap:14px;font-weight:600}
+.legend .tile{font-size:30px}
+.legend small{display:block;color:var(--muted);font-weight:400;font-size:15px}
 
-.final{text-align:center}
+/* ---------- Cómo se juega ---------- */
+.how{background:radial-gradient(circle,rgba(29,43,69,.09) 1.2px,transparent 1.6px) 0 0/22px 22px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .how{background-image:radial-gradient(circle,rgba(243,238,228,.07) 1.2px,transparent 1.6px)}}
+:root[data-theme="dark"] .how{background-image:radial-gradient(circle,rgba(243,238,228,.07) 1.2px,transparent 1.6px)}
+.kinds{position:relative;list-style:none;margin:8px 0 56px;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:26px 18px;justify-items:center}
+.kind{width:100%;max-width:158px}
+.pst{filter:var(--drop);transform:rotate(var(--rot,0deg));transition:transform .5s var(--spring)}
+@media (hover:hover){.kind:hover .pst{transform:rotate(0deg) translate3d(0,-6px,0) scale(1.03)}}
+.pst__paper{--r:5px;background:var(--paper);padding:calc(var(--r)*2.4);
+  -webkit-mask:radial-gradient(var(--r),#0000 97%,#000) calc(var(--r)*-1.5) calc(var(--r)*-1.5)/calc(var(--r)*3) calc(var(--r)*3) round,linear-gradient(#000 0 0) 50%/calc(100% - var(--r)*3) calc(100% - var(--r)*3) no-repeat;
+  mask:radial-gradient(var(--r),#0000 97%,#000) calc(var(--r)*-1.5) calc(var(--r)*-1.5)/calc(var(--r)*3) calc(var(--r)*3) round,linear-gradient(#000 0 0) 50%/calc(100% - var(--r)*3) calc(100% - var(--r)*3) no-repeat}
+.pst__sheet{position:relative;aspect-ratio:4/4.6;background:var(--tint);color:var(--c);display:grid;place-items:center;overflow:hidden;border-radius:2px}
+.pst__sheet::before{content:"";position:absolute;inset:0;background:currentColor;opacity:.22;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='12'%3E%3Cpath d='M0 6q9-6 18 0t18 0' fill='none' stroke='%23000' stroke-width='1.3'/%3E%3C/svg%3E") 0 0/36px 12px;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='12'%3E%3Cpath d='M0 6q9-6 18 0t18 0' fill='none' stroke='%23000' stroke-width='1.3'/%3E%3C/svg%3E") 0 0/36px 12px}
+.pst__sheet svg.i{position:relative;width:46%;height:auto;aspect-ratio:1;stroke-width:1.6}
+.pst__val{position:absolute;top:8px;left:9px;font:800 13px/1 var(--display);letter-spacing:-.01em}
+.pst__name{display:block;text-align:center;font:800 15px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--paper-ink);padding-top:9px}
+.kinds .rstamp{position:absolute;z-index:2;font-size:clamp(22px,5.4vw,30px);--ink-c:var(--teal-deep);--rot:-11deg;right:2%;top:-14px;pointer-events:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .kinds .rstamp{--ink-c:#3FD0C0}}
+.steps{position:relative;list-style:none;margin:0;padding:0;display:grid;gap:26px}
+.steps::before{content:"";position:absolute;left:21px;top:24px;bottom:24px;width:2px;background:repeating-linear-gradient(180deg,var(--coral) 0 6px,transparent 6px 12px);opacity:.6}
+.step{position:relative;display:grid;grid-template-columns:44px 1fr;gap:4px 16px;align-items:start}
+.step__pin{grid-row:span 2;display:grid;place-items:center;width:44px;height:44px;border-radius:50% 50% 50% 8px;transform:rotate(-45deg);background:var(--coral);box-shadow:0 6px 14px rgba(226,72,44,.32)}
+.step__pin b{transform:rotate(45deg);font:800 19px/1 var(--display);color:#fff}
+.step h3{font-size:22px;padding-top:2px;letter-spacing:-.02em}
+.step p{color:var(--muted);font-size:16px}
+
+/* ---------- Modos: postales ---------- */
+.cards{list-style:none;margin:0;padding:0;display:grid;gap:22px}
+.pc{position:relative;height:100%;display:grid;grid-template-rows:auto 1fr;background:var(--surface);border:1px solid var(--card-line);border-radius:22px;box-shadow:var(--card-shadow);overflow:hidden;transform:rotate(var(--tilt,0deg));transition:transform .5s var(--spring);-webkit-tap-highlight-color:transparent}
+.pc::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:var(--lift-shadow);opacity:0;transition:opacity .4s;pointer-events:none}
+@media (hover:hover){.pc:hover{transform:translate3d(0,-8px,0) rotate(calc(var(--tilt,0deg) * -1.4))}.pc:hover::after{opacity:1}.pc:hover .pc__icon{transform:rotate(-6deg) scale(1.06)}}
+.pc:active{transform:scale(.975) rotate(var(--tilt,0deg));transition-duration:.15s}
+.pc__art{position:relative;height:172px;background:var(--tint);color:var(--cd);overflow:hidden;display:flex;align-items:center;padding-left:26px}
+.pc__art::before{content:"";position:absolute;inset:0;background:currentColor;opacity:.16;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='14'%3E%3Cpath d='M0 7q11-7 22 0t22 0' fill='none' stroke='%23000' stroke-width='1.5'/%3E%3C/svg%3E") 0 0/44px 14px;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='14'%3E%3Cpath d='M0 7q11-7 22 0t22 0' fill='none' stroke='%23000' stroke-width='1.5'/%3E%3C/svg%3E") 0 0/44px 14px}
+.pc__route{position:absolute;right:-6px;top:14px;width:62%;height:auto;aspect-ratio:2;color:var(--cd);opacity:.45}
+.pc__badge{position:relative;z-index:1;flex:none;display:grid;place-items:center;width:112px;height:112px;border-radius:50%;background:var(--surface);box-shadow:0 0 0 7px color-mix(in srgb,var(--surface) 45%,transparent),0 8px 18px rgba(29,43,69,.10)}
+.pc__badge::after{content:"";position:absolute;inset:7px;border-radius:50%;border:1.5px dashed var(--cd);opacity:.4}
+svg.pc__icon{width:58px;height:58px;stroke-width:1.6;transition:transform .5s var(--spring)}
+.pc__extra{position:relative;z-index:1;margin-left:20px;padding:8px 10px;border-radius:12px;background:var(--surface);box-shadow:0 6px 14px rgba(29,43,69,.10);display:flex;align-items:center;gap:6px}
+.pc__extra .tile{font-size:18px}
+.gauge{width:110px;height:12px;border-radius:999px;background:color-mix(in srgb,var(--cd) 18%,transparent);overflow:hidden;position:relative}
+.gauge::before{content:"";position:absolute;inset:0;width:68%;border-radius:inherit;background:linear-gradient(90deg,#FF8A2B,#F4B32A)}
+.gauge-wrap{display:grid;gap:6px;font:800 13px/1 var(--display);color:var(--cd)}
+.stars svg{width:28px;height:28px;fill:#F4B32A;stroke:#C98D0C;stroke-width:1.2}
+.stars svg.off{fill:none;stroke:currentColor;opacity:.45}
+.metals{display:flex;gap:6px}
+.metals i{width:26px;height:26px;border-radius:50%;box-shadow:inset 0 0 0 3px rgba(255,255,255,.45),0 2px 4px rgba(29,43,69,.2)}
+.pc__msg{position:relative;padding:20px 22px 22px}
+.pc__msg h3{font-size:25px;margin-bottom:6px;padding-right:70px}
+.pc__msg p{color:var(--muted);font-size:16px}
+.pc__tag{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:13px;font-weight:700;color:var(--cd);background:var(--tint);border-radius:8px;padding:5px 10px}
+.pc__post{position:absolute;right:16px;top:150px;z-index:2;width:62px;filter:var(--drop);transform:rotate(5deg)}
+.pc__post .pst__paper{--r:3px;padding:6px}
+.pc__post .pst__sheet{aspect-ratio:1/1.12;background:var(--c);color:#fff}
+.pc__post .pst__sheet::before{opacity:.28;background:#fff}
+.pc__post svg.i{width:56%;stroke-width:2}
+.pc__mark{position:absolute;right:52px;top:136px;z-index:3;width:84px;height:48px;color:var(--ink);opacity:.38;pointer-events:none}
+
+/* ---------- Pasaporte ---------- */
+.pp{display:grid;gap:40px;align-items:center}
+.pp__legend{list-style:none;margin:22px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.pp__legend li{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:15px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px 6px 6px}
+.pp__legend i{width:22px;height:22px;border-radius:50%;box-shadow:inset 0 0 0 3px rgba(255,255,255,.5)}
+.m-b{background:radial-gradient(circle at 35% 30%,#F0C39A,#B8733E 70%)}.m-s{background:radial-gradient(circle at 35% 30%,#F4F7FA,#9AA5B4 70%)}.m-g{background:radial-gradient(circle at 35% 30%,#FFE9A8,#D4A537 70%)}
+.pp__art{position:relative;max-width:540px;width:100%;justify-self:center;padding:18px 0 0 0}
+.pp__page{position:relative;margin-left:30%;min-height:330px;background:var(--paper);border-radius:6px 20px 20px 6px;box-shadow:var(--card-shadow);overflow:hidden;padding:16px}
+.pp__page::before{content:"";position:absolute;inset:0;opacity:.5;background:repeating-radial-gradient(circle at 120% 120%,transparent 0 9px,rgba(47,127,216,.10) 9px 10px)}
+.pp__page .lbl{position:relative;color:#55617A;text-align:right}
+.pp__cover{position:absolute;left:0;top:0;z-index:2;width:42%;aspect-ratio:.71;background:var(--navy);border-radius:8px 18px 18px 8px;color:var(--gold);display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:22px 10px 18px;transform:rotate(-6deg);box-shadow:0 22px 40px rgba(11,22,45,.35),inset 10px 0 0 rgba(0,0,0,.18),inset 11px 0 0 rgba(255,255,255,.06);background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.025) 0 2px,transparent 2px 5px)}
+.pp__cover b{font:800 clamp(15px,3.9vw,22px)/1 var(--display);letter-spacing:.16em;text-shadow:0 1px 0 rgba(0,0,0,.35)}
+.pp__cover small{display:block;font:600 clamp(10px,2.4vw,12px)/1 "Outfit",sans-serif;letter-spacing:.3em;margin-top:6px;text-align:center;opacity:.85}
+.pp__cover svg{width:56%;height:auto;stroke:currentColor;fill:none;stroke-width:1.6}
+.pp__cover .brand{font:800 clamp(11px,2.6vw,13px)/1 var(--display);letter-spacing:.28em;opacity:.85}
+.medals{position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;margin-top:10px;padding-left:20%}
+.medal{width:100%;max-width:118px;justify-self:center;--rot:-8deg}
+.medal svg{display:block;width:100%;height:auto;overflow:visible;filter:drop-shadow(0 3px 4px rgba(29,43,69,.18))}
+.medal text{font:800 8.4px var(--display);letter-spacing:1.2px;fill:currentColor}
+.medal--g{color:#B8891D;--rot:-10deg}.medal--s{color:#7B8796;--rot:7deg}.medal--b{color:#A0612F;--rot:-4deg}
+.medal--empty{display:grid;place-items:center;aspect-ratio:1;width:78%;max-width:92px;border:2px dashed #CDBF9F;border-radius:50%;color:#9C8E70;font:800 26px/1 var(--display);transform:rotate(0);align-self:center}
+.pp .rstamp{position:absolute;left:52%;bottom:16px;z-index:3;font-size:14px;--ink-c:#C13A20;--rot:-14deg}
+
+/* ---------- Final ---------- */
+.final{text-align:center;padding-bottom:80px}
+.final .head{margin-inline:auto}
 .final .stores{justify-content:center}
-.final .sub{margin-inline:auto}
+.plus{display:inline-flex;align-items:center;gap:12px;margin-top:30px;text-align:left;background:var(--surface);border:1px dashed var(--line);border-radius:14px;padding:12px 16px;font-size:15px;color:var(--muted);max-width:36em}
+.plus b{color:var(--ink)}
+.plus svg{width:22px;height:22px;color:var(--mustard-deep);flex:none}
 
-footer{border-top:2px solid var(--line);padding-block:28px 40px;color:var(--muted);font-size:15px;display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;align-items:center}
+footer{border-top:1px solid var(--line);padding-block:24px 40px;color:var(--muted);font-size:15px;display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;align-items:center}
 footer nav{display:flex;flex-wrap:wrap;gap:4px 8px}
-footer a{color:var(--muted);display:inline-flex;align-items:center;min-height:44px;padding-inline:6px}
+footer a{color:var(--muted);display:inline-flex;align-items:center;min-height:44px;padding-inline:6px;text-underline-offset:3px}
+footer a:hover{color:var(--ink)}
 
-@media (max-width:860px){
-  .hero{grid-template-columns:1fr;gap:40px;padding-block:8px 40px}
-  .pass{transform:none}
-  .kinds{grid-template-columns:repeat(2,1fr)}
-  .steps,.modes{grid-template-columns:1fr}
-  .legend ul{grid-template-columns:1fr}
+/* ---------- Tamaños ---------- */
+@media (min-width:600px){
+  .kind{max-width:200px}
+  .badge{flex:0 0 auto;min-width:196px}
+  .kinds{grid-template-columns:repeat(4,1fr)}
+  .kinds .rstamp{right:auto;left:57%;top:-18px}
+  .cards{grid-template-columns:repeat(2,1fr)}
 }
-@media (max-width:420px){
-  .badge{min-width:0;width:100%}
-  .route .code{font-size:24px}
-  .fields dd{font-size:14px}
+@media (min-width:760px){
+  .steps{grid-template-columns:repeat(3,1fr);gap:24px}
+  .steps::before{left:22px;right:22px;top:21px;bottom:auto;width:auto;height:2px;background:repeating-linear-gradient(90deg,var(--coral) 0 6px,transparent 6px 12px)}
+  .step{grid-template-columns:1fr;gap:12px}
+  .step__pin{grid-row:auto}
 }
-@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media (min-width:940px){
+  .hero{padding-bottom:56px}
+  .hero__grid{grid-template-columns:1.05fr .95fr;grid-template-areas:"copy globe" "cta globe";column-gap:40px;row-gap:28px}
+  .hero__copy{align-self:end;padding-top:40px}
+  .hero__cta{align-self:start}
+  .globe{width:min(42vw,470px);margin:30px 0 60px}
+  .daily__grid{grid-template-columns:1.1fr .9fr;gap:64px}
+  .pp{grid-template-columns:.9fr 1.1fr;gap:56px}
+  .pp__page{min-height:380px}
+}
+@media (max-width:380px){
+  .badge{min-width:0;flex:1 1 100%}
+  .pass__num{font-size:44px}
+  .iata b{font-size:22px}
+  .stop__dot{width:40px;height:40px}
+  .route::before{top:19px}
+  .pass__body,.pass__stub{padding-inline:16px}
+  .stub__nums b{font-size:21px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .rv{opacity:1;transform:none}
+  .js .stamp-in{opacity:.92;transform:rotate(var(--rot,-8deg))}
+  .pin__body,.pin__hole{opacity:1;transform:rotate(10deg)}
+  .pin__hole{transform:none}
+}
 </style>
 </head>
 <body>
-<div class="wrap">
 
-<header class="top">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-flag" viewBox="0 0 24 24"><path d="M6 21V3.5"/><path d="M6 4.5h11l-2.4 4.2L17 13H6"/></symbol>
+    <symbol id="i-dish" viewBox="0 0 24 24"><path d="M3.2 12.5h17.6a8.8 8.8 0 0 1-17.6 0z"/><path d="M8.5 21h7"/><path d="M9.2 9c0-1.7 1.4-1.7 1.4-3.4M13.6 9c0-1.7 1.4-1.7 1.4-3.4"/></symbol>
+    <symbol id="i-landmark" viewBox="0 0 24 24"><path d="M12 2.2v3.3"/><path d="M7.8 21.2 12 5.5l4.2 15.7"/><path d="M9.4 15.3h5.2M10.5 10.6h3"/><path d="M5 21.2h14"/></symbol>
+    <symbol id="i-city" viewBox="0 0 24 24"><path d="M2.8 21h18.4"/><path d="M4.8 21v-10h5v10"/><path d="M9.8 21V4h6.4v17"/><path d="M16.2 21v-8h3.4v8"/><path d="M12.3 7.6h1.4M12.3 11h1.4M12.3 14.4h1.4M6.8 14h1"/></symbol>
+    <symbol id="i-plane" viewBox="0 0 24 24"><path d="M22 12c0-.9-.8-1.5-1.7-1.5h-5.5L10 3H7.8l2.6 7.5H5.3L3.6 8.2H2l1 3.8-1 3.8h1.6l1.7-2.3h5.1L7.8 21H10l4.8-7.5h5.5c.9 0 1.7-.6 1.7-1.5z"/></symbol>
+    <symbol id="route" viewBox="0 0 240 120"><path d="M6 108C52 104 58 40 112 44s70 48 120-34" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="2 9"/><circle cx="6" cy="108" r="5" fill="currentColor"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 30 42"><path d="M15 1C7.3 1 1 7 1 14.6 1 24.5 15 41 15 41s14-16.5 14-26.4C29 7 22.7 1 15 1z" fill="currentColor"/><path d="M15 1c7.7 0 14 6 14 13.6C29 24.5 15 41 15 41s5.6-12 5.6-26.4C20.6 7 18.2 1 15 1z" fill="#000" fill-opacity=".14"/><circle cx="15" cy="14.2" r="5.4" fill="#fff"/></symbol>
+    <symbol id="i-ticket" viewBox="0 0 24 24"><path d="M3.5 7.5A1.5 1.5 0 0 1 5 6h14a1.5 1.5 0 0 1 1.5 1.5V10a2 2 0 0 0 0 4v2.5A1.5 1.5 0 0 1 19 18H5a1.5 1.5 0 0 1-1.5-1.5V14a2 2 0 0 0 0-4z"/><path d="M15 7v1.6M15 11.2v1.6M15 15.4V17"/></symbol>
+    <symbol id="i-fuel" viewBox="0 0 24 24"><path d="M4.5 21V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v16"/><path d="M3 21h13"/><path d="M4.5 10h10"/><path d="M14.5 8h1.6a2 2 0 0 1 2 2v5.6a1.5 1.5 0 0 0 3 0V8.4L18.6 6"/></symbol>
+    <symbol id="i-map" viewBox="0 0 24 24"><path d="M9 4.5 3.5 6.5v13l5.5-2 6 2 5.5-2v-13l-5.5 2z"/><path d="M9 4.5v13M15 6.5v13"/></symbol>
+    <symbol id="i-passport" viewBox="0 0 24 24"><rect x="5" y="2.5" width="14" height="19" rx="2.2"/><circle cx="12" cy="10" r="3.7"/><path d="M8.3 10h7.4M12 6.3c1.5 1.7 1.5 5.7 0 7.4M12 6.3c-1.5 1.7-1.5 5.7 0 7.4"/><path d="M9 17.5h6"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9z"/></symbol>
+    <symbol id="i-cards" viewBox="0 0 24 24"><rect x="3" y="6.5" width="12.5" height="15" rx="2"/><path d="M8 3.5h10.5a2 2 0 0 1 2 2V17"/></symbol>
+    <symbol id="i-lang" viewBox="0 0 24 24"><path d="M3.5 5.5h9M8 3.5v2M5.6 5.5c.6 3 2.8 5.8 6 7M10.5 5.5c-.6 3-3 6-6.8 7.2"/><path d="M13 21l4-9 4 9M14.5 17.8h5"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2.2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/></symbol>
+    <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3l1.9 5.6L19.5 10.5l-5.6 1.9L12 18l-1.9-5.6L4.5 10.5l5.6-1.9z"/><path d="M19 16.5l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></symbol>
+    <symbol id="postmark" viewBox="0 0 84 48"><g fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="24" cy="24" r="19"/><circle cx="24" cy="24" r="14.5" stroke-width="1"/><path d="M46 12q6-4 12 0t12 0 12 0M46 20q6-4 12 0t12 0 12 0M46 28q6-4 12 0t12 0 12 0M46 36q6-4 12 0t12 0 12 0"/></g><text x="24" y="27.5" text-anchor="middle" font-family="Outfit,sans-serif" font-weight="700" font-size="9" fill="currentColor">2026</text></symbol>
+    <symbol id="dent" viewBox="0 0 100 100"><path d="M96.93 47.40A2.6 2.6 0 0 0 96.93 52.60A47 47 0 0 1 96.19 58.71A2.6 2.6 0 0 0 94.94 63.76A47 47 0 0 1 92.76 69.51A2.6 2.6 0 0 0 90.34 74.11A47 47 0 0 1 86.85 79.17A2.6 2.6 0 0 0 83.40 83.07A47 47 0 0 1 78.80 87.14A2.6 2.6 0 0 0 74.52 90.10A47 47 0 0 1 69.07 92.96A2.6 2.6 0 0 0 64.21 94.80A47 47 0 0 1 58.24 96.27A2.6 2.6 0 0 0 53.08 96.90A47 47 0 0 1 46.92 96.90A2.6 2.6 0 0 0 41.76 96.27A47 47 0 0 1 35.79 94.80A2.6 2.6 0 0 0 30.93 92.96A47 47 0 0 1 25.48 90.10A2.6 2.6 0 0 0 21.20 87.14A47 47 0 0 1 16.60 83.07A2.6 2.6 0 0 0 13.15 79.17A47 47 0 0 1 9.66 74.11A2.6 2.6 0 0 0 7.24 69.51A47 47 0 0 1 5.06 63.76A2.6 2.6 0 0 0 3.81 58.71A47 47 0 0 1 3.07 52.60A2.6 2.6 0 0 0 3.07 47.40A47 47 0 0 1 3.81 41.29A2.6 2.6 0 0 0 5.06 36.24A47 47 0 0 1 7.24 30.49A2.6 2.6 0 0 0 9.66 25.89A47 47 0 0 1 13.15 20.83A2.6 2.6 0 0 0 16.60 16.93A47 47 0 0 1 21.20 12.86A2.6 2.6 0 0 0 25.48 9.90A47 47 0 0 1 30.93 7.04A2.6 2.6 0 0 0 35.79 5.20A47 47 0 0 1 41.76 3.73A2.6 2.6 0 0 0 46.92 3.10A47 47 0 0 1 53.08 3.10A2.6 2.6 0 0 0 58.24 3.73A47 47 0 0 1 64.21 5.20A2.6 2.6 0 0 0 69.07 7.04A47 47 0 0 1 74.52 9.90A2.6 2.6 0 0 0 78.80 12.86A47 47 0 0 1 83.40 16.93A2.6 2.6 0 0 0 86.85 20.83A47 47 0 0 1 90.34 25.89A2.6 2.6 0 0 0 92.76 30.49A47 47 0 0 1 94.94 36.24A2.6 2.6 0 0 0 96.19 41.29A47 47 0 0 1 96.93 47.40Z" fill="#FFFDF8" stroke="currentColor" stroke-opacity=".25" stroke-width=".6"/><circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" stroke-width="3.2"/><circle cx="50" cy="50" r="35.5" fill="none" stroke="currentColor" stroke-width="1"/></symbol>
+    <clipPath id="flagclip"><circle cx="50" cy="50" r="20"/></clipPath>
+    <path id="arc" d="M50 50m-28 0a28 28 0 1 1 56 0a28 28 0 1 1 -56 0"/>
+  </defs>
+</svg>
+
+<header class="wrap top">
   <a class="logo" href="./"><img src="icon.png" alt="" width="40" height="40">GlobeDrop</a>
   <div class="lang" role="group" aria-label="Idioma / Language">
     <button type="button" data-set-lang="es" lang="es" aria-label="Español">ES</button>
@@ -180,125 +434,237 @@ footer a{color:var(--muted);display:inline-flex;align-items:center;min-height:44
 </header>
 
 <main>
-<div class="hero">
-  <div>
-    <span class="eyebrow"><span data-l="es" lang="es">Juego de geografía</span><span data-l="en" lang="en">Geography game</span></span>
-    <h1>
-      <span data-l="es" lang="es">Suelta la chincheta. <em>Adivina el lugar.</em></span>
-      <span data-l="en" lang="en">Drop the pin. <em>Guess the place.</em></span>
-    </h1>
-    <p class="lead">
-      <span data-l="es" lang="es">Te enseñamos una bandera, un plato, un monumento o una ciudad, y tú lo sitúas con una chincheta en un globo 3D. Cuanto más cerca, más puntos. Partidas de un minuto.</span>
-      <span data-l="en" lang="en">We show you a flag, a dish, a landmark or a city, and you place it with a pin on a 3D globe. The closer you get, the more points you score. One-minute games.</span>
-    </p>
-
-    <!--
-      Tiendas: cuando GlobeDrop esté publicada, cambiar cada <span class="badge" aria-disabled="true"> por
-      <a class="badge" href="..."> y quitar su <em class="soon">. Hay dos bloques iguales (aquí y en «final»).
-        App Store:   https://apps.apple.com/app/id<ID_DE_APP_STORE>   (bundle com.tacoly.globedrop.ios)
-        Google Play: https://play.google.com/store/apps/details?id=com.tacoly.globedrop
-    -->
-    <div class="stores">
-      <span class="badge" aria-disabled="true"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 1.43c0 1.14-.46 2.22-1.2 3-.8.84-2.1 1.49-3.15 1.4-.13-1.1.42-2.25 1.15-2.99.82-.85 2.2-1.46 3.2-1.41zM20.5 17.1c-.55 1.27-.81 1.84-1.52 2.96-.99 1.57-2.39 3.52-4.12 3.54-1.54.02-1.94-1-4.03-.99-2.09.01-2.53 1.01-4.07.99-1.73-.02-3.05-1.78-4.04-3.35C-.14 15.6-.43 10.5 1.28 7.87c1.2-1.86 3.1-2.95 4.88-2.95 1.81 0 2.95 1 4.45 1 1.45 0 2.34-1 4.44-1 1.58 0 3.26.86 4.46 2.35-3.92 2.15-3.28 7.75.99 9.83z"/></svg><span><small><span data-l="es" lang="es">Muy pronto en el</span><span data-l="en" lang="en">Coming soon to the</span></small>App Store</span><em class="soon" style="font-style:normal"><span data-l="es" lang="es">Próximamente</span><span data-l="en" lang="en">Coming soon</span></em></span>
-      <span class="badge" aria-disabled="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#00c4ee" d="M3.6 1.5c-.3.3-.5.8-.5 1.4v18.2c0 .6.2 1.1.5 1.4l.1.1L14 12.3v-.2L3.7 1.4z"/><path fill="#f5b800" d="M17.4 15.7l-3.4-3.4v-.2l3.4-3.4.1.1 4 2.3c1.1.6 1.1 1.7 0 2.3l-4 2.3z"/><path fill="#f43f5e" d="M17.5 15.6L14 12.2 3.6 22.5c.4.4 1 .4 1.7.1l12.2-7z"/><path fill="#00c853" d="M17.5 8.8L5.3 1.9c-.7-.4-1.3-.3-1.7.1L14 12.2z"/></svg><span><small><span data-l="es" lang="es">Muy pronto en</span><span data-l="en" lang="en">Coming soon to</span></small>Google Play</span><em class="soon" style="font-style:normal"><span data-l="es" lang="es">Próximamente</span><span data-l="en" lang="en">Coming soon</span></em></span>
+<section class="hero" aria-labelledby="h1" style="padding-top:0">
+  <div class="wrap hero__grid">
+    <div class="hero__copy">
+      <span class="kicker"><svg class="i"><use href="#i-globe"/></svg><span data-l="es" lang="es">Juego de geografía</span><span data-l="en" lang="en">Geography game</span></span>
+      <h1 id="h1">
+        <span data-l="es" lang="es">Suelta la chincheta. <em>Adivina el lugar.</em></span>
+        <span data-l="en" lang="en">Drop the pin. <em>Guess the place.</em></span>
+      </h1>
+      <p class="lead">
+        <span data-l="es" lang="es">Una bandera, un plato, un monumento o una ciudad: sitúalo en el globo 3D. Cuanto más cerca, más puntos.</span>
+        <span data-l="en" lang="en">A flag, a dish, a landmark or a city: place it on the 3D globe. The closer you get, the more points you score.</span>
+      </p>
     </div>
-    <p class="cta-note"><span data-l="es" lang="es">Próximamente en la App Store y en Google Play. Gratis.</span><span data-l="en" lang="en">Coming soon to the App Store and Google Play. Free.</span></p>
 
-    <ul class="facts">
-      <li><b><span data-l="es" lang="es">2.026</span><span data-l="en" lang="en">2,026</span></b> <span data-l="es" lang="es">cartas</span><span data-l="en" lang="en">cards</span></li>
-      <li><b>10</b> <span data-l="es" lang="es">idiomas</span><span data-l="en" lang="en">languages</span></li>
-      <li><span data-l="es" lang="es">iPhone y Android</span><span data-l="en" lang="en">iPhone and Android</span></li>
-    </ul>
-  </div>
-
-  <article class="pass" aria-labelledby="pass-title">
-    <div class="pass__head">
-      <b><span data-l="es" lang="es">Tarjeta de embarque</span><span data-l="en" lang="en">Boarding pass</span></b>
-      <img src="icon.png" alt="" width="34" height="34">
-    </div>
-    <div class="pass__body">
-      <h2 class="pass__title" id="pass-title"><span data-l="es" lang="es">La Diaria</span><span data-l="en" lang="en">The Daily</span></h2>
-      <div class="route" aria-hidden="true">
-        <span class="code"><small><span data-l="es" lang="es">Desde</span><span data-l="en" lang="en">From</span></small><span data-l="es" lang="es">TÚ</span><span data-l="en" lang="en">YOU</span></span>
-        <span class="line"></span>
-        <span class="code"><small><span data-l="es" lang="es">Hasta</span><span data-l="en" lang="en">To</span></small>🌍</span>
+    <div class="globe" id="globe">
+      <div class="globe__shadow"></div>
+      <div class="globe__float">
+        <div class="globe__halo"></div>
+        <canvas id="globe-canvas" width="720" height="720" role="img" aria-label="A globe spinning slowly while a red pin drops onto a city / Un globo que gira despacio mientras cae una chincheta roja sobre una ciudad"></canvas>
+        <div class="globe__shine"></div>
+        <div class="pin" id="pin" aria-hidden="true"><div class="pin__fx">
+          <span class="pin__ripple"></span><span class="pin__ripple"></span><span class="pin__hole"></span>
+          <svg class="pin__body" viewBox="0 0 30 42" style="color:#FF6447"><use href="#i-pin"/></svg>
+        </div></div>
+        <div class="gchip" id="gchip" aria-hidden="true"><span><i class="tile g"></i><b class="gchip__name">Madrid</b><span class="gchip__km"></span></span></div>
       </div>
-      <dl class="fields">
-        <div><dt><span data-l="es" lang="es">Salida</span><span data-l="en" lang="en">Departs</span></dt><dd><span data-l="es" lang="es">Cada día</span><span data-l="en" lang="en">Daily</span></dd></div>
-        <div><dt><span data-l="es" lang="es">Cartas</span><span data-l="en" lang="en">Cards</span></dt><dd>5</dd></div>
-        <div><dt><span data-l="es" lang="es">Pasaje</span><span data-l="en" lang="en">Seats</span></dt><dd><span data-l="es" lang="es">Todos</span><span data-l="en" lang="en">Everyone</span></dd></div>
-      </dl>
     </div>
-    <div class="pass__stub">
-      <p class="result"><span data-l="es" lang="es">Las mismas 5 cartas para todo el mundo. Juega y compara:</span><span data-l="en" lang="en">The same 5 cards for everyone. Play and compare:</span>
-        <span class="sq" data-l="es" lang="es" role="img" aria-label="Ejemplo de resultado: 1.284 km, tres cuadrados verdes, uno amarillo y uno rojo">📍 1.284 km 🟩🟩🟨🟩🟥</span><span class="sq" data-l="en" lang="en" role="img" aria-label="Sample score: 1,284 km, three green squares, one yellow and one red">📍 1,284 km 🟩🟩🟨🟩🟥</span></p>
-    </div>
-  </article>
-</div>
 
-<section id="resultado" aria-labelledby="h-share">
-  <h2 id="h-share"><span data-l="es" lang="es">¿Te han pasado un resultado?</span><span data-l="en" lang="en">Someone sent you a score?</span></h2>
-  <p class="sub"><span data-l="es" lang="es">Cada cuadrado es una de las 5 cartas de La Diaria de ese día, y los kilómetros son la distancia total entre sus chinchetas y los lugares de verdad. Menos kilómetros, mejor.</span><span data-l="en" lang="en">Each square is one of that day’s 5 Daily cards, and the kilometres are the total distance between their pins and the real places. Fewer kilometres is better.</span></p>
-  <div class="legend">
-    <p class="sample"><span data-l="es" lang="es">📍 GlobeDrop #142 — 1.284 km 🟩🟩🟨🟩🟥</span><span data-l="en" lang="en">📍 GlobeDrop #142 — 1,284 km 🟩🟩🟨🟩🟥</span></p>
-    <ul>
-      <li><span class="em" aria-hidden="true">🟩</span><span><span data-l="es" lang="es">a menos de 300 km</span><span data-l="en" lang="en">under 300 km</span></span></li>
-      <li><span class="em" aria-hidden="true">🟨</span><span><span data-l="es" lang="es">a menos de 1.500 km</span><span data-l="en" lang="en">under 1,500 km</span></span></li>
-      <li><span class="em" aria-hidden="true">🟥</span><span><span data-l="es" lang="es">más lejos</span><span data-l="en" lang="en">farther</span></span></li>
+    <div class="hero__cta">
+      <!--
+        Tiendas: cuando GlobeDrop esté publicada, cambiar cada <span class="badge" aria-disabled="true"> por
+        <a class="badge" href="..."> y quitar su <em class="soon">. Hay dos bloques iguales (aquí y en «final»).
+          App Store:   https://apps.apple.com/app/id<ID_DE_APP_STORE>   (bundle com.tacoly.globedrop.ios)
+          Google Play: https://play.google.com/store/apps/details?id=com.tacoly.globedrop
+      -->
+      <div class="stores">
+        <span class="badge" aria-disabled="true"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 1.43c0 1.14-.46 2.22-1.2 3-.8.84-2.1 1.49-3.15 1.4-.13-1.1.42-2.25 1.15-2.99.82-.85 2.2-1.46 3.2-1.41zM20.5 17.1c-.55 1.27-.81 1.84-1.52 2.96-.99 1.57-2.39 3.52-4.12 3.54-1.54.02-1.94-1-4.03-.99-2.09.01-2.53 1.01-4.07.99-1.73-.02-3.05-1.78-4.04-3.35C-.14 15.6-.43 10.5 1.28 7.87c1.2-1.86 3.1-2.95 4.88-2.95 1.81 0 2.95 1 4.45 1 1.45 0 2.34-1 4.44-1 1.58 0 3.26.86 4.46 2.35-3.92 2.15-3.28 7.75.99 9.83z"/></svg><span><small><span data-l="es" lang="es">Muy pronto en el</span><span data-l="en" lang="en">Coming soon to the</span></small>App Store</span><em class="soon"><span data-l="es" lang="es">Próximamente</span><span data-l="en" lang="en">Coming soon</span></em></span>
+        <span class="badge" aria-disabled="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#00c4ee" d="M3.6 1.5c-.3.3-.5.8-.5 1.4v18.2c0 .6.2 1.1.5 1.4l.1.1L14 12.3v-.2L3.7 1.4z"/><path fill="#f5b800" d="M17.4 15.7l-3.4-3.4v-.2l3.4-3.4.1.1 4 2.3c1.1.6 1.1 1.7 0 2.3l-4 2.3z"/><path fill="#f43f5e" d="M17.5 15.6L14 12.2 3.6 22.5c.4.4 1 .4 1.7.1l12.2-7z"/><path fill="#00c853" d="M17.5 8.8L5.3 1.9c-.7-.4-1.3-.3-1.7.1L14 12.2z"/></svg><span><small><span data-l="es" lang="es">Muy pronto en</span><span data-l="en" lang="en">Coming soon to</span></small>Google Play</span><em class="soon"><span data-l="es" lang="es">Próximamente</span><span data-l="en" lang="en">Coming soon</span></em></span>
+      </div>
+      <p class="cta-note"><span data-l="es" lang="es">Gratis. Partidas de un minuto.</span><span data-l="en" lang="en">Free. One-minute games.</span></p>
+      <ul class="facts">
+        <li><svg class="i"><use href="#i-cards"/></svg><span><b><span data-l="es" lang="es">2.026</span><span data-l="en" lang="en">2,026</span></b> <span data-l="es" lang="es">cartas</span><span data-l="en" lang="en">cards</span></span></li>
+        <li><svg class="i"><use href="#i-lang"/></svg><span><b>10</b> <span data-l="es" lang="es">idiomas</span><span data-l="en" lang="en">languages</span></span></li>
+        <li><svg class="i"><use href="#i-cal"/></svg><span><b>5</b> <span data-l="es" lang="es">cartas al día</span><span data-l="en" lang="en">cards a day</span></span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="resultado" class="daily" aria-labelledby="h-daily">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="kicker"><svg class="i"><use href="#i-ticket"/></svg><span data-l="es" lang="es">La Diaria</span><span data-l="en" lang="en">The Daily</span></span>
+      <h2 id="h-daily"><span data-l="es" lang="es">Cinco cartas al día. Las mismas para todo el mundo.</span><span data-l="en" lang="en">Five cards a day. The same for everyone.</span></h2>
+      <p class="sub"><span data-l="es" lang="es">Juega en un minuto, compárate con tus amigos y mantén la racha.</span><span data-l="en" lang="en">Play in a minute, compare with your friends and keep your streak going.</span></p>
+    </div>
+    <div class="daily__grid">
+      <div class="pass-wrap rv">
+        <article class="pass" id="pass" aria-labelledby="pass-title">
+          <div class="pass__main">
+            <div class="pass__head">
+              <span class="pass__brand"><svg viewBox="0 0 30 42" aria-hidden="true"><use href="#i-pin"/></svg>GlobeDrop</span>
+              <span class="lbl"><span data-l="es" lang="es">Tarjeta de embarque</span><span data-l="en" lang="en">Boarding pass</span></span>
+            </div>
+            <div class="pass__body">
+              <div class="pass__top">
+                <div>
+                  <span class="lbl"><span data-l="es" lang="es">Diaria 5</span><span data-l="en" lang="en">Daily 5</span></span>
+                  <h3 class="pass__num" id="pass-title"><span class="sr"><span data-l="es" lang="es">La Diaria</span><span data-l="en" lang="en">The Daily</span> </span>#142</h3>
+                </div>
+                <div class="iata" aria-hidden="true">
+                  <div><span class="lbl"><span data-l="es" lang="es">Desde</span><span data-l="en" lang="en">From</span></span><b><span data-l="es" lang="es">TÚ</span><span data-l="en" lang="en">YOU</span></b></div>
+                  <svg class="i" viewBox="0 0 24 24"><use href="#i-plane"/></svg>
+                  <div><span class="lbl"><span data-l="es" lang="es">Hasta</span><span data-l="en" lang="en">To</span></span><b><span data-l="es" lang="es">MUNDO</span><span data-l="en" lang="en">WORLD</span></b></div>
+                </div>
+              </div>
+              <ol class="route" aria-label="Paradas / Stops">
+                <li class="stop" data-r="g"><span class="stop__dot"><svg class="i"><use href="#i-flag"/></svg></span><span class="stop__km"><span class="sr"><span data-l="es" lang="es">Bandera: </span><span data-l="en" lang="en">Flag: </span></span>38 km</span></li>
+                <li class="stop" data-r="g"><span class="stop__dot"><svg class="i"><use href="#i-dish"/></svg></span><span class="stop__km"><span class="sr"><span data-l="es" lang="es">Plato: </span><span data-l="en" lang="en">Dish: </span></span>112 km</span></li>
+                <li class="stop" data-r="y"><span class="stop__dot"><svg class="i"><use href="#i-landmark"/></svg></span><span class="stop__km"><span class="sr"><span data-l="es" lang="es">Monumento: </span><span data-l="en" lang="en">Landmark: </span></span>640 km</span></li>
+                <li class="stop" data-r="g"><span class="stop__dot"><svg class="i"><use href="#i-city"/></svg></span><span class="stop__km"><span class="sr"><span data-l="es" lang="es">Ciudad: </span><span data-l="en" lang="en">City: </span></span><span data-l="es" lang="es">¡Diana!</span><span data-l="en" lang="en">Bullseye!</span></span></li>
+                <li class="stop" data-r="r"><span class="stop__dot"><svg class="i"><use href="#i-flag"/></svg></span><span class="stop__km"><span class="sr"><span data-l="es" lang="es">Bandera: </span><span data-l="en" lang="en">Flag: </span></span><span data-l="es" lang="es">2.184 km</span><span data-l="en" lang="en">2,184 km</span></span></li>
+                <li class="plane" aria-hidden="true"><span class="plane__carrier"><svg class="i" viewBox="0 0 24 24"><use href="#i-plane"/></svg></span></li>
+              </ol>
+              <dl class="fields">
+                <div><dt class="lbl"><span data-l="es" lang="es">Salida</span><span data-l="en" lang="en">Departs</span></dt><dd><span data-l="es" lang="es">Cada día</span><span data-l="en" lang="en">Every day</span></dd></div>
+                <div><dt class="lbl"><span data-l="es" lang="es">Cartas</span><span data-l="en" lang="en">Cards</span></dt><dd>5</dd></div>
+                <div><dt class="lbl"><span data-l="es" lang="es">Pasaje</span><span data-l="en" lang="en">Seats</span></dt><dd><span data-l="es" lang="es">Todos</span><span data-l="en" lang="en">Everyone</span></dd></div>
+              </dl>
+            </div>
+          </div>
+          <div class="pass__stub">
+            <div class="stub__row">
+              <div>
+                <span class="lbl"><span data-l="es" lang="es">Tu resultado</span><span data-l="en" lang="en">Your score</span></span>
+                <div class="pass__tiles" role="img" aria-label="🟩🟩🟨🟩🟥"><i class="tile g"></i><i class="tile g"></i><i class="tile y"></i><i class="tile g"></i><i class="tile r"></i></div>
+              </div>
+              <span class="rstamp pass__stamp stamp-in" aria-hidden="true"><span data-l="es" lang="es">¡Hecha!</span><span data-l="en" lang="en">Done!</span></span>
+            </div>
+            <div class="stub__nums">
+              <span><b data-l="es" lang="es"><span data-count="2974">2.974</span></b><b data-l="en" lang="en"><span data-count="2974">2,974</span></b> km</span>
+              <span><b data-l="es" lang="es"><span data-count="3789">3.789</span></b><b data-l="en" lang="en"><span data-count="3789">3,789</span></b> <span data-l="es" lang="es">puntos</span><span data-l="en" lang="en">points</span></span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="share rv" style="--i:1">
+        <span class="kicker"><span data-l="es" lang="es">Los cuadrados</span><span data-l="en" lang="en">The squares</span></span>
+        <h3><span data-l="es" lang="es">¿Te han pasado un resultado?</span><span data-l="en" lang="en">Someone sent you a score?</span></h3>
+        <p><span data-l="es" lang="es">Cada cuadrado es una de las 5 cartas de La Diaria de ese día, y los kilómetros son la distancia total entre las chinchetas y los lugares de verdad. Menos kilómetros, mejor. Y no destripa ninguna respuesta.</span><span data-l="en" lang="en">Each square is one of that day’s 5 Daily cards, and the kilometres are the total distance between the pins and the real places. Fewer kilometres is better. And it doesn’t spoil a single answer.</span></p>
+        <div class="bubble">
+          <div class="bubble__meta"><span data-l="es" lang="es">Mensaje recibido</span><span data-l="en" lang="en">Message received</span></div>
+          <p><span data-l="es" lang="es">📍 GlobeDrop #142 — 2.974 km</span><span data-l="en" lang="en">📍 GlobeDrop #142 — 2,974 km</span></p>
+          <div class="tiles" role="img" aria-label="🟩🟩🟨🟩🟥"><i class="tile g"></i><i class="tile g"></i><i class="tile y"></i><i class="tile g"></i><i class="tile r"></i></div>
+        </div>
+        <ul class="legend">
+          <li><i class="tile g"></i><span><span data-l="es" lang="es">Verde: a menos de 300 km</span><span data-l="en" lang="en">Green: under 300 km</span></span></li>
+          <li><i class="tile y"></i><span><span data-l="es" lang="es">Amarillo: a menos de 1.500 km</span><span data-l="en" lang="en">Yellow: under 1,500 km</span></span></li>
+          <li><i class="tile r"></i><span><span data-l="es" lang="es">Rojo: más lejos</span><span data-l="en" lang="en">Red: farther</span></span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how" aria-labelledby="h-how">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="kicker"><svg class="i"><use href="#i-sparkle"/></svg><span data-l="es" lang="es">Cómo se juega</span><span data-l="en" lang="en">How to play</span></span>
+      <h2 id="h-how"><span data-l="es" lang="es">Cuatro tipos de carta, de todos los rincones del mundo</span><span data-l="en" lang="en">Four kinds of card, from every corner of the world</span></h2>
+    </div>
+    <ul class="kinds">
+      <li class="kind rv" style="--i:0"><div class="pst" style="--rot:-4deg;--c:var(--sea-deep);--tint:#E3EFFC"><div class="pst__paper"><div class="pst__sheet" style="color:#1F5FB0"><span class="pst__val">01</span><svg class="i"><use href="#i-flag"/></svg></div><span class="pst__name"><span data-l="es" lang="es">Banderas</span><span data-l="en" lang="en">Flags</span></span></div></div></li>
+      <li class="kind rv" style="--i:1"><div class="pst" style="--rot:3deg;--tint:#FDF1D4"><div class="pst__paper"><div class="pst__sheet" style="color:#B07A06"><span class="pst__val">02</span><svg class="i"><use href="#i-dish"/></svg></div><span class="pst__name"><span data-l="es" lang="es">Platos</span><span data-l="en" lang="en">Dishes</span></span></div></div></li>
+      <li class="kind rv" style="--i:2"><div class="pst" style="--rot:-2deg;--tint:#ECE6FD"><div class="pst__paper"><div class="pst__sheet" style="color:#5E3FC7"><span class="pst__val">03</span><svg class="i"><use href="#i-landmark"/></svg></div><span class="pst__name"><span data-l="es" lang="es">Monumentos</span><span data-l="en" lang="en">Landmarks</span></span></div></div></li>
+      <li class="kind rv" style="--i:3"><div class="pst" style="--rot:4deg;--tint:#DDF5F1"><div class="pst__paper"><div class="pst__sheet" style="color:#0C8579"><span class="pst__val">04</span><svg class="i"><use href="#i-city"/></svg></div><span class="pst__name"><span data-l="es" lang="es">Ciudades</span><span data-l="en" lang="en">Cities</span></span></div></div></li>
+      <li class="rstamp stamp-in" style="--d:.55s" aria-hidden="true"><span data-l="es" lang="es">¡Diana!</span><span data-l="en" lang="en">Bullseye!</span></li>
+    </ul>
+    <ol class="steps">
+      <li class="step rv" style="--i:0"><span class="step__pin"><b>1</b></span><h3><span data-l="es" lang="es">Mira la carta</span><span data-l="en" lang="en">Look at the card</span></h3><p><span data-l="es" lang="es">Una bandera, un plato, un monumento o una ciudad. ¿De dónde es?</span><span data-l="en" lang="en">A flag, a dish, a landmark or a city. Where is it from?</span></p></li>
+      <li class="step rv" style="--i:1"><span class="step__pin"><b>2</b></span><h3><span data-l="es" lang="es">Suelta la chincheta</span><span data-l="en" lang="en">Drop the pin</span></h3><p><span data-l="es" lang="es">Gira el globo 3D, acércate y deja la chincheta donde creas que está.</span><span data-l="en" lang="en">Spin the 3D globe, zoom in and drop the pin where you think it is.</span></p></li>
+      <li class="step rv" style="--i:2"><span class="step__pin"><b>3</b></span><h3><span data-l="es" lang="es">Mira a cuánto te quedas</span><span data-l="en" lang="en">See how close you got</span></h3><p><span data-l="es" lang="es">Los kilómetros que te separan del lugar real deciden tus puntos. ¡Una diana vale oro!</span><span data-l="en" lang="en">The distance to the real place decides your points. A bullseye is worth gold!</span></p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="modes" aria-labelledby="h-modes">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="kicker"><svg class="i"><use href="#i-map"/></svg><span data-l="es" lang="es">Modos de juego</span><span data-l="en" lang="en">Game modes</span></span>
+      <h2 id="h-modes"><span data-l="es" lang="es">Cuatro formas de dar la vuelta al mundo</span><span data-l="en" lang="en">Four ways to travel the world</span></h2>
+      <p class="sub"><span data-l="es" lang="es">Un minuto al día o una tarde entera: tú eliges.</span><span data-l="en" lang="en">One minute a day or a whole afternoon: your call.</span></p>
+    </div>
+    <ul class="cards">
+      <li class="rv" style="--i:0"><article class="pc" style="--tilt:-.6deg;--c:#FF6447;--cd:var(--coral-deep);--tint:var(--coral-tint)">
+        <div class="pc__art" aria-hidden="true"><svg class="pc__route"><use href="#route"/></svg><span class="pc__badge"><svg class="i pc__icon"><use href="#i-ticket"/></svg></span><span class="pc__extra"><i class="tile g"></i><i class="tile g"></i><i class="tile y"></i><i class="tile g"></i><i class="tile r"></i></span></div>
+        <div class="pst pc__post" aria-hidden="true"><div class="pst__paper"><div class="pst__sheet"><svg class="i"><use href="#i-cal"/></svg></div></div></div>
+        <svg class="pc__mark" aria-hidden="true"><use href="#postmark"/></svg>
+        <div class="pc__msg"><h3><span data-l="es" lang="es">La Diaria</span><span data-l="en" lang="en">The Daily</span></h3><p><span data-l="es" lang="es">5 cartas al día, las mismas para todos. Comparte el resultado sin destripar nada.</span><span data-l="en" lang="en">5 cards a day, the same for everyone. Share your score without spoiling a thing.</span></p><span class="pc__tag"><span data-l="es" lang="es">Cada día · 1 minuto</span><span data-l="en" lang="en">Every day · 1 minute</span></span></div>
+      </article></li>
+      <li class="rv" style="--i:1"><article class="pc" style="--tilt:.5deg;--c:#F4B32A;--cd:var(--mustard-deep);--tint:var(--mustard-tint)">
+        <div class="pc__art" aria-hidden="true"><svg class="pc__route"><use href="#route"/></svg><span class="pc__badge"><svg class="i pc__icon"><use href="#i-fuel"/></svg></span><span class="pc__extra gauge-wrap"><span><span data-l="es" lang="es">Combustible</span><span data-l="en" lang="en">Fuel</span></span><span class="gauge"></span></span></div>
+        <div class="pst pc__post" aria-hidden="true"><div class="pst__paper"><div class="pst__sheet"><svg class="i"><use href="#i-fuel"/></svg></div></div></div>
+        <svg class="pc__mark" aria-hidden="true"><use href="#postmark"/></svg>
+        <div class="pc__msg"><h3><span data-l="es" lang="es">Supervivencia</span><span data-l="en" lang="en">Survival</span></h3><p><span data-l="es" lang="es">Cada kilómetro de error gasta combustible y cada diana te lo rellena. ¿Hasta dónde llegas?</span><span data-l="en" lang="en">Every kilometre you miss by burns fuel, and every bullseye tops you up. How far can you go?</span></p><span class="pc__tag"><span data-l="es" lang="es">Cartas sin fin</span><span data-l="en" lang="en">Endless cards</span></span></div>
+      </article></li>
+      <li class="rv" style="--i:2"><article class="pc" style="--tilt:.4deg;--c:#7D5BE6;--cd:var(--plum-deep);--tint:var(--plum-tint)">
+        <div class="pc__art" aria-hidden="true"><svg class="pc__route"><use href="#route"/></svg><span class="pc__badge"><svg class="i pc__icon"><use href="#i-map"/></svg></span><span class="pc__extra stars"><svg viewBox="0 0 24 24"><use href="#i-star"/></svg><svg viewBox="0 0 24 24"><use href="#i-star"/></svg><svg viewBox="0 0 24 24" class="off"><use href="#i-star"/></svg></span></div>
+        <div class="pst pc__post" aria-hidden="true"><div class="pst__paper"><div class="pst__sheet"><svg class="i"><use href="#i-star"/></svg></div></div></div>
+        <svg class="pc__mark" aria-hidden="true"><use href="#postmark"/></svg>
+        <div class="pc__msg"><h3>Atlas</h3><p><span data-l="es" lang="es">20 paquetes temáticos de niveles. Gana hasta 3 estrellas en cada uno, a tu ritmo.</span><span data-l="en" lang="en">20 themed level packs. Earn up to 3 stars on each level, at your own pace.</span></p><span class="pc__tag"><span data-l="es" lang="es">20 paquetes · 3 ★</span><span data-l="en" lang="en">20 packs · 3 ★</span></span></div>
+      </article></li>
+      <li class="rv" style="--i:3"><article class="pc" style="--tilt:-.5deg;--c:#2F7FD8;--cd:var(--sea-deep);--tint:var(--sea-tint)">
+        <div class="pc__art" aria-hidden="true"><svg class="pc__route"><use href="#route"/></svg><span class="pc__badge"><svg class="i pc__icon"><use href="#i-passport"/></svg></span><span class="pc__extra metals"><i class="m-b"></i><i class="m-s"></i><i class="m-g"></i></span></div>
+        <div class="pst pc__post" aria-hidden="true"><div class="pst__paper"><div class="pst__sheet"><svg class="i"><use href="#i-globe"/></svg></div></div></div>
+        <svg class="pc__mark" aria-hidden="true"><use href="#postmark"/></svg>
+        <div class="pc__msg"><h3><span data-l="es" lang="es">Pasaporte</span><span data-l="en" lang="en">Passport</span></h3><p><span data-l="es" lang="es">Cada país que aciertas te da un sello de bronce, de plata o de oro.</span><span data-l="en" lang="en">Every country you nail earns a bronze, silver or gold stamp.</span></p><span class="pc__tag"><span data-l="es" lang="es">Bronce · Plata · Oro</span><span data-l="en" lang="en">Bronze · Silver · Gold</span></span></div>
+      </article></li>
     </ul>
   </div>
 </section>
 
-<section aria-labelledby="h-how">
-  <h2 id="h-how"><span data-l="es" lang="es">Cómo se juega</span><span data-l="en" lang="en">How to play</span></h2>
-  <p class="sub"><span data-l="es" lang="es">Cuatro tipos de carta, de todos los rincones del mundo.</span><span data-l="en" lang="en">Four kinds of card, from every corner of the world.</span></p>
-  <ul class="kinds">
-    <li><span class="em" aria-hidden="true">🏳️</span><span data-l="es" lang="es">Banderas</span><span data-l="en" lang="en">Flags</span></li>
-    <li><span class="em" aria-hidden="true">🍜</span><span data-l="es" lang="es">Platos</span><span data-l="en" lang="en">Dishes</span></li>
-    <li><span class="em" aria-hidden="true">🗼</span><span data-l="es" lang="es">Monumentos</span><span data-l="en" lang="en">Landmarks</span></li>
-    <li><span class="em" aria-hidden="true">🏙️</span><span data-l="es" lang="es">Ciudades</span><span data-l="en" lang="en">Cities</span></li>
-  </ul>
-  <ol class="steps">
-    <li><h3><span data-l="es" lang="es">Mira la carta</span><span data-l="en" lang="en">Look at the card</span></h3><p><span data-l="es" lang="es">Una bandera, un plato, un monumento o una ciudad. ¿De dónde es?</span><span data-l="en" lang="en">A flag, a dish, a landmark or a city. Where is it from?</span></p></li>
-    <li><h3><span data-l="es" lang="es">Suelta la chincheta</span><span data-l="en" lang="en">Drop the pin</span></h3><p><span data-l="es" lang="es">Gira el globo 3D, acércate y deja la chincheta donde creas que está.</span><span data-l="en" lang="en">Spin the 3D globe, zoom in and drop the pin where you think it is.</span></p></li>
-    <li><h3><span data-l="es" lang="es">Mira a cuánto te quedas</span><span data-l="en" lang="en">See how close you got</span></h3><p><span data-l="es" lang="es">Los kilómetros que te separan del lugar real deciden tus puntos. ¡Una diana vale oro!</span><span data-l="en" lang="en">The distance to the real place decides your points. A bullseye is worth gold!</span></p></li>
-  </ol>
-</section>
-
-<section aria-labelledby="h-modes">
-  <h2 id="h-modes"><span data-l="es" lang="es">Cuatro formas de dar la vuelta al mundo</span><span data-l="en" lang="en">Four ways to travel the world</span></h2>
-  <p class="sub"><span data-l="es" lang="es">Un minuto al día o una tarde entera: tú eliges.</span><span data-l="en" lang="en">One minute a day or a whole afternoon: your call.</span></p>
-  <div class="modes">
-    <article class="mode" style="--c:var(--coral)">
-      <h3><span class="em" aria-hidden="true">🎫</span><span data-l="es" lang="es">La Diaria</span><span data-l="en" lang="en">The Daily</span></h3>
-      <p><span data-l="es" lang="es">5 cartas al día, las mismas para todo el mundo. Mantén la racha y comparte tu resultado sin destripar las respuestas.</span><span data-l="en" lang="en">5 cards a day, the same for everyone. Keep your streak going and share your score without spoiling the answers.</span></p>
-    </article>
-    <article class="mode" style="--c:var(--mustard)">
-      <h3><span class="em" aria-hidden="true">⛽</span><span data-l="es" lang="es">Supervivencia</span><span data-l="en" lang="en">Survival</span></h3>
-      <p><span data-l="es" lang="es">Cartas sin fin y un depósito de combustible: cuanto más lejos sueltas la chincheta, más gastas, y cada diana te da un poco más. ¿Hasta dónde llegas?</span><span data-l="en" lang="en">Endless cards and a fuel tank: the farther your pin lands, the more fuel you burn, and every bullseye tops you up. How far can you go?</span></p>
-    </article>
-    <article class="mode" style="--c:var(--sea)">
-      <h3><span class="em" aria-hidden="true">🗺️</span>Atlas</h3>
-      <p><span data-l="es" lang="es">20 paquetes temáticos de niveles para ganar estrellas a tu ritmo, con pistas cuando te atascas.</span><span data-l="en" lang="en">20 themed level packs to earn stars at your own pace, with hints when you get stuck.</span></p>
-    </article>
-    <article class="mode" style="--c:var(--teal)">
-      <h3><span class="em" aria-hidden="true">🛂</span><span data-l="es" lang="es">Pasaporte</span><span data-l="en" lang="en">Passport</span></h3>
-      <p><span data-l="es" lang="es">Gana sellos de bronce, plata y oro de cada país que aciertas y llena tu pasaporte.</span><span data-l="en" lang="en">Earn bronze, silver and gold stamps for every country you nail and fill up your passport.</span></p>
-    </article>
+<section class="passport" aria-labelledby="h-pp">
+  <div class="wrap pp">
+    <div class="rv">
+      <span class="kicker"><svg class="i"><use href="#i-passport"/></svg><span data-l="es" lang="es">Pasaporte</span><span data-l="en" lang="en">Passport</span></span>
+      <h2 id="h-pp"><span data-l="es" lang="es">Colecciona el mundo, sello a sello</span><span data-l="en" lang="en">Collect the world, stamp by stamp</span></h2>
+      <p class="sub"><span data-l="es" lang="es">Acierta un país y gana su sello. Cuanto mejor juegas sus cartas, más brilla: bronce, plata y, si lo bordas, oro.</span><span data-l="en" lang="en">Nail a country and earn its stamp. The better you play its cards, the more it shines: bronze, silver and, if you ace it, gold.</span></p>
+      <ul class="pp__legend">
+        <li><i class="m-b"></i><span data-l="es" lang="es">Bronce</span><span data-l="en" lang="en">Bronze</span></li>
+        <li><i class="m-s"></i><span data-l="es" lang="es">Plata</span><span data-l="en" lang="en">Silver</span></li>
+        <li><i class="m-g"></i><span data-l="es" lang="es">Oro</span><span data-l="en" lang="en">Gold</span></li>
+      </ul>
+    </div>
+    <div class="pp__art rv" style="--i:1" aria-hidden="true">
+      <div class="pp__cover">
+        <div style="text-align:center"><b lang="es">PASAPORTE</b><small lang="en">PASSPORT</small></div>
+        <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="24"/><path d="M8 32h48M32 8c9 7 9 41 0 48M32 8c-9 7-9 41 0 48M13 20h38M13 44h38"/><path d="M41 6c-4.5 0-8 3.4-8 7.7C33 19.4 41 28 41 28s8-8.6 8-14.3C49 9.4 45.5 6 41 6z" fill="#1B3A66"/><circle cx="41" cy="13.6" r="2.6"/></svg>
+        <span class="brand">GLOBEDROP</span>
+      </div>
+      <div class="pp__page">
+        <span class="lbl"><span data-l="es" lang="es">Visados</span><span data-l="en" lang="en">Visas</span> · 03</span>
+        <div class="medals">
+          <div class="medal medal--g stamp-in" style="--d:.2s"><svg viewBox="0 0 100 100"><use href="#dent"/><g clip-path="url(#flagclip)"><rect x="28" y="28" width="44" height="44" fill="#fff"/><circle cx="50" cy="50" r="8.5" fill="#BC002D"/></g><circle cx="50" cy="50" r="20" fill="none" stroke="currentColor" stroke-opacity=".35" stroke-width=".8"/><text><textPath href="#arc" startOffset="2%"><tspan data-l="es" lang="es">JAPÓN · ORO · JAPÓN · ORO ·</tspan><tspan data-l="en" lang="en">JAPAN · GOLD · JAPAN · GOLD ·</tspan></textPath></text></svg></div>
+          <div class="medal medal--s stamp-in" style="--d:.45s"><svg viewBox="0 0 100 100"><use href="#dent"/><g clip-path="url(#flagclip)"><rect x="28" y="28" width="15" height="44" fill="#009246"/><rect x="43" y="28" width="14" height="44" fill="#fff"/><rect x="57" y="28" width="15" height="44" fill="#CE2B37"/></g><circle cx="50" cy="50" r="20" fill="none" stroke="currentColor" stroke-opacity=".35" stroke-width=".8"/><text><textPath href="#arc" startOffset="2%"><tspan data-l="es" lang="es">ITALIA · PLATA · ITALIA · PLATA ·</tspan><tspan data-l="en" lang="en">ITALY · SILVER · ITALY · SILVER ·</tspan></textPath></text></svg></div>
+          <div class="medal medal--b stamp-in" style="--d:.7s"><svg viewBox="0 0 100 100"><use href="#dent"/><g clip-path="url(#flagclip)"><rect x="28" y="28" width="15" height="44" fill="#D91023"/><rect x="43" y="28" width="14" height="44" fill="#fff"/><rect x="57" y="28" width="15" height="44" fill="#D91023"/></g><circle cx="50" cy="50" r="20" fill="none" stroke="currentColor" stroke-opacity=".35" stroke-width=".8"/><text><textPath href="#arc" startOffset="2%"><tspan data-l="es" lang="es">PERÚ · BRONCE · PERÚ · BRONCE ·</tspan><tspan data-l="en" lang="en">PERU · BRONZE · PERU · BRONZE ·</tspan></textPath></text></svg></div>
+          <div class="medal medal--empty">?</div>
+        </div>
+      </div>
+      <span class="rstamp stamp-in" style="--d:.95s"><span data-l="es" lang="es">Entrada</span><span data-l="en" lang="en">Entry</span> · 2026</span>
+    </div>
   </div>
 </section>
 
 <section class="final" aria-labelledby="h-final">
-  <h2 id="h-final"><span data-l="es" lang="es">Prepara el pasaporte</span><span data-l="en" lang="en">Get your passport ready</span></h2>
-  <p class="sub"><span data-l="es" lang="es">GlobeDrop llega muy pronto a iPhone y Android, gratis y en 10 idiomas.</span><span data-l="en" lang="en">GlobeDrop is coming soon to iPhone and Android, free and in 10 languages.</span></p>
-  <div class="stores">
-    <span class="badge" aria-disabled="true"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 1.43c0 1.14-.46 2.22-1.2 3-.8.84-2.1 1.49-3.15 1.4-.13-1.1.42-2.25 1.15-2.99.82-.85 2.2-1.46 3.2-1.41zM20.5 17.1c-.55 1.27-.81 1.84-1.52 2.96-.99 1.57-2.39 3.52-4.12 3.54-1.54.02-1.94-1-4.03-.99-2.09.01-2.53 1.01-4.07.99-1.73-.02-3.05-1.78-4.04-3.35C-.14 15.6-.43 10.5 1.28 7.87c1.2-1.86 3.1-2.95 4.88-2.95 1.81 0 2.95 1 4.45 1 1.45 0 2.34-1 4.44-1 1.58 0 3.26.86 4.46 2.35-3.92 2.15-3.28 7.75.99 9.83z"/></svg><span><small><span data-l="es" lang="es">Muy pronto en el</span><span data-l="en" lang="en">Coming soon to the</span></small>App Store</span><em class="soon" style="font-style:normal"><span data-l="es" lang="es">Próximamente</span><span data-l="en" lang="en">Coming soon</span></em></span>
-    <span class="badge" aria-disabled="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#00c4ee" d="M3.6 1.5c-.3.3-.5.8-.5 1.4v18.2c0 .6.2 1.1.5 1.4l.1.1L14 12.3v-.2L3.7 1.4z"/><path fill="#f5b800" d="M17.4 15.7l-3.4-3.4v-.2l3.4-3.4.1.1 4 2.3c1.1.6 1.1 1.7 0 2.3l-4 2.3z"/><path fill="#f43f5e" d="M17.5 15.6L14 12.2 3.6 22.5c.4.4 1 .4 1.7.1l12.2-7z"/><path fill="#00c853" d="M17.5 8.8L5.3 1.9c-.7-.4-1.3-.3-1.7.1L14 12.2z"/></svg><span><small><span data-l="es" lang="es">Muy pronto en</span><span data-l="en" lang="en">Coming soon to</span></small>Google Play</span><em class="soon" style="font-style:normal"><span data-l="es" lang="es">Próximamente</span><span data-l="en" lang="en">Coming soon</span></em></span>
+  <div class="wrap">
+    <div class="head rv">
+      <h2 id="h-final"><span data-l="es" lang="es">Prepara el pasaporte</span><span data-l="en" lang="en">Get your passport ready</span></h2>
+      <p class="sub" style="margin-inline:auto"><span data-l="es" lang="es">GlobeDrop llega muy pronto a iPhone y Android, gratis y en 10 idiomas.</span><span data-l="en" lang="en">GlobeDrop is coming soon to iPhone and Android, free and in 10 languages.</span></p>
+    </div>
+    <div class="stores rv" style="--i:1">
+      <span class="badge" aria-disabled="true"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 1.43c0 1.14-.46 2.22-1.2 3-.8.84-2.1 1.49-3.15 1.4-.13-1.1.42-2.25 1.15-2.99.82-.85 2.2-1.46 3.2-1.41zM20.5 17.1c-.55 1.27-.81 1.84-1.52 2.96-.99 1.57-2.39 3.52-4.12 3.54-1.54.02-1.94-1-4.03-.99-2.09.01-2.53 1.01-4.07.99-1.73-.02-3.05-1.78-4.04-3.35C-.14 15.6-.43 10.5 1.28 7.87c1.2-1.86 3.1-2.95 4.88-2.95 1.81 0 2.95 1 4.45 1 1.45 0 2.34-1 4.44-1 1.58 0 3.26.86 4.46 2.35-3.92 2.15-3.28 7.75.99 9.83z"/></svg><span><small><span data-l="es" lang="es">Muy pronto en el</span><span data-l="en" lang="en">Coming soon to the</span></small>App Store</span><em class="soon"><span data-l="es" lang="es">Próximamente</span><span data-l="en" lang="en">Coming soon</span></em></span>
+      <span class="badge" aria-disabled="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#00c4ee" d="M3.6 1.5c-.3.3-.5.8-.5 1.4v18.2c0 .6.2 1.1.5 1.4l.1.1L14 12.3v-.2L3.7 1.4z"/><path fill="#f5b800" d="M17.4 15.7l-3.4-3.4v-.2l3.4-3.4.1.1 4 2.3c1.1.6 1.1 1.7 0 2.3l-4 2.3z"/><path fill="#f43f5e" d="M17.5 15.6L14 12.2 3.6 22.5c.4.4 1 .4 1.7.1l12.2-7z"/><path fill="#00c853" d="M17.5 8.8L5.3 1.9c-.7-.4-1.3-.3-1.7.1L14 12.2z"/></svg><span><small><span data-l="es" lang="es">Muy pronto en</span><span data-l="en" lang="en">Coming soon to</span></small>Google Play</span><em class="soon"><span data-l="es" lang="es">Próximamente</span><span data-l="en" lang="en">Coming soon</span></em></span>
+    </div>
+    <p class="plus rv" style="--i:2"><svg class="i"><use href="#i-sparkle"/></svg><span><span data-l="es" lang="es"><b>GlobeDrop Plus</b>, opcional: sin anuncios y continuaciones gratis.</span><span data-l="en" lang="en"><b>GlobeDrop Plus</b>, optional: no ads and free continues.</span></span></p>
   </div>
 </section>
 </main>
 
-<footer>
+<footer class="wrap">
   <span>© 2026 Tacoly · <span data-l="es" lang="es">Gratis, con anuncios y compras opcionales</span><span data-l="en" lang="en">Free, with ads and optional purchases</span></span>
   <nav aria-label="Enlaces / Links">
     <a href="../apps-privacy/"><span data-l="es" lang="es">Privacidad</span><span data-l="en" lang="en">Privacy</span></a>
@@ -306,25 +672,8 @@ footer a{color:var(--muted);display:inline-flex;align-items:center;min-height:44
     <a href="../"><span data-l="es" lang="es">Más apps</span><span data-l="en" lang="en">More apps</span></a>
   </nav>
 </footer>
-</div>
 
-<script>
-(function () {
-  var titles = { es: 'GlobeDrop · Suelta la chincheta, adivina el lugar', en: 'GlobeDrop · Drop the pin, guess the place' };
-  function setLang(l) {
-    document.documentElement.setAttribute('data-lang', l);
-    document.documentElement.lang = l;
-    document.title = titles[l];
-    document.querySelectorAll('[data-set-lang]').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-set-lang') === l ? 'true' : 'false'); });
-    try { localStorage.setItem('globedrop-lang', l); } catch (e) {}
-  }
-  document.querySelectorAll('[data-set-lang]').forEach(function (b) {
-    b.addEventListener('click', function () { setLang(b.getAttribute('data-set-lang')); });
-  });
-  var cur = document.documentElement.getAttribute('data-lang') === 'es' ? 'es' : 'en';
-  document.title = titles[cur];
-  document.querySelectorAll('[data-set-lang]').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-set-lang') === cur ? 'true' : 'false'); });
-})();
-</script>
+<script src="land.js" defer></script>
+<script src="app.js" defer></script>
 </body>
 </html>
