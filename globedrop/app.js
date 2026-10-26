@@ -276,7 +276,7 @@
     return { relabel: labelCity };
   })();
 
-  /* ---------- Tarjeta de embarque de La Diaria ---------- */
+  /* ---------- Tarjeta de embarque del reto diario ---------- */
   var pass = D.getElementById('pass');
   if (pass) (function () {
     var stops = pass.querySelectorAll('.stop'), tiles = pass.querySelectorAll('.pass__tiles .tile');
