@@ -65,6 +65,7 @@ html:not([data-lang="es"]) [data-l="es"], html[data-lang="es"] [data-l="en"] { d
 .home li:nth-child(4) { animation-delay: .28s } .home li:nth-child(5) { animation-delay: .34s } .home li:nth-child(6) { animation-delay: .40s }
 .home li:nth-child(7) { animation-delay: .46s } .home li:nth-child(8) { animation-delay: .52s } .home li:nth-child(9) { animation-delay: .58s }
 .home li:nth-child(10) { animation-delay: .64s } .home li:nth-child(11) { animation-delay: .70s } .home li:nth-child(12) { animation-delay: .76s }
+.home li:nth-child(13) { animation-delay: .82s } .home li:nth-child(14) { animation-delay: .88s } .home li:nth-child(15) { animation-delay: .94s }
 @keyframes install { from { opacity: 0; transform: scale(.55); } }
 
 /* ---------- Secciones ---------- */
