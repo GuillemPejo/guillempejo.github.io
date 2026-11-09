@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tacoly Apps</title>
+<meta name="description" content="Las apps de nuestros vídeos. Toca la que has visto y llévatela.">
+<meta name="theme-color" content="#0c0f17">
+<link rel="canonical" href="https://guillempejo.github.io/apps/">
+<style>
+  :root { color-scheme: dark; --tinta: #f3f4f8; --suave: #a9b0c2; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: #0c0f17; color: var(--tinta); font: 16px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  main { max-width: 560px; margin: 0 auto; padding: max(28px, env(safe-area-inset-top)) 16px 40px; }
+  header { padding: 8px 4px 22px; }
+  header h1 { margin: 0; font-size: 30px; line-height: 1.1; letter-spacing: -.02em; font-weight: 800; }
+  header p { margin: 8px 0 0; color: var(--suave); }
+  ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+  .app { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 16px; padding: 18px; border-radius: 22px; background: var(--fondo); box-shadow: inset 0 0 0 1px rgba(255,255,255,.09); }
+  .app.osc { color: #fff; }
+  .app.cla { color: #17130b; }
+  .ico { width: 64px; height: 64px; border-radius: 15px; display: block; background: rgba(255,255,255,.12); box-shadow: 0 6px 18px -6px rgba(0,0,0,.5); object-fit: cover; }
+  h2 { margin: 0; font-size: 20px; line-height: 1.2; font-weight: 750; }
+  .app p { margin: 4px 0 12px; font-size: 15px; opacity: .82; }
+  .nuevo { display: inline-block; margin-bottom: 6px; padding: 2px 10px; border-radius: 99px; background: var(--acento); color: var(--fondo); font-size: 12.5px; font-weight: 750; }
+  .bs { display: flex; flex-wrap: wrap; gap: 8px; }
+  .b { display: inline-flex; align-items: center; gap: 8px; min-height: 46px; padding: 0 18px; border-radius: 99px; text-decoration: none; font-weight: 700; font-size: 15px; }
+  .osc .b { background: #fff; color: #0c0f17; }
+  .cla .b { background: #17130b; color: #fff; }
+  .b svg { width: 18px; height: 18px; flex: none; }
+  .b:focus-visible { outline: 3px solid var(--acento); outline-offset: 3px; }
+  html.ios .b.play, html.android .b.ios { display: none; }
+  .todas { display: none; margin: 18px auto 0; min-height: 44px; padding: 0 16px; border: 0; border-radius: 99px; background: rgba(255,255,255,.08); color: var(--suave); font: inherit; font-size: 14px; cursor: pointer; }
+  html.ios .todas, html.android .todas { display: block; }
+  html.todas-visibles .b { display: inline-flex !important; }
+  html.todas-visibles .todas { display: none; }
+  footer { margin-top: 28px; text-align: center; color: var(--suave); font-size: 13px; }
+  footer a { color: var(--suave); }
+  @media (prefers-reduced-motion: no-preference) { .app { animation: entra .45s cubic-bezier(.2,.8,.2,1) both; } .app:nth-child(1) { animation-delay: 0ms; }.app:nth-child(2) { animation-delay: 45ms; }.app:nth-child(3) { animation-delay: 90ms; }.app:nth-child(4) { animation-delay: 135ms; }.app:nth-child(5) { animation-delay: 180ms; }.app:nth-child(6) { animation-delay: 225ms; }.app:nth-child(7) { animation-delay: 270ms; }.app:nth-child(8) { animation-delay: 315ms; }.app:nth-child(9) { animation-delay: 360ms; } }
+  @keyframes entra { from { opacity: 0; transform: translateY(10px); } }
+</style>
+<script>
+  (function () {
+    var u = navigator.userAgent || "";
+    var ios = /iPhone|iPad|iPod/.test(u) || (/Macintosh/.test(u) && navigator.maxTouchPoints > 1);
+    document.documentElement.className = ios ? "ios" : /Android/.test(u) ? "android" : "";
+  })();
+</script>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Tacoly Apps</h1>
+    <p>Las apps de nuestros vídeos. Toca la que has visto y llévatela.</p>
+  </header>
+  <ul>
+    <li class="app osc" id="andana" style="--fondo:#1E1563;--acento:#8b7dff">
+      <img class="ico" src="img/andana.png" alt="" width="64" height="64">
+      <div class="txt">
+        <h2>Andana</h2>
+        <p>Metro, FGC, Rodalies y tram de Barcelona en un mapa 3D en directo.</p>
+        <div class="bs"><a class="b ios" href="https://apps.apple.com/app/id6826016254"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.4 2-3.5 2-3.6-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.9-3-.8C6.9 7.3 5.4 8.2 4.6 9.7c-1.7 2.9-.4 7.2 1.2 9.6.8 1.2 1.7 2.4 3 2.4 1.2 0 1.6-.8 3.1-.8s1.8.8 3 .8c1.3 0 2.1-1.2 2.9-2.3.9-1.3 1.3-2.6 1.3-2.7 0 0-2.6-1-2.7-4.1zM14 5.6c.6-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.1 1.8-1 2.9 1 .1 2.1-.6 2.8-1.4z"/></svg><span>App Store</span></a><a class="b play" href="https://play.google.com/store/apps/details?id=com.tacoly.andana&amp;referrer=utm_source%3Dbio%26utm_medium%3Dsocial%26utm_campaign%3Dtacolyapps"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.2 2.7c-.3.3-.4.7-.4 1.2v16.2c0 .5.1.9.4 1.2l9-9.3zm10 8.3 2.9-3L5.6 1.6c-.3-.2-.7-.2-1-.1zm0 2-9.6 9.9c.3.1.7.1 1-.1l11.5-6.5zm4.1-4.3-3.2 3.3 3.2 3.3 2.6-1.5c.9-.5.9-1.8 0-2.3z"/></svg><span>Google Play</span></a></div>
+      </div>
+    </li>
+    <li class="app osc" id="axolo" style="--fondo:#130D33;--acento:#ff7aaa">
+      <img class="ico" src="img/axolo.png" alt="" width="64" height="64">
+      <div class="txt">
+        <h2>Axolo</h2>
+        <p>Un dato curioso al día, verificado y en español. Racha, widget y álbum.</p>
+        <div class="bs"><a class="b ios" href="https://apps.apple.com/app/id6819484221"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.4 2-3.5 2-3.6-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.9-3-.8C6.9 7.3 5.4 8.2 4.6 9.7c-1.7 2.9-.4 7.2 1.2 9.6.8 1.2 1.7 2.4 3 2.4 1.2 0 1.6-.8 3.1-.8s1.8.8 3 .8c1.3 0 2.1-1.2 2.9-2.3.9-1.3 1.3-2.6 1.3-2.7 0 0-2.6-1-2.7-4.1zM14 5.6c.6-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.1 1.8-1 2.9 1 .1 2.1-.6 2.8-1.4z"/></svg><span>App Store</span></a><a class="b play" href="https://play.google.com/store/apps/details?id=com.tacoly.axolo&amp;referrer=utm_source%3Dbio%26utm_medium%3Dsocial%26utm_campaign%3Dtacolyapps"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.2 2.7c-.3.3-.4.7-.4 1.2v16.2c0 .5.1.9.4 1.2l9-9.3zm10 8.3 2.9-3L5.6 1.6c-.3-.2-.7-.2-1-.1zm0 2-9.6 9.9c.3.1.7.1 1-.1l11.5-6.5zm4.1-4.3-3.2 3.3 3.2 3.3 2.6-1.5c.9-.5.9-1.8 0-2.3z"/></svg><span>Google Play</span></a></div>
+      </div>
+    </li>
+    <li class="app osc" id="ferrata" style="--fondo:#08140C;--acento:#6bcb6f">
+      <img class="ico" src="img/ferrata.png" alt="" width="64" height="64">
+      <div class="txt">
+        <h2>Ferrata</h2>
+        <p>Más de 500 vías ferratas en un mapa: nivel, fotos, meteo y fichas sin cobertura</p>
+        <div class="bs"><a class="b ios" href="https://apps.apple.com/app/id6815478407"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.4 2-3.5 2-3.6-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.9-3-.8C6.9 7.3 5.4 8.2 4.6 9.7c-1.7 2.9-.4 7.2 1.2 9.6.8 1.2 1.7 2.4 3 2.4 1.2 0 1.6-.8 3.1-.8s1.8.8 3 .8c1.3 0 2.1-1.2 2.9-2.3.9-1.3 1.3-2.6 1.3-2.7 0 0-2.6-1-2.7-4.1zM14 5.6c.6-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.1 1.8-1 2.9 1 .1 2.1-.6 2.8-1.4z"/></svg><span>App Store</span></a><a class="b play" href="https://play.google.com/store/apps/details?id=com.tacoly.ferrata&amp;referrer=utm_source%3Dbio%26utm_medium%3Dsocial%26utm_campaign%3Dtacolyapps"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.2 2.7c-.3.3-.4.7-.4 1.2v16.2c0 .5.1.9.4 1.2l9-9.3zm10 8.3 2.9-3L5.6 1.6c-.3-.2-.7-.2-1-.1zm0 2-9.6 9.9c.3.1.7.1 1-.1l11.5-6.5zm4.1-4.3-3.2 3.3 3.2 3.3 2.6-1.5c.9-.5.9-1.8 0-2.3z"/></svg><span>Google Play</span></a></div>
+      </div>
+    </li>
+    <li class="app osc" id="globedrop" style="--fondo:#0E1626;--acento:#ff8a5c">
+      <img class="ico" src="img/globedrop.png" alt="" width="64" height="64">
+      <div class="txt">
+        <h2>GlobeDrop</h2>
+        <p>Quiz de geografía en un globo 3D: ¿de dónde es esta bandera, plato o monumento?</p>
+        <div class="bs"><a class="b play" href="https://play.google.com/store/apps/details?id=com.tacoly.globedrop&amp;referrer=utm_source%3Dbio%26utm_medium%3Dsocial%26utm_campaign%3Dtacolyapps"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.2 2.7c-.3.3-.4.7-.4 1.2v16.2c0 .5.1.9.4 1.2l9-9.3zm10 8.3 2.9-3L5.6 1.6c-.3-.2-.7-.2-1-.1zm0 2-9.6 9.9c.3.1.7.1 1-.1l11.5-6.5zm4.1-4.3-3.2 3.3 3.2 3.3 2.6-1.5c.9-.5.9-1.8 0-2.3z"/></svg><span>Google Play</span></a></div>
+      </div>
+    </li>
+    <li class="app osc" id="kmposter" style="--fondo:#1f3fe0;--acento:#ffffff">
+      <img class="ico" src="img/kmposter.svg" alt="" width="64" height="64">
+      <div class="txt">
+        <h2>KM Poster</h2>
+        <p>Tus kilómetros, en la pared: láminas con el trazado real de tu ruta.</p>
+        <div class="bs"><a class="b web" href="https://kmposter.com?utm_source=bio&amp;utm_medium=social&amp;utm_campaign=tacolyapps"><span>Abrir la web</span></a></div>
+      </div>
+    </li>
+    <li class="app osc" id="kota" style="--fondo:#0F2742;--acento:#E7B94A">
+      <img class="ico" src="img/kota.svg" alt="" width="64" height="64">
+      <div class="txt">
+        <h2>Kota Camper</h2>
+        <p>Diseña tu camper a escala antes de cortar un solo tablero.</p>
+        <div class="bs"><a class="b web" href="https://kotacamper.com?utm_source=bio&amp;utm_medium=social&amp;utm_campaign=tacolyapps"><span>Abrir la web</span></a></div>
+      </div>
+    </li>
+    <li class="app cla" id="overlandkit" style="--fondo:#EADBBE;--acento:#fff8e8">
+      <img class="ico" src="img/overlandkit.png" alt="" width="64" height="64">
+      <div class="txt">
+        <h2>OverlandKit</h2>
+        <p>Nivela tu camper en segundos. Nivel de burbuja, inclinómetro y sol en 3D.</p>
+        <div class="bs"><a class="b ios" href="https://apps.apple.com/app/id6823824867"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.4 2-3.5 2-3.6-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.9-3-.8C6.9 7.3 5.4 8.2 4.6 9.7c-1.7 2.9-.4 7.2 1.2 9.6.8 1.2 1.7 2.4 3 2.4 1.2 0 1.6-.8 3.1-.8s1.8.8 3 .8c1.3 0 2.1-1.2 2.9-2.3.9-1.3 1.3-2.6 1.3-2.7 0 0-2.6-1-2.7-4.1zM14 5.6c.6-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.1 1.8-1 2.9 1 .1 2.1-.6 2.8-1.4z"/></svg><span>App Store</span></a><a class="b play" href="https://play.google.com/store/apps/details?id=com.tacoly.overlandkit&amp;referrer=utm_source%3Dbio%26utm_medium%3Dsocial%26utm_campaign%3Dtacolyapps"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.2 2.7c-.3.3-.4.7-.4 1.2v16.2c0 .5.1.9.4 1.2l9-9.3zm10 8.3 2.9-3L5.6 1.6c-.3-.2-.7-.2-1-.1zm0 2-9.6 9.9c.3.1.7.1 1-.1l11.5-6.5zm4.1-4.3-3.2 3.3 3.2 3.3 2.6-1.5c.9-.5.9-1.8 0-2.3z"/></svg><span>Google Play</span></a></div>
+      </div>
+    </li>
+    <li class="app osc" id="paellator" style="--fondo:#2A1409;--acento:#c85a1b">
+      <img class="ico" src="img/paellator.png" alt="" width="64" height="64">
+      <div class="txt">
+        <h2>Paellator</h2>
+        <p>19 recetas de paella y arroz paso a paso, con cantidades exactas por comensales</p>
+        <div class="bs"><a class="b ios" href="https://apps.apple.com/app/id6815477047"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.4 2-3.5 2-3.6-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.9-3-.8C6.9 7.3 5.4 8.2 4.6 9.7c-1.7 2.9-.4 7.2 1.2 9.6.8 1.2 1.7 2.4 3 2.4 1.2 0 1.6-.8 3.1-.8s1.8.8 3 .8c1.3 0 2.1-1.2 2.9-2.3.9-1.3 1.3-2.6 1.3-2.7 0 0-2.6-1-2.7-4.1zM14 5.6c.6-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.1 1.8-1 2.9 1 .1 2.1-.6 2.8-1.4z"/></svg><span>App Store</span></a><a class="b play" href="https://play.google.com/store/apps/details?id=com.tacoly.paellator&amp;referrer=utm_source%3Dbio%26utm_medium%3Dsocial%26utm_campaign%3Dtacolyapps"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.2 2.7c-.3.3-.4.7-.4 1.2v16.2c0 .5.1.9.4 1.2l9-9.3zm10 8.3 2.9-3L5.6 1.6c-.3-.2-.7-.2-1-.1zm0 2-9.6 9.9c.3.1.7.1 1-.1l11.5-6.5zm4.1-4.3-3.2 3.3 3.2 3.3 2.6-1.5c.9-.5.9-1.8 0-2.3z"/></svg><span>Google Play</span></a></div>
+      </div>
+    </li>
+    <li class="app osc" id="visatrip" style="--fondo:#0A1023;--acento:#4a6fe8">
+      <img class="ico" src="img/visatrip.png" alt="" width="64" height="64">
+      <div class="txt">
+        <h2>VisaTrip</h2>
+        <p>Requisitos de visado por pasaporte, fuerza y ranking, Schengen y mapa de viajes</p>
+        <div class="bs"><a class="b ios" href="https://apps.apple.com/app/id6815483578"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.4 2-3.5 2-3.6-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.9-3-.8C6.9 7.3 5.4 8.2 4.6 9.7c-1.7 2.9-.4 7.2 1.2 9.6.8 1.2 1.7 2.4 3 2.4 1.2 0 1.6-.8 3.1-.8s1.8.8 3 .8c1.3 0 2.1-1.2 2.9-2.3.9-1.3 1.3-2.6 1.3-2.7 0 0-2.6-1-2.7-4.1zM14 5.6c.6-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.1 1.8-1 2.9 1 .1 2.1-.6 2.8-1.4z"/></svg><span>App Store</span></a><a class="b play" href="https://play.google.com/store/apps/details?id=com.tacoly.visatrip&amp;referrer=utm_source%3Dbio%26utm_medium%3Dsocial%26utm_campaign%3Dtacolyapps"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.2 2.7c-.3.3-.4.7-.4 1.2v16.2c0 .5.1.9.4 1.2l9-9.3zm10 8.3 2.9-3L5.6 1.6c-.3-.2-.7-.2-1-.1zm0 2-9.6 9.9c.3.1.7.1 1-.1l11.5-6.5zm4.1-4.3-3.2 3.3 3.2 3.3 2.6-1.5c.9-.5.9-1.8 0-2.3z"/></svg><span>Google Play</span></a></div>
+      </div>
+    </li>
+  </ul>
+  <button class="todas" type="button" onclick="document.documentElement.classList.add('todas-visibles')">Ver todas las tiendas</button>
+  <footer>Hechas por Tacoly Studio · <a href="https://tacolystudio.com">tacolystudio.com</a> · <a href="https://guillempejo.github.io/apps-privacy/">Privacidad</a></footer>
+</main>
+</body>
+</html>
+<!-- generada por Plató el 2026-11-08 20:13 -->
